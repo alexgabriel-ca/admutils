@@ -27,7 +27,6 @@ function pause() {
 #If the container is found, the nimbusapp start command is issued.
 
 function startAutopass() {
-
   if docker ps | grep -q autopass; then
     echo "Autopass running"
   elif ! docker container ls -a | grep -q autopass; then

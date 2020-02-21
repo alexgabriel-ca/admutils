@@ -1,14 +1,14 @@
 #!/bin/bash
 #Author: Alex Gabriel <alex.gabriel@microfocus.com>
 #Created: 04/02/2020
-#Modified: 14/02/2020
+#Modified: 21/02/2020
 #Description: Short shell script that allows users to stop the most common ADM solutions when preparing for a demo.
 #License: GPL 3.0
 
 echo ""
 echo "This is a short shell script that lets you stop the most common ADM containers. If you have suggestions for improvement, please contact me by emailing alex.gabriel@microfocus.com"
 echo ""
-source /usr/local/bin/functions
+include functions.sh
 PS3='Select the container(s) to stop, or 13 to quit. '
 options=("Autopass" "ALM" "ALM Octane" "AOS" "DA" "DevOps" "Fortify" "IntelliJ" "MF Connect" "SV" "UFT Mobile" "All" "Quit")
 select opt in "${options[@]}"; do

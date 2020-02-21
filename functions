@@ -1,7 +1,7 @@
 #!/bin/bash
 #Author: Alex Gabriel <alex.gabriel@microfocus.com>
 #Created: 04/02/2020
-#Modified: 14/02/2020
+#Modified: 21/02/2020
 #Description: Short shell script that allows users to start the most common ADM solutions when preparing for a demo.
 #License: GPL 3.0
 
@@ -426,7 +426,7 @@ echo "Deployment Automation restarted."
   fi
 }
 
-function startDevOps() {
+function restartDevOps() {
   if docker ps | grep -q devops; then
     nimbusapp devops:${DevOpsVersion} restart
 echo "DevOps restarted."
@@ -463,26 +463,19 @@ echo "Octane restarted."
 }
 
 function restartFortify() {
-  if docker ps | grep -q sca && docker ps | grep -q ssc; then
-    echo "Fortify running"
-  fi
-
-  if ! docker ps | grep -q sca; then
-    if ! docker container ls -a | grep -q sca; then
-      nimbusapp sca:${SCAVersion} up
-    else
-      nimbusapp sca:${SCAVersion} start
+  if docker ps | grep -q sca; then
+      nimbusapp sca:${SCAVersion} restart
+      echo "SCA restarted."
+      else
+    echo "SCA not running, no need to restart."
+      fi
+   if docker ps | grep -q ssc; then
+      nimbusapp ssc:${SSCVersion} restart
+      echo "SCA restarted."
+      else
+    echo "SSC not running, no need to restart."
+      echo "Fortify restarted"
     fi
-  fi
-  if ! docker ps | grep -q ssc; then
-    if ! docker container ls -a | grep -q ssc; then
-      nimbusapp ssc:${SSCVersion} up
-      echo "Fortify started"
-    else
-      nimbusapp ssc:${SSCVersion} start
-      echo "Fortify started"
-    fi
-  fi
 }
 
 function restartSV() {

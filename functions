@@ -385,3 +385,126 @@ function pullUFTM() {
     echo "UFT Mobile pulled"
   fi
 }
+
+#
+#
+#
+
+function restartAutopass() {
+  if docker ps | grep -q autopass; then
+    nimbusapp autopass:${AutopassVersion} restart
+    echo "Autopass restarted."
+  else
+    echo "Autopass not running, no need to restart."
+  fi
+}
+
+function restartALM() {
+  if docker ps | grep -q alm; then
+    nimbusapp alm:${ALMVersion} restart
+    echo "ALM restarted."
+  else
+    echo "ALM not running, no need to restart."
+  fi
+}
+
+function restartAOS() {
+  if docker ps | grep -q aos; then
+    nimbusapp aos:${AOSVersion} restart
+  echo "AOS restarted."
+  else
+    echo "AOS not running, no need to restart."
+  fi
+}
+
+function restartDA() {
+  if docker ps | grep -q da-server; then
+    nimbusapp da:${DAVersion} restart
+echo "Deployment Automation restarted."
+  else
+    echo "Deployment Automation not running, no need to restart."
+  fi
+}
+
+function startDevOps() {
+  if docker ps | grep -q devops; then
+    nimbusapp devops:${DevOpsVersion} restart
+echo "DevOps restarted."
+  else
+    echo "DevOps not running, no need to restart."
+  fi
+}
+
+function restartIntelliJ() {
+  if docker ps | grep -q intellij; then
+    nimbusapp intellij:${IntelliJVersion} restart
+echo "IntelliJ restarted."
+  else
+    echo "IntelliJ not running, no need to restart."
+  fi
+}
+
+function restartMFConnect() {
+  if docker ps | grep -q mfconnect; then
+    nimbusapp mfconnect:${MFConnectVersion} restart
+echo "MF Connect restarted."
+  else
+    echo "MF Connect not running, no need to restart."
+  fi
+}
+
+function restartALMOctane() {
+  if docker ps | grep -q octane; then
+    nimbusapp octane:${ALMOctaneVersion} restart
+echo "Octane restarted."
+  else
+    echo "Octane not running, no need to restart."
+  fi
+}
+
+function restartFortify() {
+  if docker ps | grep -q sca && docker ps | grep -q ssc; then
+    echo "Fortify running"
+  fi
+
+  if ! docker ps | grep -q sca; then
+    if ! docker container ls -a | grep -q sca; then
+      nimbusapp sca:${SCAVersion} up
+    else
+      nimbusapp sca:${SCAVersion} start
+    fi
+  fi
+  if ! docker ps | grep -q ssc; then
+    if ! docker container ls -a | grep -q ssc; then
+      nimbusapp ssc:${SSCVersion} up
+      echo "Fortify started"
+    else
+      nimbusapp ssc:${SSCVersion} start
+      echo "Fortify started"
+    fi
+  fi
+}
+
+function restartSV() {
+  if docker ps | grep -q sv; then
+    echo "SV running"
+  elif ! docker container ls -a | grep -q sv; then
+    nimbusapp sv:${SVVersion} up
+    echo "SV started"
+  else
+    nimbusapp sv:${SVVersion} start
+    echo "SV started"
+  fi
+}
+
+function restartUFTM() {
+  if docker ps | grep -q uft-mobile; then
+    echo "UFT Mobile running"
+  elif ! docker container ls -a | grep -q uft-mobile; then
+    nimbusapp uft-mobile:${UFTMVersion} up
+    echo "UFT Mobile started"
+  else
+    nimbusapp uft-mobile:${UFTMVersion} start
+    echo "UFT Mobile started"
+  fi
+}

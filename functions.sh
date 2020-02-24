@@ -473,31 +473,21 @@ function restartFortify() {
       nimbusapp ssc:${SSCVersion} restart
       echo "SCA restarted."
       else
-    echo "SSC not running, no need to restart."
+      echo "SSC not running, no need to restart."
       echo "Fortify restarted"
     fi
 }
 
 function restartSV() {
   if docker ps | grep -q sv; then
-    echo "SV running"
-  elif ! docker container ls -a | grep -q sv; then
-    nimbusapp sv:${SVVersion} up
-    echo "SV started"
-  else
-    nimbusapp sv:${SVVersion} start
+    nimbusapp sv:${SVVersion} restart
     echo "SV started"
   fi
 }
 
 function restartUFTM() {
   if docker ps | grep -q uft-mobile; then
-    echo "UFT Mobile running"
-  elif ! docker container ls -a | grep -q uft-mobile; then
-    nimbusapp uft-mobile:${UFTMVersion} up
-    echo "UFT Mobile started"
-  else
-    nimbusapp uft-mobile:${UFTMVersion} start
-    echo "UFT Mobile started"
+    nimbusapp uft-mobile:${UFTMVersion} restart
+    echo "UFT Mobile restarted"
   fi
 }

@@ -8,7 +8,7 @@
 echo ""
 echo "This is a short shell script that lets you start the most common ADM containers from the admpresales Docker repository. If the containers do not exist, they will be pulled first, and then started.  If you have suggestions for improvement, please contact me by emailing alex.gabriel@microfocus.com"
 echo ""
-include functions
+source functions
 PS3='Select the container(s) to start, or 13 to quit. '
 options=("Autopass" "ALM" "ALM Octane" "AOS" "DA" "DevOps" "Fortify" "IntelliJ" "MF Connect" "SV" "UFT Mobile" "All" "Quit")
 select opt in "${options[@]}"; do

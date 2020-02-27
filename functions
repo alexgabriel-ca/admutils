@@ -5,16 +5,19 @@
 #Description: Short shell script that allows users to start the most common ADM solutions when preparing for a demo.
 #License: GPL 3.0
 
-ALMOctaneVersion="15.0.20.58"
+ALMOctaneVersion="15.0.46.68"
 ALMVersion="15.0.1"
 AOSVersion="2.2"
 AutopassVersion="10.9.2"
 DAVersion="6.3.1"
 DevOpsVersion="2.2.0"
-IntelliJVersion="2.2.0"
+IntellijVersion="2.2.0"
+JIRAVersion="8.0.2"
 MFConnectVersion="4.2.0-HF1"
-SCAVersion="18.20"
-SSCVersion="18.10"
+RPAVersion="2019.11"
+SCAVersion="19.1.2"
+SonarqubeVersion="7.7"
+SSCVersion="19.1.0"
 SVVersion="5.2"
 UFTMVersion="3.3"
 

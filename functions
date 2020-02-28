@@ -101,6 +101,17 @@ function startIntelliJ() {
   fi
 }
 
+function startJIRA() {
+  if docker ps | grep -q intellij; then
+    echo "JIRA running"
+  elif ! docker container ls -a | grep -q jira; then
+    nimbusapp jira:${JIRAVersion} up
+    echo "JIRA started"
+  else
+    nimbusapp jira:${JIRAVersion} start
+    echo "JIRA started"
+  fi
+}
 function startMFConnect() {
   if docker ps | grep -q mfconnect; then
     echo "MF Connect running"
@@ -230,6 +241,14 @@ function stopIntelliJ() {
   fi
 }
 
+function stopJIRA() {
+  if ! docker ps | grep -q intellij; then
+    echo "JIRA already stopped"
+  else
+    nimbusapp jira:${JIRAVersion} stop
+    echo "JIRA stopped"
+  fi
+}
 function stopMFConnect() {
   if ! docker ps | grep -q mfconnect; then
     echo "MF Connect already stopped"
@@ -338,6 +357,14 @@ function pullIntelliJ() {
     echo "IntelliJ already pulled"
   fi
 }
+function pullJIRA() {
+  if docker image ls -a | grep -q jira; then
+    echo "JIRA already pulled"
+  else
+    nimbusapp jira:${JIRAVersion} pull
+    echo "JIRA already pulled"
+  fi
+}
 
 function pullMFConnect() {
   if docker image ls -a | grep -q mfconnect; then
@@ -444,6 +471,15 @@ function restartIntelliJ() {
 echo "IntelliJ restarted."
   else
     echo "IntelliJ not running, no need to restart."
+  fi
+}
+
+function restartJIRA() {
+  if docker ps | grep -q jira; then
+    nimbusapp jira:${JIRAVersion} restart
+echo "JIRA restarted."
+  else
+    echo "JIRA not running, no need to restart."
   fi
 }
 

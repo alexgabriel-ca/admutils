@@ -40,7 +40,7 @@ select opt in "${options[@]}"; do
     continue
     ;;
   "JIRA")
-    startJIRA
+    stopJIRA
     continue
     ;;
   "MF Connect")

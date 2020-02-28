@@ -60,6 +60,7 @@ select opt in "${options[@]}"; do
     startDevOps
     startFortify
     startIntelliJ
+    startJIRA
     startMFConnect
     startSV
     startUFTM

@@ -56,6 +56,7 @@ select opt in "${options[@]}"; do
     stopSV
     stopMFConnect
     stopIntelliJ
+    stopJIRA
     stopFortify
     stopDevOps
     stopDA

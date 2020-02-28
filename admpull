@@ -64,6 +64,7 @@ select opt in "${options[@]}"; do
     pullDevOps
     pullFortify
     pullIntelliJ
+    pullJIRA
     pullMFConnect
     pullSV
     pullUFTM

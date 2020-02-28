@@ -60,6 +60,7 @@ select opt in "${options[@]}"; do
     restartDevOps
     restartFortify
     restartIntelliJ
+    restartJIRA
     restartMFConnect
     restartSV
     restartUFTM

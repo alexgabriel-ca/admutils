@@ -39,6 +39,10 @@ select opt in "${options[@]}"; do
     startIntelliJ
     continue
     ;;
+  "JIRA")
+    startJIRA
+    continue
+    ;;
   "MF Connect")
     startMFConnect
     continue

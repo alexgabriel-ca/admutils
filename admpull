@@ -13,8 +13,8 @@ echo ""
 source functions
 docker login
 echo ""
-PS3='Select the container(s) to pull, or 13 to quit. '
-options=("Autopass" "ALM" "ALM Octane" "AOS" "DA" "DevOps" "Fortify" "IntelliJ" "MF Connect" "SV" "UFT Mobile" "All" "Quit")
+PS3='Select the container(s) to pull, or 14 to quit. '
+options=("Autopass" "ALM" "ALM Octane" "AOS" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "MF Connect" "SV" "UFT Mobile" "All" "Quit")
 select opt in "${options[@]}"; do
   case $opt in
   "Autopass")

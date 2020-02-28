@@ -1,7 +1,7 @@
 #!/bin/bash
 #Author: Alex Gabriel <alex.gabriel@microfocus.com>
 #Created: 04/02/2020
-#Modified: 21/02/2020
+#Modified: 28/02/2020
 #Description: Short shell script that allows users to stop the most common ADM solutions when preparing for a demo.
 #License: GPL 3.0
 

@@ -354,7 +354,7 @@ function pullIntelliJ() {
     echo "IntelliJ already pulled"
   else
     nimbusapp intellij:${IntelliJVersion} pull
-    echo "IntelliJ already pulled"
+    echo "IntelliJ pulled"
   fi
 }
 function pullJIRA() {
@@ -362,7 +362,7 @@ function pullJIRA() {
     echo "JIRA already pulled"
   else
     nimbusapp jira:${JIRAVersion} pull
-    echo "JIRA already pulled"
+    echo "JIRA pulled"
   fi
 }
 
@@ -380,7 +380,7 @@ function pullALMOctane() {
     echo "ALM Octane already pulled"
   else
     nimbusapp octane:${ALMOctaneVersion} pull
-    echo "ALM Octane already pulled"
+    echo "ALM Octane pulled"
   fi
 }
 
@@ -394,7 +394,7 @@ function pullFortify() {
   fi
   if ! docker ps | grep -q ssc; then
     nimbusapp ssc:${SSCVersion} pull
-    echo "Fortify already pulled"
+    echo "Fortify pulled"
   fi
 }
 

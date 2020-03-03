@@ -211,11 +211,11 @@ function stopAOS() {
 }
 
 function stopDA() {
-  if docker ps | grep -q da-server; then
-  nimbusapp da:${DAVersion} stop
-    echo "Deployment Automation stopped"
-  else
+if ! docker ps | grep -q da-server; then
     echo "Deployment Automation already stopped"
+  else
+    nimbusapp da:${DAVersion} stop
+    echo "Deployment Automation stopped"
   fi
 }
 

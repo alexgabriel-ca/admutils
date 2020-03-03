@@ -21,10 +21,6 @@ SSCVersion="19.1.0"
 SVVersion="5.2"
 UFTMVersion="3.3"
 
-function pause() {
-  read -rp "$*"
-}
-
 #All start functions check for the existence of the relevant container.
 #If the container is not found, the nimbusapp up command is issued.
 #If the container is found, the nimbusapp start command is issued.
@@ -215,11 +211,11 @@ function stopAOS() {
 }
 
 function stopDA() {
-  if ! docker ps | grep -q da-server; then
-    echo "Deployment Automation already stopped"
-  else
-    nimbusapp da:${DAVersion} stop
+  if docker ps | grep -q da-server; then
+  nimbusapp da:${DAVersion} stop
     echo "Deployment Automation stopped"
+  else
+    echo "Deployment Automation already stopped"
   fi
 }
 

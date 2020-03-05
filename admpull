@@ -14,7 +14,7 @@ source functions
 docker login
 echo ""
 PS3='Select the container(s) to pull, or 14 to quit. '
-options=("Autopass" "ALM" "ALM Octane" "AOS" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "MF Connect" "SV" "UFT Mobile" "All" "Quit")
+options=("Autopass" "ALM" "ALM Octane" "AOS" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "MF Connect" "PPM" "RPA" "SV" "UFT Mobile" "All" "Quit")
 select opt in "${options[@]}"; do
   case $opt in
   "Autopass")
@@ -37,27 +37,21 @@ select opt in "${options[@]}"; do
     ;;
   "Fortify")
     pullFortify
-    continue
     ;;
   "IntelliJ")
     pullIntelliJ
-    continue
     ;;
   "JIRA")
     startJIRA
-    continue
     ;;
   "MF Connect")
     pullMFConnect
-    continue
     ;;
   "SV")
     pullSV
-    continue
     ;;
   "UFT Mobile")
     pullUFTM
-    continue
     ;;
   "All")
     pullAutopass
@@ -70,6 +64,8 @@ select opt in "${options[@]}"; do
     pullIntelliJ
     pullJIRA
     pullMFConnect
+    pullPPM
+    pullRPA
     pullSV
     pullUFTM
     continue

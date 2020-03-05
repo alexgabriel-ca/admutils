@@ -33,35 +33,27 @@ select opt in "${options[@]}"; do
     ;;
   "Fortify")
     startFortify
-    continue
     ;;
   "IntelliJ")
     startIntelliJ
-    continue
     ;;
   "JIRA")
     startJIRA
-    continue
     ;;
   "MF Connect")
     startMFConnect
-    continue
     ;;
   "PPM")
     startPPM
-    continue
     ;;
   "RPA")
     startRPA
-    continue
     ;;
   "SV")
     startSV
-    continue
     ;;
   "UFT Mobile")
     startUFTM
-    continue
     ;;
 "All")
     startAutopass
@@ -74,6 +66,8 @@ select opt in "${options[@]}"; do
     startIntelliJ
     startJIRA
     startMFConnect
+    startPPM
+    startRPA
     startSV
     startUFTM
     continue

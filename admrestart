@@ -10,7 +10,7 @@ echo "This is a short shell script that lets you restart the most common ADM con
 echo ""
 source functions
 PS3='Select the container(s) to restart, or 14 to quit. '
-options=("Autopass" "ALM" "ALM Octane" "AOS" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "MF Connect" "SV" "UFT Mobile" "All" "Quit")
+options=("Autopass" "ALM" "ALM Octane" "AOS" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "MF Connect" "PPM" "RPA" "SV" "UFT Mobile" "All" "Quit")
 select opt in "${options[@]}"; do
   case $opt in
   "Autopass")
@@ -33,27 +33,21 @@ select opt in "${options[@]}"; do
     ;;
   "Fortify")
     restartFortify
-    continue
     ;;
   "IntelliJ")
     restartIntelliJ
-    continue
     ;;
   "JIRA")
     restartJIRA
-    continue
     ;;
   "MF Connect")
     restartMFConnect
-    continue
     ;;
   "SV")
     restartSV
-    continue
     ;;
   "UFT Mobile")
     restartUFTM
-    continue
     ;;
 "All")
     restartAutopass
@@ -68,7 +62,6 @@ select opt in "${options[@]}"; do
     restartMFConnect
     restartSV
     restartUFTM
-    continue
     ;;
   "Quit")
     exit

@@ -22,9 +22,11 @@ This stops the selected container.
 This restarts the selected container.
 
 ## Installation
-The utilities can be installed using the following commands on Linux.
+These utilities can be installed by cloning this repo to your local hard drive.
 
+`cd ~/Downloads`  
 `git clone https://github.com/alexgabriel-ca/admutils`  
+`cd admutils/`  
 `chmod a+x admpull admrestart admstart admstop functions`  
 `sudo cp  admpull admrestart admstart admstop functions /usr/local/bin`  
 

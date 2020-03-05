@@ -5,7 +5,7 @@
 #Description: Short shell script that allows users to start the most common ADM solutions when preparing for a demo.
 #License: GPL 3.0
 
-ALMOctaneVersion="15.0.46.68_di"
+ALMOctaneVersion="15.0.46.68"
 ALMVersion="15.0.1"
 AOSVersion="2.2"
 AutopassVersion="10.9.2"
@@ -122,16 +122,16 @@ function startMFConnect() {
 }
 
 function startALMOctane() {
-if [[ -n "$(docker image ls admpresales/octane:${ALMOctaneVersion} -q)" ]]; then
+  nimbusapp octane:${ALMOctaneVersion} render
   #if docker ps | grep -q octane; then
-    echo "     ALM Octane:${ALMOctaneVersion} running"
-  elif ! docker container ls -a | grep -q octane:${ALMOctaneVersion}; then
-    nimbusapp octane:${ALMOctaneVersion} up
-    echo "     ALM Octane:${ALMOctaneVersion} started"
-  else
-    nimbusapp octane:${ALMOctaneVersion} start
-    echo "     ALM Octane:${ALMOctaneVersion} started"
-  fi
+  #  echo "     ALM Octane:${ALMOctaneVersion} running"
+  #elif ! docker container ls -a | grep -q octane:${ALMOctaneVersion}; then
+  #  nimbusapp octane:${ALMOctaneVersion} up
+  #  echo "     ALM Octane:${ALMOctaneVersion} started"
+  #else
+  #  nimbusapp octane:${ALMOctaneVersion} start
+  #  echo "     ALM Octane:${ALMOctaneVersion} started"
+  #fi
 }
 
 function startFortify() {

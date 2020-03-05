@@ -27,180 +27,180 @@ UFTMVersion="3.3"
 #If the container is found, the nimbusapp start command is issued.
 
 function startAutopass() {
-  if docker ps | grep -q autopass:${AutopassVersion}; then
-    echo "Autopass:${AutopassVersion} running"
-  elif ! docker container ls -a | grep -q autopass:${AutopassVersion}; then
+  if docker ps | grep -q autopass; then
+    echo "     Autopass:${AutopassVersion} running"
+  elif ! docker container ls -a | grep -q autopass; then
     nimbusapp autopass:${AutopassVersion} up
-    echo "Autopass:${AutopassVersion}  started"
+    echo "     Autopass:${AutopassVersion} started"
   else
     nimbusapp autopass:${AutopassVersion} start
-    echo "Autopass:${AutopassVersion} started"
+    echo "     Autopass:${AutopassVersion} started"
   fi
 }
 
 function startALM() {
-  if docker ps | grep -q alm:${ALMVersion}; then
-    echo "ALM:${ALMVersion} running"
-  elif ! docker container ls -a | grep -q alm:${ALMVersion}; then
+  if docker ps | grep -q alm; then
+    echo "     ALM:${ALMVersion} running"
+  elif ! docker container ls -a | grep -q alm; then
     nimbusapp alm:${ALMVersion} up
-    echo "ALM:${ALMVersion} started"
+    echo "     ALM:${ALMVersion} started"
   else
     nimbusapp alm:${ALMVersion} start
-    echo "ALM:${ALMVersion} started"
+    echo "     ALM:${ALMVersion} started"
   fi
 }
 
 function startAOS() {
-  if docker ps | grep -q aos:${AOSVersion}; then
-    echo "AOS running"
-  elif ! docker container ls -a | grep -q aos:${AOSVersion}; then
+  if docker ps | grep -q aos; then
+    echo "     AOS running"
+  elif ! docker container ls -a | grep -q aos; then
     nimbusapp aos:${AOSVersion} up
-    echo "AOS:${AOSVersion} started"
+    echo "     AOS:${AOSVersion} started"
   else
     nimbusapp aos:${AOSVersion} start
-    echo "AOS:${AOSVersion} started"
+    echo "     AOS:${AOSVersion} started"
   fi
 }
 
 function startDA() {
-  if docker ps | grep -q da-server:${DAVersion}; then
-    echo "Deployment Automation:${DAVersion} running"
-  elif ! docker container ls -a | grep -q da-server:${DAVersion}; then
+  if docker ps | grep -q da-server; then
+    echo "     Deployment Automation:${DAVersion} running"
+  elif ! docker container ls -a | grep -q da-server; then
     nimbusapp da:${DAVersion} up
-    echo "Deployment Automation:${DAVersion} started"
+    echo "     Deployment Automation:${DAVersion} started"
   else
     nimbusapp da:${DAVersion} start
-    echo "Deployment Automation:${DAVersion} started"
+    echo "     Deployment Automation:${DAVersion} started"
   fi
 }
 
 function startDevOps() {
-  if docker ps | grep -q devops:${DevOpsVersion}; then
-    echo "DevOps:${DevOpsVersion} running"
-  elif ! docker container ls -a | grep -q devops:${DevOpsVersion}; then
+  if docker ps | grep -q devops; then
+    echo "     DevOps:${DevOpsVersion} running"
+  elif ! docker container ls -a | grep -q devops; then
     nimbusapp devops:${DevOpsVersion} up
-    echo "DevOps:${DevOpsVersion} started"
+    echo "     DevOps:${DevOpsVersion} started"
   else
     nimbusapp devops:${DevOpsVersion} start
-    echo "DevOps:${DevOpsVersion} started"
+    echo "     DevOps:${DevOpsVersion} started"
   fi
 }
 
 function startIntelliJ() {
-  if docker ps | grep -q intellij:${IntelliJVersion}; then
-    echo "IntelliJ:${IntelliJVersion} running"
-  elif ! docker container ls -a | grep -q intellij:${IntelliJVersion}; then
+  if docker ps | grep -q intellij; then
+    echo "     IntelliJ:${IntelliJVersion} running"
+  elif ! docker container ls -a | grep -q intellij; then
     nimbusapp intellij:${IntelliJVersion} up
-    echo "IntelliJ:${IntelliJVersion} started"
+    echo "     IntelliJ:${IntelliJVersion} started"
   else
     nimbusapp intellij:${IntelliJVersion} start
-    echo "IntelliJ:${IntelliJVersion} started"
+    echo "     IntelliJ:${IntelliJVersion} started"
   fi
 }
 
 function startJIRA() {
-  if docker ps | grep -q jira:${JIRAVersion}; then
-    echo "JIRA:${JIRAVersion} running"
-  elif ! docker container ls -a | grep -q jira:${JIRAVersion}; then
+  if docker ps | grep -q jira; then
+    echo "     JIRA:${JIRAVersion} running"
+  elif ! docker container ls -a | grep -q jira; then
     nimbusapp jira:${JIRAVersion} up
-    echo "JIRA:${JIRAVersion} started"
+    echo "     JIRA:${JIRAVersion} started"
   else
     nimbusapp jira:${JIRAVersion} start
-    echo "JIRA:${JIRAVersion} started"
+    echo "     JIRA:${JIRAVersion} started"
   fi
 }
 function startMFConnect() {
-  if docker ps | grep -q mfconnect:${MFConnectVersion}; then
-    echo "MF Connect:${MFConnectVersion} running"
+  if docker ps | grep -q mfconnect; then
+    echo "     MF Connect:${MFConnectVersion} running"
   elif ! docker container ls -a | grep -q mfconnect; then
     nimbusapp mfconnect:${MFConnectVersion} up
-    echo "MF Connect:${MFConnectVersion} started"
+    echo "     MF Connect:${MFConnectVersion} started"
   else
     nimbusapp mfconnect:${MFConnectVersion} start
-    echo "MF Connect:${MFConnectVersion} started"
+    echo "     MF Connect:${MFConnectVersion} started"
   fi
 }
 
 function startALMOctane() {
-  if docker ps | grep -q octane:${ALMOctaneVersion}; then
-    echo "ALM Octane:${ALMOctaneVersion} running"
+  if docker ps | grep -q octane; then
+    echo "     ALM Octane:${ALMOctaneVersion} running"
   elif ! docker container ls -a | grep -q octane:${ALMOctaneVersion}; then
     nimbusapp octane:${ALMOctaneVersion} up
-    echo "ALM Octane:${ALMOctaneVersion} started"
+    echo "     ALM Octane:${ALMOctaneVersion} started"
   else
     nimbusapp octane:${ALMOctaneVersion} start
-    echo "ALM Octane:${ALMOctaneVersion} started"
+    echo "     ALM Octane:${ALMOctaneVersion} started"
   fi
 }
 
 function startFortify() {
-  if docker ps | grep -q sca:${SCAVersion} && docker ps | grep -q ssc:${SSCVersion}; then
-    echo "Fortify:${SSCVersion} running"
+  if docker ps | grep -q sca && docker ps | grep -q ssc; then
+    echo "     Fortify:${SSCVersion} running"
   fi
 
-  if ! docker ps | grep -q sca:${SCAVersion}; then
-    if ! docker container ls -a | grep -q sca:${SCAVersion}; then
+  if ! docker ps | grep -q sca; then
+    if ! docker container ls -a | grep -q sca; then
       nimbusapp sca:${SCAVersion} up
     else
       nimbusapp sca:${SCAVersion} start
     fi
   fi
-  if ! docker ps | grep -q ssc:${SSCVersion}; then
-    if ! docker container ls -a | grep -q ssc:${SSCVersion}; then
+  if ! docker ps | grep -q ssc; then
+    if ! docker container ls -a | grep -q ssc; then
       nimbusapp ssc:${SSCVersion} up
-      echo "Fortify:${SSCVersion} started"
+      echo "     Fortify:${SSCVersion} started"
     else
       nimbusapp ssc:${SSCVersion} start
-      echo "Fortify:${SSCVersion} started"
+      echo "     Fortify:${SSCVersion} started"
     fi
   fi
 }
 
 function startPPM() {
-  if docker ps | grep -q ppm:${PPMVersion}; then
-    echo "Project and Portfolio Management running"
-  elif ! docker container ls -a | grep -q ppm:${PPMVersion}; then
+  if docker ps | grep -q ppm; then
+    echo "     Project and Portfolio Management running"
+  elif ! docker container ls -a | grep -q ppm; then
     nimbusapp ppm:${PPMVersion} up
-    echo "Project and Portfolio Management:${PPMVersion} started"
+    echo "     Project and Portfolio Management:${PPMVersion} started"
   else
     nimbusapp ppm:${PPMVersion} start
-    echo "Project and Portfolio Management:${PPMVersion} started"
+    echo "     Project and Portfolio Management:${PPMVersion} started"
   fi
 }
 
 function startRPA() {
-  if docker ps | grep -q rpa:${RPAVersion}; then
-    echo "Robotic Process Automation:${RPAVersion} running"
-  elif ! docker container ls -a | grep -q rpa:${RPAVersion}; then
+  if docker ps | grep -q rpa; then
+    echo "     Robotic Process Automation:${RPAVersion} running"
+  elif ! docker container ls -a | grep -q rpa; then
     nimbusapp rpa:${RPAVersion} up
-    echo "Robotic Process Automation:${RPAVersion} started"
+    echo "     Robotic Process Automation:${RPAVersion} started"
   else
     nimbusapp rpa:${RPAVersion} start
-    echo "Robotic Process Automation:${RPAVersion} started"
+    echo "     Robotic Process Automation:${RPAVersion} started"
   fi
 }
 
 function startSV() {
-  if docker ps | grep -q sv:${SVVersion}; then
-    echo "SV:${SVVersion} running"
-  elif ! docker container ls -a | grep -q sv:${SVVersion}; then
+  if docker ps | grep -q sv; then
+    echo "     SV:${SVVersion} running"
+  elif ! docker container ls -a | grep -q sv; then
     nimbusapp sv:${SVVersion} up
-    echo "SV:${SVVersion} started"
+    echo "     SV:${SVVersion} started"
   else
     nimbusapp sv:${SVVersion} start
-    echo "SV:${SVVersion} started"
+    echo "     SV:${SVVersion} started"
   fi
 }
 
 function startUFTM() {
-  if docker ps | grep -q uft-mobile:${UFTMVersion}; then
-    echo "UFT Mobile:${UFTMVersion} running"
-  elif ! docker container ls -a | grep -q uft-mobile:${UFTMVersion}; then
+  if docker ps | grep -q uft-mobile; then
+    echo "     UFT Mobile:${UFTMVersion} running"
+  elif ! docker container ls -a | grep -q uft-mobile; then
     nimbusapp uft-mobile:${UFTMVersion} up
-    echo "UFT Mobile:${UFTMVersion} started"
+    echo "     UFT Mobile:${UFTMVersion} started"
   else
     nimbusapp uft-mobile:${UFTMVersion} start
-    echo "UFT Mobile:${UFTMVersion} started"
+    echo "     UFT Mobile:${UFTMVersion} started"
   fi
 }
 
@@ -209,133 +209,133 @@ function startUFTM() {
 #If the container is running, the nimbusapp stop command is issued.
 
 function stopAutopass() {
-  if ! docker ps | grep -q autopass:${AutopassVersion}; then
-    echo "Autopass:${AutopassVersion} already stopped"
+  if ! docker ps | grep -q autopass; then
+    echo "     Autopass:${AutopassVersion} already stopped"
   else
     nimbusapp autopass:${AutopassVersion} stop
-    echo "Autopass:${AutopassVersion} stopped"
+    echo "     Autopass:${AutopassVersion} stopped"
   fi
 }
 
 function stopALM() {
-  if ! docker ps | grep -q alm:${ALMVersion}; then
-    echo "ALM:${ALMVersion} already stopped"
+  if ! docker ps | grep -q alm; then
+    echo "     ALM:${ALMVersion} already stopped"
   else
     nimbusapp alm:${ALMVersion} stop
-    echo "ALM:${ALMVersion} stopped"
+    echo "     ALM:${ALMVersion} stopped"
   fi
 }
 
 function stopAOS() {
-  if ! docker ps | grep -q aos:${AOSVersion}; then
-    echo "AOS:${AOSVersion} already stopped"
+  if ! docker ps | grep -q aos; then
+    echo "     AOS:${AOSVersion} already stopped"
   else
     nimbusapp aos:${AOSVersion} stop
-    echo "AOS:${AOSVersion} stopped"
+    echo "     AOS:${AOSVersion} stopped"
   fi
 }
 
 function stopDA() {
-  if ! docker ps | grep -q da-server:${DAVersion}; then
-    echo "Deployment Automation:${DAVersion} already stopped"
+  if ! docker ps | grep -q da-server; then
+    echo "     Deployment Automation:${DAVersion} already stopped"
   else
     nimbusapp da:${DAVersion} stop
-    echo "Deployment Automation:${DAVersion} stopped"
+    echo "     Deployment Automation:${DAVersion} stopped"
   fi
 }
 
 function stopDevOps() {
-  if ! docker ps | grep -q devops:${DevOpsVersion}; then
-    echo "DevOps:${DevOpsVersion} already stopped"
+  if ! docker ps | grep -q devops; then
+    echo "     DevOps:${DevOpsVersion} already stopped"
   else
     nimbusapp devops:${DevOpsVersion} stop
-    echo "DevOps:${DevOpsVersion} stopped"
+    echo "     DevOps:${DevOpsVersion} stopped"
   fi
 }
 
 function stopIntelliJ() {
-  if ! docker ps | grep -q intellij:${IntelliJVersion}; then
-    echo "IntelliJ:${IntelliJVersion} already stopped"
+  if ! docker ps | grep -q intellij; then
+    echo "     IntelliJ:${IntelliJVersion} already stopped"
   else
     nimbusapp intellij:${IntelliJVersion} stop
-    echo "IntelliJ:${IntelliJVersion} stopped"
+    echo "     IntelliJ:${IntelliJVersion} stopped"
   fi
 }
 
 function stopJIRA() {
-  if ! docker ps | grep -q jira:${JIRAVersion}; then
-    echo "JIRA:${JIRAVersion} already stopped"
+  if ! docker ps | grep -q jira; then
+    echo "     JIRA:${JIRAVersion} already stopped"
   else
     nimbusapp jira:${JIRAVersion} stop
-    echo "JIRA:${JIRAVersion} stopped"
+    echo "     JIRA:${JIRAVersion} stopped"
   fi
 }
 function stopMFConnect() {
-  if ! docker ps | grep -q mfconnect:${MFConnectVersion}; then
-    echo "MF Connect:${MFConnectVersion} already stopped"
+  if ! docker ps | grep -q mfconnect; then
+    echo "     MF Connect:${MFConnectVersion} already stopped"
   else
     nimbusapp mfconnect:${MFConnectVersion} stop
-    echo "MF Connect:${MFConnectVersion} stopped"
+    echo "     MF Connect:${MFConnectVersion} stopped"
   fi
 }
 
 function stopALMOctane() {
-  if ! docker ps | grep -q octane:${ALMOctaneVersion}; then
-    echo "ALM Octane:${ALMOctaneVersion} already stopped"
+  if ! docker ps | grep -q octane; then
+    echo "     ALM Octane:${ALMOctaneVersion} already stopped"
   else
     nimbusapp octane:${ALMOctaneVersion} stop
-    echo "ALM Octane:${ALMOctaneVersion} stopped"
+    echo "     ALM Octane:${ALMOctaneVersion} stopped"
   fi
 }
 
 function stopFortify() {
 
-  if ! docker ps | grep -q sca:${SCAVersion} && ! docker ps | grep -q ssc:${SSCVersion}; then
-    echo "Fortify:${SSCVersion} already stopped"
+  if ! docker ps | grep -q sca && ! docker ps | grep -q ssc; then
+    echo "     Fortify:${SSCVersion} already stopped"
   fi
 
-  if docker ps | grep -q sca:${SCAVersion}; then
+  if docker ps | grep -q sca; then
     nimbusapp sca:${SCAVersion} stop
   fi
-  if docker ps | grep -q ssc:${SSCVersion}; then
+  if docker ps | grep -q ssc; then
     nimbusapp ssc:${SSCVersion} stop
-    echo "Fortify:${SSCVersion} stopped"
+    echo "     Fortify:${SSCVersion} stopped"
   fi
 }
 
 function stopSV() {
-  if ! docker ps | grep -q sv:${SVVersion}; then
-    echo "SV:${SVVersion} already stopped"
+  if ! docker ps | grep -q sv; then
+    echo "     SV:${SVVersion} already stopped"
   else
     nimbusapp sv:${SVVersion} stop
-    echo "SV:${SVVersion} stopped"
+    echo "     SV:${SVVersion} stopped"
   fi
 }
 
 function stopPPM() {
-  if ! docker ps | grep -q ppm:${PPMVersion}; then
-    echo "Project and Portfolio Management:${PPMVersion} already stopped"
+  if ! docker ps | grep -q ppm; then
+    echo "     Project and Portfolio Management:${PPMVersion} already stopped"
   else
     nimbusapp ppm:${PPMVersion} stop
-    echo "Project and Portfolio Management:${PPMVersion} stopped"
+    echo "     Project and Portfolio Management:${PPMVersion} stopped"
   fi
 }
 
 function stopRPA() {
-  if ! docker ps | grep -q rpa:${RPAVersion}; then
-    echo "Robotic Process Automation:${RPAVersion} already stopped"
+  if ! docker ps | grep -q rpa; then
+    echo "     Robotic Process Automation:${RPAVersion} already stopped"
   else
     nimbusapp srpa:${RPAVersion} stop
-    echo "Robotic Process Automation:${RPAVersion} stopped"
+    echo "     Robotic Process Automation:${RPAVersion} stopped"
   fi
 }
 
 function stopUFTM() {
-  if ! docker ps | grep -q uft-mobile:${UFTMVersion}; then
-    echo "UFT Mobile:${UFTMVersion} already stopped"
+  if ! docker ps | grep -q uft-mobile; then
+    echo "     UFT Mobile:${UFTMVersion} already stopped"
   else
     nimbusapp uft-mobile:${UFTMVersion} stop
-    echo "UFT Mobile:${UFTMVersion} stopped"
+    echo "     UFT Mobile:${UFTMVersion} stopped"
   fi
 }
 
@@ -345,87 +345,87 @@ function stopUFTM() {
 
 function pullAutopass() {
   if docker image ls -a | grep -q autopass; then
-    echo "Autopass:${AutopassVersion} already pulled"
+    echo "     Autopass:${AutopassVersion} already pulled"
   else
     nimbusapp autopass:${AutopassVersion} pull
-    echo "Autopass:${AutopassVersion} pulled"
+    echo "     Autopass:${AutopassVersion} pulled"
   fi
 }
 
 function pullALM() {
   if docker image ls -a | grep -q alm; then
-    echo "ALM:${ALMVersion} already pulled"
+    echo "     ALM:${ALMVersion} already pulled"
   else
     nimbusapp alm:${ALMVersion} pull
-    echo "ALM:${ALMVersion} pulled"
+    echo "     ALM:${ALMVersion} pulled"
   fi
 }
 
 function pullAOS() {
   if docker image ls -a | grep -q aos; then
-    echo "AOS:${AOSVersion} already pulled"
+    echo "     AOS:${AOSVersion} already pulled"
   else
     nimbusapp aos:${AOSVersion} pull
-    echo "AOS:${AOSVersion} pulled"
+    echo "     AOS:${AOSVersion} pulled"
   fi
 }
 
 function pullDA() {
   if docker image ls -a | grep -q da-server; then
-    echo "Deployment Automation:${DAVersion} already pulled"
+    echo "     Deployment Automation:${DAVersion} already pulled"
   else
     nimbusapp da:${DAVersion} pull
-    echo "Deployment Automation:${DAVersion} pulled"
+    echo "     Deployment Automation:${DAVersion} pulled"
   fi
 }
 
 function pullDevOps() {
   if docker image ls -a | grep -q devops; then
-    echo "DevOps:${DevOpsVersion} already pulled"
+    echo "     DevOps:${DevOpsVersion} already pulled"
   else
     nimbusapp devops:${DevOpsVersion} pull
-    echo "DevOps:${DevOpsVersion} pulled"
+    echo "     DevOps:${DevOpsVersion} pulled"
   fi
 }
 
 function pullIntelliJ() {
   if docker image ls -a | grep -q intellij; then
-    echo "IntelliJ:${IntelliJVersion} already pulled"
+    echo "     IntelliJ:${IntelliJVersion} already pulled"
   else
     nimbusapp intellij:${IntelliJVersion} pull
-    echo "IntelliJ:${IntelliJVersion} pulled"
+    echo "     IntelliJ:${IntelliJVersion} pulled"
   fi
 }
 function pullJIRA() {
   if docker image ls -a | grep -q jira; then
-    echo "JIRA:${JIRAVersion} already pulled"
+    echo "     JIRA:${JIRAVersion} already pulled"
   else
     nimbusapp jira:${JIRAVersion} pull
-    echo "JIRA:${JIRAVersion} pulled"
+    echo "     JIRA:${JIRAVersion} pulled"
   fi
 }
 
 function pullMFConnect() {
   if docker image ls -a | grep -q mfconnect; then
-    echo "MF Connect:${MFConnectVersion} already pulled"
+    echo "     MF Connect:${MFConnectVersion} already pulled"
   else
     nimbusapp mfconnect:${MFConnectVersion} pull
-    echo "MF Connect:${MFConnectVersion} pulled"
+    echo "     MF Connect:${MFConnectVersion} pulled"
   fi
 }
 
 function pullALMOctane() {
   if docker image ls -a | grep -q octane; then
-    echo "ALM Octane:${ALMOctaneVersion} already pulled"
+    echo "     ALM Octane:${ALMOctaneVersion} already pulled"
   else
     nimbusapp octane:${ALMOctaneVersion} pull
-    echo "ALM Octane:${ALMOctaneVersion} pulled"
+    echo "     ALM Octane:${ALMOctaneVersion} pulled"
   fi
 }
 
 function pullFortify() {
   if docker image ls -a | grep -q sca && docker image ls -a | grep -q ssc; then
-    echo "Fortify:${SSCVersion} already pulled"
+    echo "     Fortify:${SSCVersion} already pulled"
   fi
 
   if ! docker image ls -a | grep -q sca; then
@@ -433,43 +433,43 @@ function pullFortify() {
   fi
   if ! docker image ls -a | grep -q ssc; then
     nimbusapp ssc:${SSCVersion} pull
-    echo "Fortify:${SSCVersion} pulled"
+    echo "     Fortify:${SSCVersion} pulled"
   fi
 }
 
 function pullRPA() {
   if docker image ls -a | grep -q rpa; then
-    echo "RPA:${RPAVersion} already pulled"
+    echo "     RPA:${RPAVersion} already pulled"
   else
     nimbusapp rpa:${RPAVersion} pull
-    echo "RPA:${RPAVersion} pulled"
+    echo "     RPA:${RPAVersion} pulled"
   fi
 }
 
 function pullPPM() {
   if docker image ls -a | grep -q ppm; then
-    echo "PPM:${PPMVersion} already pulled"
+    echo "     PPM:${PPMVersion} already pulled"
   else
     nimbusapp ppm:${PPMVersion} pull
-    echo "PPM:${PPMVersion} pulled"
+    echo "     PPM:${PPMVersion} pulled"
   fi
 }
 
 function pullSV() {
   if docker image ls -a | grep -q sv; then
-    echo "SV:${SVVersion} already pulled"
+    echo "     SV:${SVVersion} already pulled"
   else
     nimbusapp sv:${SVVersion} pull
-    echo "SV:${SVVersion} pulled"
+    echo "     SV:${SVVersion} pulled"
   fi
 }
 
 function pullUFTM() {
   if docker image ls -a | grep -q uft-mobile; then
-    echo "UFT Mobile:${UFTMVersion} already pulled"
+    echo "     UFT Mobile:${UFTMVersion} already pulled"
   else
     nimbusapp uft-mobile:${UFTMVersion} pull
-    echo "UFT Mobile:${UFTMVersion} pulled"
+    echo "     UFT Mobile:${UFTMVersion} pulled"
   fi
 }
 
@@ -480,114 +480,114 @@ function pullUFTM() {
 function restartAutopass() {
   if docker ps | grep -q autopass; then
     nimbusapp autopass:${AutopassVersion} restart
-    echo "Autopass:${AutopassVersion} restarted."
+    echo "     Autopass:${AutopassVersion} restarted."
   else
-    echo "Autopass:${AutopassVersion} not running, no need to restart"
+    echo "     Autopass:${AutopassVersion} not running, no need to restart"
   fi
 }
 
 function restartALM() {
   if docker ps | grep -q alm; then
     nimbusapp alm:${ALMVersion} restart
-    echo "ALM:${ALMVersion} restarted."
+    echo "     ALM:${ALMVersion} restarted."
   else
-    echo "ALM:${ALMVersion} not running, no need to restart"
+    echo "     ALM:${ALMVersion} not running, no need to restart"
   fi
 }
 
 function restartAOS() {
   if docker ps | grep -q aos; then
     nimbusapp aos:${AOSVersion} restart
-    echo "AOS:${AOSVersion} restarted."
+    echo "     AOS:${AOSVersion} restarted."
   else
-    echo "AOS:${AOSVersion} not running, no need to restart"
+    echo "     AOS:${AOSVersion} not running, no need to restart"
   fi
 }
 
 function restartDA() {
   if docker ps | grep -q da-server; then
     nimbusapp da:${DAVersion} restart
-    echo "Deployment Automation:${DAVersion} restarted."
+    echo "     Deployment Automation:${DAVersion} restarted."
   else
-    echo "Deployment Automation:${DAVersion} not running, no need to restart"
+    echo "     Deployment Automation:${DAVersion} not running, no need to restart"
   fi
 }
 
 function restartDevOps() {
   if docker ps | grep -q devops; then
     nimbusapp devops:${DevOpsVersion} restart
-    echo "DevOps:${DevOpsVersion} restarted."
+    echo "     DevOps:${DevOpsVersion} restarted."
   else
-    echo "DevOps:${DevOpsVersion} not running, no need to restart"
+    echo "     DevOps:${DevOpsVersion} not running, no need to restart"
   fi
 }
 
 function restartIntelliJ() {
   if docker ps | grep -q intellij; then
     nimbusapp intellij:${IntelliJVersion} restart
-    echo "IntelliJ:${IntelliJVersion} restarted."
+    echo "     IntelliJ:${IntelliJVersion} restarted."
   else
-    echo "IntelliJ:${IntelliJVersion} not running, no need to restart"
+    echo "     IntelliJ:${IntelliJVersion} not running, no need to restart"
   fi
 }
 
 function restartJIRA() {
   if docker ps | grep -q jira; then
     nimbusapp jira:${JIRAVersion} restart
-    echo "JIRA:${JIRAVersion} restarted."
+    echo "     JIRA:${JIRAVersion} restarted."
   else
-    echo "JIRA:${JIRAVersion} not running, no need to restart"
+    echo "     JIRA:${JIRAVersion} not running, no need to restart"
   fi
 }
 
 function restartMFConnect() {
   if docker ps | grep -q mfconnect; then
     nimbusapp mfconnect:${MFConnectVersion} restart
-    echo "MF Connect:${MFConnectVersion} restarted."
+    echo "     MF Connect:${MFConnectVersion} restarted."
   else
-    echo "MF Connect:${MFConnectVersion} not running, no need to restart"
+    echo "     MF Connect:${MFConnectVersion} not running, no need to restart"
   fi
 }
 
 function restartALMOctane() {
   if docker ps | grep -q octane; then
     nimbusapp octane:${ALMOctaneVersion} restart
-    echo "Octane:${ALMOctaneVersion} restarted."
+    echo "     Octane:${ALMOctaneVersion} restarted."
   else
-    echo "Octane:${ALMOctaneVersion} not running, no need to restart"
+    echo "     Octane:${ALMOctaneVersion} not running, no need to restart"
   fi
 }
 
 function restartFortify() {
   if docker ps | grep -q sca; then
     nimbusapp sca:${SCAVersion} restart
-    echo "SCAsca:${SCAVersion} restarted."
+    echo "     SCAsca:${SCAVersion} restarted."
   else
-    echo "SCAsca:${SCAVersion} not running, no need to restart"
+    echo "     SCAsca:${SCAVersion} not running, no need to restart"
   fi
   if docker ps | grep -q ssc; then
     nimbusapp ssc:${SSCVersion} restart
-    echo "SCA:${SSCVersion} restarted."
+    echo "     SCA:${SSCVersion} restarted."
   else
-    echo "SSC:${SSCVersion} not running, no need to restart"
-    echo "Fortify:${SSCVersion} restarted"
+    echo "     SSC:${SSCVersion} not running, no need to restart"
+    echo "     Fortify:${SSCVersion} restarted"
   fi
 }
 
 function restartSV() {
   if docker ps | grep -q sv; then
     nimbusapp sv:${SVVersion} restart
-    echo "SV:${SVVersion} restarted"
+    echo "     SV:${SVVersion} restarted"
   else
-    echo "SV:${SVVersion} not running, no need to restart"
+    echo "     SV:${SVVersion} not running, no need to restart"
   fi
 }
 
 function restartUFTM() {
   if docker ps | grep -q uft-mobile; then
     nimbusapp uft-mobile:${UFTMVersion} restart
-    echo "UFT Mobile:${UFTMVersion} restarted"
+    echo "     UFT Mobile:${UFTMVersion} restarted"
     else
-    echo "UFT Mobile:${UFTMVersion} not running, no need to restart"
+    echo "     UFT Mobile:${UFTMVersion} not running, no need to restart"
   fi
 }

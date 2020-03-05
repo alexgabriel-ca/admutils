@@ -31,7 +31,7 @@ function startAutopass() {
     echo "Autopass running"
   elif ! docker container ls -a | grep -q autopass:${AutopassVersion}; then
     nimbusapp autopass:${AutopassVersion} up
-    echo "Autopass started"
+    echo "Autopass:${AutopassVersion}  started"
   else
     nimbusapp autopass:${AutopassVersion} start
     echo "Autopass started"

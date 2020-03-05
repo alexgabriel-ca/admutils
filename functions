@@ -371,7 +371,7 @@ function pullAOS() {
 }
 
 function pullDA() {
-  if docker image ls -a | grep -q da-server then
+  if docker image ls -a | grep -q da-server; then
     echo "Deployment Automation:${DAVersion} already pulled"
   else
     nimbusapp da:${DAVersion} pull

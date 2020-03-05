@@ -325,7 +325,7 @@ function stopRPA() {
   if ! docker ps | grep -q rpa; then
     echo "     Robotic Process Automation:${RPAVersion} already stopped"
   else
-    nimbusapp srpa:${RPAVersion} stop
+    nimbusapp rpa:${RPAVersion} stop
     echo "     Robotic Process Automation:${RPAVersion} stopped"
   fi
 }

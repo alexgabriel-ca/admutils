@@ -330,7 +330,6 @@ function stopRPA() {
   fi
 }
 
-
 function stopUFTM() {
   if ! docker ps | grep -q uft-mobile:${UFTMVersion}; then
     echo "UFT Mobile:${UFTMVersion} already stopped"
@@ -372,7 +371,7 @@ function pullAOS() {
 }
 
 function pullDA() {
-  if docker image ls -a | grep -q da-server:${DAVersion}; then
+  if docker image ls -a | grep -q da-server then
     echo "Deployment Automation:${DAVersion} already pulled"
   else
     nimbusapp da:${DAVersion} pull
@@ -381,7 +380,7 @@ function pullDA() {
 }
 
 function pullDevOps() {
-  if docker image ls -a | grep -q devops:${DevOpsVersion}; then
+  if docker image ls -a | grep -q devops; then
     echo "DevOps:${DevOpsVersion} already pulled"
   else
     nimbusapp devops:${DevOpsVersion} pull
@@ -390,7 +389,7 @@ function pullDevOps() {
 }
 
 function pullIntelliJ() {
-  if docker image ls -a | grep -q intellij:${IntelliJVersion}; then
+  if docker image ls -a | grep -q intellij; then
     echo "IntelliJ:${IntelliJVersion} already pulled"
   else
     nimbusapp intellij:${IntelliJVersion} pull
@@ -398,7 +397,7 @@ function pullIntelliJ() {
   fi
 }
 function pullJIRA() {
-  if docker image ls -a | grep -q jira:${JIRAVersion}; then
+  if docker image ls -a | grep -q jira; then
     echo "JIRA:${JIRAVersion} already pulled"
   else
     nimbusapp jira:${JIRAVersion} pull
@@ -407,7 +406,7 @@ function pullJIRA() {
 }
 
 function pullMFConnect() {
-  if docker image ls -a | grep -q mfconnect:${MFConnectVersion}; then
+  if docker image ls -a | grep -q mfconnect; then
     echo "MF Connect:${MFConnectVersion} already pulled"
   else
     nimbusapp mfconnect:${MFConnectVersion} pull
@@ -416,7 +415,7 @@ function pullMFConnect() {
 }
 
 function pullALMOctane() {
-  if docker image ls -a | grep -q octane:${ALMOctaneVersion}; then
+  if docker image ls -a | grep -q octane; then
     echo "ALM Octane:${ALMOctaneVersion} already pulled"
   else
     nimbusapp octane:${ALMOctaneVersion} pull
@@ -425,21 +424,21 @@ function pullALMOctane() {
 }
 
 function pullFortify() {
-  if docker image ls -a | grep -q sca:${SCAVersion} && docker image ls -a | grep -q ssc:${SSCVersion}; then
+  if docker image ls -a | grep -q sca && docker image ls -a | grep -q ssc; then
     echo "Fortify:${SSCVersion} already pulled"
   fi
 
-  if ! docker ps | grep -q sca; then
+  if ! docker image ls -a | grep -q sca; then
     nimbusapp sca:${SCAVersion} pull
   fi
-  if ! docker ps | grep -q ssc; then
+  if ! docker image ls -a | grep -q ssc; then
     nimbusapp ssc:${SSCVersion} pull
     echo "Fortify:${SSCVersion} pulled"
   fi
 }
 
 function pullRPA() {
-  if docker image ls -a | grep -q rpa:${RPAVersion}; then
+  if docker image ls -a | grep -q rpa; then
     echo "RPA:${RPAVersion} already pulled"
   else
     nimbusapp rpa:${RPAVersion} pull
@@ -448,7 +447,7 @@ function pullRPA() {
 }
 
 function pullPPM() {
-  if docker image ls -a | grep -q ppm:${PPMVersion}; then
+  if docker image ls -a | grep -q ppm; then
     echo "PPM:${PPMVersion} already pulled"
   else
     nimbusapp ppm:${PPMVersion} pull

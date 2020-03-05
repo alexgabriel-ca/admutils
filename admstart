@@ -10,7 +10,7 @@ echo "This is a short shell script that lets you start the most common ADM conta
 echo ""
 source functions
 PS3='Select the container(s) to start, or 14 to quit. '
-options=("Autopass" "ALM" "ALM Octane" "AOS" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "MF Connect" "SV" "UFT Mobile" "All" "Quit")
+options=("Autopass" "ALM" "ALM Octane" "AOS" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "MF Connect" "PPM" "RPA" "SV" "UFT Mobile" "All" "Quit")
 select opt in "${options[@]}"; do
   case $opt in
   "Autopass")
@@ -45,6 +45,14 @@ select opt in "${options[@]}"; do
     ;;
   "MF Connect")
     startMFConnect
+    continue
+    ;;
+  "PPM")
+    startPPM
+    continue
+    ;;
+  "RPA")
+    startRPA
     continue
     ;;
   "SV")

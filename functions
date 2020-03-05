@@ -28,13 +28,13 @@ UFTMVersion="3.3"
 
 function startAutopass() {
   if docker ps | grep -q autopass:${AutopassVersion}; then
-    echo "Autopass running"
+    echo "Autopass:${AutopassVersion} running"
   elif ! docker container ls -a | grep -q autopass:${AutopassVersion}; then
     nimbusapp autopass:${AutopassVersion} up
     echo "Autopass:${AutopassVersion}  started"
   else
     nimbusapp autopass:${AutopassVersion} start
-    echo "Autopass started"
+    echo "Autopass:${AutopassVersion} started"
   fi
 }
 

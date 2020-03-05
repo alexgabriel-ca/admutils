@@ -16,7 +16,7 @@ echo ""
 PS3='Select the container(s) to pull, or 16 to quit. '
 options=("Autopass" "ALM" "ALM Octane" "AOS" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "MF Connect" "PPM" "RPA" "SV" "UFT Mobile" "All" "Quit")
 select opt in "${options[@]}"; do
-  case $opt in
+  case ${opt} in
   "Autopass")
     pullAutopass
     ;;

@@ -56,7 +56,7 @@ select opt in "${options[@]}"; do
   "UFT Mobile")
     startUFTM
     ;;
-"All")
+  "All")
     startAutopass
     startALM
     startALMOctane

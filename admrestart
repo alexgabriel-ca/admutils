@@ -49,7 +49,7 @@ select opt in "${options[@]}"; do
   "UFT Mobile")
     restartUFTM
     ;;
-"All")
+  "All")
     restartAutopass
     restartALM
     restartALMOctane

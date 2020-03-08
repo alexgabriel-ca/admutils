@@ -588,7 +588,7 @@ function restartUFTM() {
   if docker ps | grep -q uft-mobile; then
     nimbusapp uft-mobile:${UFTMVersion} restart
     echo "     UFT Mobile:${UFTMVersion} restarted"
-    else
+  else
     echo "     UFT Mobile:${UFTMVersion} not running, no need to restart"
   fi
 }

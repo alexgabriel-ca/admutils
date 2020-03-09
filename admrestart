@@ -1,7 +1,7 @@
 #!/bin/bash
 #Author: Alex Gabriel <alex.gabriel@microfocus.com>
 #Created: 21/02/2020
-#Modified: 28/02/2020
+#Modified: 08/03/2020
 #Description: Short shell script that allows users to restart the most common ADM solutions when preparing for a demo.
 #License: GPL 3.0
 
@@ -12,60 +12,60 @@ source functions
 PS3='Select the container(s) to restart, or 16 to quit. '
 options=("Autopass" "ALM" "ALM Octane" "AOS" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "MF Connect" "PPM" "RPA" "SV" "UFT Mobile" "All" "Quit")
 select opt in "${options[@]}"; do
-  case ${opt} in
-  "Autopass")
-    restartAutopass
-    ;;
-  "ALM")
-    restartALM
-    ;;
-  "ALM Octane")
-    restartALMOctane
-    ;;
-  "AOS")
-    restartAOS
-    ;;
-  "DA")
-    restartDA
-    ;;
-  "DevOps")
-    restartDevOps
-    ;;
-  "Fortify")
-    restartFortify
-    ;;
-  "IntelliJ")
-    restartIntelliJ
-    ;;
-  "JIRA")
-    restartJIRA
-    ;;
-  "MF Connect")
-    restartMFConnect
-    ;;
-  "SV")
-    restartSV
-    ;;
-  "UFT Mobile")
-    restartUFTM
-    ;;
-  "All")
-    restartAutopass
-    restartALM
-    restartALMOctane
-    restartAOS
-    restartDA
-    restartDevOps
-    restartFortify
-    restartIntelliJ
-    restartJIRA
-    restartMFConnect
-    restartSV
-    restartUFTM
-    ;;
-  "Quit")
-    exit
-    ;;
-  *) echo "Invalid option $REPLY" ;;
-  esac
+     case ${opt} in
+     "Autopass")
+          restartAutopass
+          ;;
+     "ALM")
+          restartALM
+          ;;
+     "ALM Octane")
+          restartALMOctane
+          ;;
+     "AOS")
+          restartAOS
+          ;;
+     "DA")
+          restartDA
+          ;;
+     "DevOps")
+          restartDevOps
+          ;;
+     "Fortify")
+          restartFortify
+          ;;
+     "IntelliJ")
+          restartIntelliJ
+          ;;
+     "JIRA")
+          restartJIRA
+          ;;
+     "MF Connect")
+          restartMFConnect
+          ;;
+     "SV")
+          restartSV
+          ;;
+     "UFT Mobile")
+          restartUFTM
+          ;;
+     "All")
+          restartAutopass
+          restartALM
+          restartALMOctane
+          restartAOS
+          restartDA
+          restartDevOps
+          restartFortify
+          restartIntelliJ
+          restartJIRA
+          restartMFConnect
+          restartSV
+          restartUFTM
+          ;;
+     "Quit")
+          exit
+          ;;
+     *) echo "Invalid option $REPLY" ;;
+     esac
 done

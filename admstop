@@ -1,7 +1,7 @@
 #!/bin/bash
 #Author: Alex Gabriel <alex.gabriel@microfocus.com>
 #Created: 04/02/2020
-#Modified: 28/02/2020
+#Modified: 08/03/2020
 #Description: Short shell script that allows users to stop the most common ADM solutions when preparing for a demo.
 #License: GPL 3.0
 
@@ -12,70 +12,70 @@ source functions
 PS3='Select the container(s) to stop, or 16 to quit. '
 options=("Autopass" "ALM" "ALM Octane" "AOS" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "MF Connect" "PPM" "RPA" "SV" "UFT Mobile" "All" "Quit")
 select opt in "${options[@]}"; do
-  case ${opt} in
-  "Autopass")
-    stopAutopass
-    ;;
-  "ALM")
-    stopALM
-    ;;
-  "ALM Octane")
-    stopALMOctane
-    ;;
-  "AOS")
-    stopAOS
-    ;;
-  "DA")
-    stopDA
-    ;;
-  "DevOps")
-    stopDevOps
-    ;;
-  "Fortify")
-    stopFortify
-    ;;
-  "IntelliJ")
-    stopIntelliJ
-    ;;
-  "JIRA")
-    stopJIRA
-    continue
-    ;;
-  "MF Connect")
-    stopMFConnect
-    ;;
-  "PPM")
-    stopPPM
-    ;;
-  "RPA")
-    stopRPA
-    ;;
-  "SV")
-    stopSV
-    ;;
-  "UFT Mobile")
-    stopUFTM
-    ;;
-  "All")
-    stopUFTM
-    stopSV
-    stopRPA
-    stopPPM
-    stopMFConnect
-    stopIntelliJ
-    stopJIRA
-    stopFortify
-    stopDevOps
-    stopDA
-    stopAOS
-    stopALMOctane
-    stopALM
-    stopAutopass
-    continue
-    ;;
-  "Quit")
-    exit
-    ;;
-  *) echo "Invalid option $REPLY" ;;
-  esac
+     case ${opt} in
+     "Autopass")
+          stopAutopass
+          ;;
+     "ALM")
+          stopALM
+          ;;
+     "ALM Octane")
+          stopALMOctane
+          ;;
+     "AOS")
+          stopAOS
+          ;;
+     "DA")
+          stopDA
+          ;;
+     "DevOps")
+          stopDevOps
+          ;;
+     "Fortify")
+          stopFortify
+          ;;
+     "IntelliJ")
+          stopIntelliJ
+          ;;
+     "JIRA")
+          stopJIRA
+          continue
+          ;;
+     "MF Connect")
+          stopMFConnect
+          ;;
+     "PPM")
+          stopPPM
+          ;;
+     "RPA")
+          stopRPA
+          ;;
+     "SV")
+          stopSV
+          ;;
+     "UFT Mobile")
+          stopUFTM
+          ;;
+     "All")
+          stopUFTM
+          stopSV
+          stopRPA
+          stopPPM
+          stopMFConnect
+          stopIntelliJ
+          stopJIRA
+          stopFortify
+          stopDevOps
+          stopDA
+          stopAOS
+          stopALMOctane
+          stopALM
+          stopAutopass
+          continue
+          ;;
+     "Quit")
+          exit
+          ;;
+     *) echo "Invalid option $REPLY" ;;
+     esac
 done

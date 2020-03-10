@@ -135,25 +135,27 @@ function startALMOctane() {
 }
 
 function startFortify() {
+     #Check for running instance of SCA and SSC.  If found, display message.
      if docker ps | grep -q sca && docker ps | grep -q ssc; then
           echo "     Fortify:${SSCVersion} running"
      fi
 
+     #If SCA is not running, check to see whether it exists.  If it doesn't, pull down the specified version.
      if ! docker ps | grep -q sca; then
           if ! docker container ls -a | grep -q sca; then
                nimbusapp sca:${SCAVersion} up
-          else
-               nimbusapp sca:${SCAVersion} start
           fi
+     else
+          nimbusapp sca:${SCAVersion} start
      fi
+
      if ! docker ps | grep -q ssc; then
           if ! docker container ls -a | grep -q ssc; then
                nimbusapp ssc:${SSCVersion} up
-               echo "     Fortify:${SSCVersion} started"
-          else
-               nimbusapp ssc:${SSCVersion} start
-               echo "     Fortify:${SSCVersion} started"
           fi
+     else
+          nimbusapp ssc:${SSCVersion} start
+          echo "     Fortify:${SSCVersion} running"
      fi
 }
 
@@ -290,7 +292,6 @@ function stopALMOctane() {
 }
 
 function stopFortify() {
-
      if ! docker ps | grep -q sca && ! docker ps | grep -q ssc; then
           echo "     Fortify:${SSCVersion} already stopped"
      fi

@@ -135,33 +135,20 @@ function startALMOctane() {
 }
 
 function startFortify() {
-     #Check for running instance of SCA and SSC.  If found, display message.
-     if docker ps | grep -q sca && docker ps | grep -q ssc; then
-          echo "     Fortify:${SSCVersion} running"
-     fi
-
-     #If SCA is not running, check to see whether it exists.  If it doesn't, pull down the specified version.
-     if ! docker ps | grep -q sca; then
-          if ! docker container ls -a | grep -q sca; then
-               nimbusapp sca:${SCAVersion} up
-          fi
+     if docker ps | grep -q sca; then
+          echo "     SCA:${SCAVersion} running"
+     elif ! docker container ls -a | grep -q sca; then
+          nimbusapp sca:${SCAVersion} up
+          echo "     SCA:${SCAVersion} started"
      else
           nimbusapp sca:${SCAVersion} start
-     fi
-
-     if ! docker ps | grep -q ssc; then
-          if ! docker container ls -a | grep -q ssc; then
-               nimbusapp ssc:${SSCVersion} up
-          fi
-     else
-          nimbusapp ssc:${SSCVersion} start
-          echo "     Fortify:${SSCVersion} running"
+          echo "     SCA:${SCAVersion} started"
      fi
 }
 
 function startPPM() {
      if docker ps | grep -q ppm; then
-          echo "     Project and Portfolio Management running"
+          echo "     Project and Portfolio Management:${PPMVersion} running"
      elif ! docker container ls -a | grep -q ppm; then
           nimbusapp ppm:${PPMVersion} up
           echo "     Project and Portfolio Management:${PPMVersion} started"

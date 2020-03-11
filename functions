@@ -224,6 +224,7 @@ function startUFTM() {
 function stopAutopass() {
      if ! docker ps | grep -q autopass; then
           echo "     Autopass:${AutopassVersion} already stopped"
+          return
      else
           nimbusapp autopass:${AutopassVersion} stop
           echo "     Autopass:${AutopassVersion} stopped"
@@ -233,6 +234,7 @@ function stopAutopass() {
 function stopALM() {
      if ! docker ps | grep -q alm; then
           echo "     ALM:${ALMVersion} already stopped"
+          return
      else
           nimbusapp alm:${ALMVersion} stop
           echo "     ALM:${ALMVersion} stopped"
@@ -242,6 +244,7 @@ function stopALM() {
 function stopAOS() {
      if ! docker ps | grep -q aos; then
           echo "     AOS:${AOSVersion} already stopped"
+          return
      else
           nimbusapp aos:${AOSVersion} stop
           echo "     AOS:${AOSVersion} stopped"
@@ -251,6 +254,7 @@ function stopAOS() {
 function stopDA() {
      if ! docker ps | grep -q da-server; then
           echo "     Deployment Automation:${DAVersion} already stopped"
+          return
      else
           nimbusapp da:${DAVersion} stop
           echo "     Deployment Automation:${DAVersion} stopped"
@@ -260,6 +264,7 @@ function stopDA() {
 function stopDevOps() {
      if ! docker ps | grep -q devops; then
           echo "     DevOps:${DevOpsVersion} already stopped"
+          return
      else
           nimbusapp devops:${DevOpsVersion} stop
           echo "     DevOps:${DevOpsVersion} stopped"
@@ -269,6 +274,7 @@ function stopDevOps() {
 function stopIntelliJ() {
      if ! docker ps | grep -q intellij; then
           echo "     IntelliJ:${IntelliJVersion} already stopped"
+          return
      else
           nimbusapp intellij:${IntelliJVersion} stop
           echo "     IntelliJ:${IntelliJVersion} stopped"
@@ -278,6 +284,7 @@ function stopIntelliJ() {
 function stopJIRA() {
      if ! docker ps | grep -q jira; then
           echo "     JIRA:${JIRAVersion} already stopped"
+          return
      else
           nimbusapp jira:${JIRAVersion} stop
           echo "     JIRA:${JIRAVersion} stopped"
@@ -286,6 +293,7 @@ function stopJIRA() {
 function stopMFConnect() {
      if ! docker ps | grep -q mfconnect; then
           echo "     MF Connect:${MFConnectVersion} already stopped"
+          return
      else
           nimbusapp mfconnect:${MFConnectVersion} stop
           echo "     MF Connect:${MFConnectVersion} stopped"
@@ -295,6 +303,7 @@ function stopMFConnect() {
 function stopALMOctane() {
      if ! docker ps | grep -q octane; then
           echo "     ALM Octane:${ALMOctaneVersion} already stopped"
+          return
      else
           nimbusapp octane:${ALMOctaneVersion} stop
           echo "     ALM Octane:${ALMOctaneVersion} stopped"
@@ -304,6 +313,7 @@ function stopALMOctane() {
 function stopFortify() {
      if ! docker ps | grep -q sca && ! docker ps | grep -q ssc; then
           echo "     Fortify:${SSCVersion} already stopped"
+          return
      fi
 
      if docker ps | grep -q sca; then
@@ -318,6 +328,7 @@ function stopFortify() {
 function stopSV() {
      if ! docker ps | grep -q sv; then
           echo "     SV:${SVVersion} already stopped"
+          return
      else
           nimbusapp sv:${SVVersion} stop
           echo "     SV:${SVVersion} stopped"
@@ -327,6 +338,7 @@ function stopSV() {
 function stopPPM() {
      if ! docker ps | grep -q ppm; then
           echo "     Project and Portfolio Management:${PPMVersion} already stopped"
+          return
      else
           nimbusapp ppm:${PPMVersion} stop
           echo "     Project and Portfolio Management:${PPMVersion} stopped"
@@ -336,6 +348,7 @@ function stopPPM() {
 function stopRPA() {
      if ! docker ps | grep -q rpa; then
           echo "     Robotic Process Automation:${RPAVersion} already stopped"
+          return
      else
           nimbusapp rpa:${RPAVersion} stop
           echo "     Robotic Process Automation:${RPAVersion} stopped"
@@ -345,6 +358,7 @@ function stopRPA() {
 function stopUFTM() {
      if ! docker ps | grep -q uft-mobile; then
           echo "     UFT Mobile:${UFTMVersion} already stopped"
+          return
      else
           nimbusapp uft-mobile:${UFTMVersion} stop
           echo "     UFT Mobile:${UFTMVersion} stopped"
@@ -358,6 +372,7 @@ function stopUFTM() {
 function pullAutopass() {
      if docker image ls -a | grep -q autopass; then
           echo "     Autopass:${AutopassVersion} already pulled"
+          return
      else
           nimbusapp autopass:${AutopassVersion} pull
           echo "     Autopass:${AutopassVersion} pulled"
@@ -367,6 +382,7 @@ function pullAutopass() {
 function pullALM() {
      if docker image ls -a | grep -q alm; then
           echo "     ALM:${ALMVersion} already pulled"
+          return
      else
           nimbusapp alm:${ALMVersion} pull
           echo "     ALM:${ALMVersion} pulled"
@@ -376,6 +392,7 @@ function pullALM() {
 function pullAOS() {
      if docker image ls -a | grep -q aos; then
           echo "     AOS:${AOSVersion} already pulled"
+          return
      else
           nimbusapp aos:${AOSVersion} pull
           echo "     AOS:${AOSVersion} pulled"
@@ -385,6 +402,7 @@ function pullAOS() {
 function pullDA() {
      if docker image ls -a | grep -q da-server; then
           echo "     Deployment Automation:${DAVersion} already pulled"
+          return
      else
           nimbusapp da:${DAVersion} pull
           echo "     Deployment Automation:${DAVersion} pulled"
@@ -394,6 +412,7 @@ function pullDA() {
 function pullDevOps() {
      if docker image ls -a | grep -q devops; then
           echo "     DevOps:${DevOpsVersion} already pulled"
+          return
      else
           nimbusapp devops:${DevOpsVersion} pull
           echo "     DevOps:${DevOpsVersion} pulled"
@@ -403,6 +422,7 @@ function pullDevOps() {
 function pullIntelliJ() {
      if docker image ls -a | grep -q intellij; then
           echo "     IntelliJ:${IntelliJVersion} already pulled"
+          return
      else
           nimbusapp intellij:${IntelliJVersion} pull
           echo "     IntelliJ:${IntelliJVersion} pulled"
@@ -411,6 +431,7 @@ function pullIntelliJ() {
 function pullJIRA() {
      if docker image ls -a | grep -q jira; then
           echo "     JIRA:${JIRAVersion} already pulled"
+          return
      else
           nimbusapp jira:${JIRAVersion} pull
           echo "     JIRA:${JIRAVersion} pulled"
@@ -420,6 +441,7 @@ function pullJIRA() {
 function pullMFConnect() {
      if docker image ls -a | grep -q mfconnect; then
           echo "     MF Connect:${MFConnectVersion} already pulled"
+          return
      else
           nimbusapp mfconnect:${MFConnectVersion} pull
           echo "     MF Connect:${MFConnectVersion} pulled"
@@ -429,6 +451,7 @@ function pullMFConnect() {
 function pullALMOctane() {
      if docker image ls -a | grep -q octane; then
           echo "     ALM Octane:${ALMOctaneVersion} already pulled"
+          return
      else
           nimbusapp octane:${ALMOctaneVersion} pull
           echo "     ALM Octane:${ALMOctaneVersion} pulled"
@@ -438,6 +461,7 @@ function pullALMOctane() {
 function pullFortify() {
      if docker image ls -a | grep -q sca && docker image ls -a | grep -q ssc; then
           echo "     Fortify:${SSCVersion} already pulled"
+          return
      fi
 
      if ! docker image ls -a | grep -q sca; then
@@ -452,6 +476,7 @@ function pullFortify() {
 function pullRPA() {
      if docker image ls -a | grep -q rpa; then
           echo "     RPA:${RPAVersion} already pulled"
+          return
      else
           nimbusapp rpa:${RPAVersion} pull
           echo "     RPA:${RPAVersion} pulled"
@@ -461,6 +486,7 @@ function pullRPA() {
 function pullPPM() {
      if docker image ls -a | grep -q ppm; then
           echo "     PPM:${PPMVersion} already pulled"
+          return
      else
           nimbusapp ppm:${PPMVersion} pull
           echo "     PPM:${PPMVersion} pulled"
@@ -470,6 +496,7 @@ function pullPPM() {
 function pullSV() {
      if docker image ls -a | grep -q sv; then
           echo "     SV:${SVVersion} already pulled"
+          return
      else
           nimbusapp sv:${SVVersion} pull
           echo "     SV:${SVVersion} pulled"
@@ -479,6 +506,7 @@ function pullSV() {
 function pullUFTM() {
      if docker image ls -a | grep -q uft-mobile; then
           echo "     UFT Mobile:${UFTMVersion} already pulled"
+          return
      else
           nimbusapp uft-mobile:${UFTMVersion} pull
           echo "     UFT Mobile:${UFTMVersion} pulled"
@@ -495,6 +523,7 @@ function restartAutopass() {
           echo "     Autopass:${AutopassVersion} restarted."
      else
           echo "     Autopass:${AutopassVersion} not running, no need to restart"
+          return
      fi
 }
 
@@ -504,6 +533,7 @@ function restartALM() {
           echo "     ALM:${ALMVersion} restarted."
      else
           echo "     ALM:${ALMVersion} not running, no need to restart"
+          return
      fi
 }
 
@@ -513,6 +543,7 @@ function restartAOS() {
           echo "     AOS:${AOSVersion} restarted."
      else
           echo "     AOS:${AOSVersion} not running, no need to restart"
+          return
      fi
 }
 
@@ -522,6 +553,7 @@ function restartDA() {
           echo "     Deployment Automation:${DAVersion} restarted."
      else
           echo "     Deployment Automation:${DAVersion} not running, no need to restart"
+          return
      fi
 }
 
@@ -531,6 +563,7 @@ function restartDevOps() {
           echo "     DevOps:${DevOpsVersion} restarted."
      else
           echo "     DevOps:${DevOpsVersion} not running, no need to restart"
+          return
      fi
 }
 
@@ -540,6 +573,7 @@ function restartIntelliJ() {
           echo "     IntelliJ:${IntelliJVersion} restarted."
      else
           echo "     IntelliJ:${IntelliJVersion} not running, no need to restart"
+          return
      fi
 }
 
@@ -549,6 +583,7 @@ function restartJIRA() {
           echo "     JIRA:${JIRAVersion} restarted."
      else
           echo "     JIRA:${JIRAVersion} not running, no need to restart"
+          return
      fi
 }
 
@@ -558,6 +593,7 @@ function restartMFConnect() {
           echo "     MF Connect:${MFConnectVersion} restarted."
      else
           echo "     MF Connect:${MFConnectVersion} not running, no need to restart"
+          return
      fi
 }
 
@@ -567,6 +603,7 @@ function restartALMOctane() {
           echo "     Octane:${ALMOctaneVersion} restarted."
      else
           echo "     Octane:${ALMOctaneVersion} not running, no need to restart"
+          return
      fi
 }
 
@@ -576,13 +613,14 @@ function restartFortify() {
           echo "     SCAsca:${SCAVersion} restarted."
      else
           echo "     SCAsca:${SCAVersion} not running, no need to restart"
+          return
      fi
      if docker ps | grep -q ssc; then
           nimbusapp ssc:${SSCVersion} restart
-          echo "     SCA:${SSCVersion} restarted."
+          echo "     SSC:${SSCVersion} restarted."
      else
           echo "     SSC:${SSCVersion} not running, no need to restart"
-          echo "     Fortify:${SSCVersion} restarted"
+          return
      fi
 }
 
@@ -592,6 +630,7 @@ function restartSV() {
           echo "     SV:${SVVersion} restarted"
      else
           echo "     SV:${SVVersion} not running, no need to restart"
+          return
      fi
 }
 
@@ -601,5 +640,6 @@ function restartUFTM() {
           echo "     UFT Mobile:${UFTMVersion} restarted"
      else
           echo "     UFT Mobile:${UFTMVersion} not running, no need to restart"
+          return
      fi
 }

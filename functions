@@ -29,6 +29,7 @@ UFTMVersion="3.3"
 function startAutopass() {
      if docker ps | grep -q autopass; then
           echo "     Autopass:${AutopassVersion} running"
+          return
      elif ! docker container ls -a | grep -q autopass; then
           nimbusapp autopass:${AutopassVersion} up
           echo "     Autopass:${AutopassVersion} started"
@@ -41,6 +42,7 @@ function startAutopass() {
 function startALM() {
      if docker ps | grep -q alm; then
           echo "     ALM:${ALMVersion} running"
+          return
      elif ! docker container ls -a | grep -q alm; then
           nimbusapp alm:${ALMVersion} up
           echo "     ALM:${ALMVersion} started"
@@ -53,6 +55,7 @@ function startALM() {
 function startAOS() {
      if docker ps | grep -q aos; then
           echo "     AOS running"
+          return
      elif ! docker container ls -a | grep -q aos; then
           nimbusapp aos:${AOSVersion} up
           echo "     AOS:${AOSVersion} started"
@@ -65,6 +68,7 @@ function startAOS() {
 function startDA() {
      if docker ps | grep -q da-server; then
           echo "     Deployment Automation:${DAVersion} running"
+          return
      elif ! docker container ls -a | grep -q da-server; then
           nimbusapp da:${DAVersion} up
           echo "     Deployment Automation:${DAVersion} started"
@@ -77,6 +81,7 @@ function startDA() {
 function startDevOps() {
      if docker ps | grep -q devops; then
           echo "     DevOps:${DevOpsVersion} running"
+          return
      elif ! docker container ls -a | grep -q devops; then
           nimbusapp devops:${DevOpsVersion} up
           echo "     DevOps:${DevOpsVersion} started"
@@ -89,6 +94,7 @@ function startDevOps() {
 function startIntelliJ() {
      if docker ps | grep -q intellij; then
           echo "     IntelliJ:${IntelliJVersion} running"
+          return
      elif ! docker container ls -a | grep -q intellij; then
           nimbusapp intellij:${IntelliJVersion} up
           echo "     IntelliJ:${IntelliJVersion} started"
@@ -101,6 +107,7 @@ function startIntelliJ() {
 function startJIRA() {
      if docker ps | grep -q jira; then
           echo "     JIRA:${JIRAVersion} running"
+          return
      elif ! docker container ls -a | grep -q jira; then
           nimbusapp jira:${JIRAVersion} up
           echo "     JIRA:${JIRAVersion} started"
@@ -112,6 +119,7 @@ function startJIRA() {
 function startMFConnect() {
      if docker ps | grep -q mfconnect; then
           echo "     MF Connect:${MFConnectVersion} running"
+          return
      elif ! docker container ls -a | grep -q mfconnect; then
           nimbusapp mfconnect:${MFConnectVersion} up
           echo "     MF Connect:${MFConnectVersion} started"
@@ -124,6 +132,7 @@ function startMFConnect() {
 function startALMOctane() {
      if docker ps | grep -q octane; then
           echo "     ALM Octane:${ALMOctaneVersion} running"
+          return
      elif ! docker container ls -a | grep -q octane; then
           nimbusapp octane:${ALMOctaneVersion} up
           echo "     ALM Octane:${ALMOctaneVersion} started"
@@ -136,7 +145,8 @@ function startALMOctane() {
 function startFortify() {
      if docker ps | grep -q sca && docker ps | grep -q ssc; then
           echo "     Fortify:${SCAVersion} running"
-     elif ! docker container ls -a | grep -q sca; then
+          return
+     if ! docker container ls -a | grep -q sca; then
           nimbusapp sca:${SCAVersion} up
           echo "     SCA:${SCAVersion} started"
      else
@@ -151,11 +161,13 @@ function startFortify() {
           nimbusapp ssc:${SSCVersion} start
           echo "     SSC:${SSCVersion} started"
      fi
+          echo "     Fortify:${SCAVersion} started"
 }
 
 function startPPM() {
      if docker ps | grep -q ppm; then
           echo "     Project and Portfolio Management:${PPMVersion} running"
+          return
      elif ! docker container ls -a | grep -q ppm; then
           nimbusapp ppm:${PPMVersion} up
           echo "     Project and Portfolio Management:${PPMVersion} started"
@@ -168,6 +180,7 @@ function startPPM() {
 function startRPA() {
      if docker ps | grep -q rpa; then
           echo "     Robotic Process Automation:${RPAVersion} running"
+          return
      elif ! docker container ls -a | grep -q rpa; then
           nimbusapp rpa:${RPAVersion} up
           echo "     Robotic Process Automation:${RPAVersion} started"
@@ -180,6 +193,7 @@ function startRPA() {
 function startSV() {
      if docker ps | grep -q sv; then
           echo "     SV:${SVVersion} running"
+          return
      elif ! docker container ls -a | grep -q sv; then
           nimbusapp sv:${SVVersion} up
           echo "     SV:${SVVersion} started"
@@ -192,6 +206,7 @@ function startSV() {
 function startUFTM() {
      if docker ps | grep -q uft-mobile; then
           echo "     UFT Mobile:${UFTMVersion} running"
+          return
      elif ! docker container ls -a | grep -q uft-mobile; then
           nimbusapp uft-mobile:${UFTMVersion} up
           echo "     UFT Mobile:${UFTMVersion} started"

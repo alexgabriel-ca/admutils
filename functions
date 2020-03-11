@@ -144,9 +144,7 @@ function startFortify() {
           echo "     SCA:${SCAVersion} started"
      fi
 
-     if docker ps | grep -q ssc; then
-          echo "     SSC:${SSCVersion} running"
-     elif ! docker container ls -a | grep -q ssc; then
+     if ! docker container ls -a | grep -q ssc; then
           nimbusapp ssc:${SCAVersion} up
           echo "     SSC:${SSCVersion} started"
      else

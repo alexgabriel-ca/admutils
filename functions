@@ -122,10 +122,9 @@ function startMFConnect() {
 }
 
 function startALMOctane() {
-     #nimbusapp octane:${ALMOctaneVersion} render
      if docker ps | grep -q octane; then
           echo "     ALM Octane:${ALMOctaneVersion} running"
-     elif ! docker container ls -a | grep -q octane:${ALMOctaneVersion}; then
+     elif ! docker container ls -a | grep -q octane; then
           nimbusapp octane:${ALMOctaneVersion} up
           echo "     ALM Octane:${ALMOctaneVersion} started"
      else
@@ -136,8 +135,7 @@ function startALMOctane() {
 
 function startFortify() {
      if docker ps | grep -q sca && docker ps | grep -q ssc; then
-          echo "     SCA:${SCAVersion} running"
-          echo "     SSC:${SSCVersion} running"
+          echo "     Fortify:${SCAVersion} running"
      elif ! docker container ls -a | grep -q sca; then
           nimbusapp sca:${SCAVersion} up
           echo "     SCA:${SCAVersion} started"
@@ -154,6 +152,10 @@ function startFortify() {
      else
           nimbusapp ssc:${SSCVersion} start
           echo "     SSC:${SSCVersion} started"
+     fi
+
+     if docker ps | grep -q sca && docker ps | grep -q ssc; then
+          echo "     Fortify:${SCAVersion} running"
      fi
 }
 

@@ -136,16 +136,22 @@ function startALMOctane() {
 function startFortify() {
      if docker ps | grep -q sca && docker ps | grep -q ssc; then
           echo "     Fortify:${SCAVersion} running"
-     fi
-
-     if ! docker container ls -a | grep -q sca || ! docker container ls -a | grep -q ssc; then
+     elif ! docker container ls -a | grep -q sca; then
           nimbusapp sca:${SCAVersion} up
-          nimbusapp ssc:${SCAVersion} up
-          echo "     Fortify:${SCAVersion} started"
+          echo "     SCA:${SCAVersion} started"
      else
           nimbusapp sca:${SCAVersion} start
+          echo "     SCA:${SCAVersion} started"
+     fi
+
+     if docker ps | grep -q ssc; then
+          echo "     SSC:${SSCVersion} running"
+     elif ! docker container ls -a | grep -q ssc; then
+          nimbusapp ssc:${SCAVersion} up
+          echo "     SSC:${SSCVersion} started"
+     else
           nimbusapp ssc:${SSCVersion} start
-          echo "     Fortify:${SCAVersion} started"
+          echo "     SSC:${SSCVersion} started"
      fi
 }
 

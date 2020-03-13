@@ -371,7 +371,7 @@ function stopLFTChrome() {
           echo "     LeanFT-Chrome:${LFTChromeVersion} already stopped"
           return
      else
-          nimbusapp leanft-chrome:${JIRAVersion} stop
+          nimbusapp leanft-chrome:${LFTChromeVersion} stop
           echo "     LeanFT-Chrome:${LFTChromeVersion} stopped"
      fi
 }
@@ -650,7 +650,7 @@ function restartAOS() {
 }
 
 function restartAOSQA() {
-     if docker ps | grep -q aos-qa; then
+     if docker ps | grep -q aos-main-qa; then
           nimbusapp aos-qa:${AOSQAVersion} restart
           echo "     AOS-QA:${AOSQAVersion} restarted."
      else

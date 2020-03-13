@@ -659,7 +659,7 @@ function restartPPM() {
           return
      else
           nimbusapp ppm:${PPMVersion} restart
-          echo "     PPM:${PPMVersion} restarted"
+          echo "     PPM:${PPMVersion} not running, no need to restart"
      fi
 }
 
@@ -669,17 +669,17 @@ function restartRPA() {
           return
      else
           nimbusapp rpa:${RPAVersion} restart
-          echo "     RPA:${RPAVersion} restarted"
+          echo "     RPA:${RPAVersion} not running, no need to restart"
      fi
 }
 
 function restartSonarqube() {
      if ! docker ps | grep -q sonarqube; then
-          echo "     Sonarqube:${SonarqubeVersion} already restarted"
+          echo "     Sonarqube:${SonarqubeVersion} restarted"
           return
      else
           nimbusapp sonarqube:${SonarqubeVersion} restart
-          echo "     sonarqube:${SonarqubeVersion} restarted"
+          echo "     sonarqube:${SonarqubeVersion} not running, no need to restart"
      fi
 }
 

@@ -457,10 +457,11 @@ function pullFortify() {
 
      if ! docker image ls -a | grep -q sca; then
           nimbusapp sca:${SCAVersion} pull
+          echo "     SCA:${SCAVersion} pulled"
      fi
      if ! docker image ls -a | grep -q ssc; then
           nimbusapp ssc:${SSCVersion} pull
-          echo "     Fortify:${SSCVersion} pulled"
+          echo "     SSC:${SSCVersion} pulled"
      fi
 }
 
@@ -514,7 +515,7 @@ function pullRPA() {
 }
 
 function pullSonarqube() {
-     if ! docker image ls -a | grep -q sonarqube; then
+     if docker image ls -a | grep -q sonarqube; then
           echo "     Sonarqube:${SonarqubeVersion} already pulled"
           return
      else

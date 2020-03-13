@@ -68,10 +68,10 @@ function startAOS() {
 }
 
 function startAOSQA() {
-     if docker ps | grep -q aos-qa; then
+     if docker ps | grep -q aos-main-qa; then
           echo "     AOS already running"
           return
-     elif ! docker container ls -a | grep -q aos-qa; then
+     elif ! docker container ls -a | grep -q aos-main-qa; then
           nimbusapp aos-qa:${AOSQAVersion} up
           echo "     AOS:${AOSQAVersion} started"
      else
@@ -293,7 +293,7 @@ function stopAOS() {
 }
 
 function stopAOSQA() {
-     if ! docker ps | grep -q aos-qa; then
+     if ! docker ps | grep -q aos-main-qa; then
           echo "     AOS-QA:${AOSQAVersion} already stopped"
           return
      else
@@ -471,7 +471,7 @@ function pullAOS() {
 }
 
 function pullAOSQA() {
-     if docker image ls -a | grep -q aos-qa; then
+     if docker image ls -a | grep -q aos-main-qa; then
           echo "     AOS-QA:${AOSQAVersion} already pulled"
           return
      else

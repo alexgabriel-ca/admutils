@@ -362,8 +362,8 @@ function stopSonarqube() {
           echo "     Sonarqube:${sonarqubeVersion} already stopped"
           return
      else
-          nimbusapp sonarqube:${sonarqubeVersion} stop
-          echo "     sonarqube:${sonarqubeVersion} stopped"
+          nimbusapp sonarqube:${SonarqubeVersion} stop
+          echo "     sonarqube:${SonarqubeVersion} stopped"
      fi
 }
 
@@ -674,11 +674,11 @@ function restartRPA() {
 
 function restartSonarqube() {
      if ! docker ps | grep -q sonarqube; then
-          echo "     Sonarqube:${sonarqubeVersion} already restarted"
+          echo "     Sonarqube:${SonarqubeVersion} already restarted"
           return
      else
-          nimbusapp sonarqube:${sonarqubeVersion} restart
-          echo "     sonarqube:${sonarqubeVersion} restarted"
+          nimbusapp sonarqube:${SonarqubeVersion} restart
+          echo "     sonarqube:${SonarqubeVersion} restarted"
      fi
 }
 

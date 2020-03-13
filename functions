@@ -515,11 +515,11 @@ function pullRPA() {
 
 function pullSonarqube() {
      if ! docker ps | grep -q sonarqube; then
-          echo "     Sonarqube:${sonarqubeVersion} already pulled"
+          echo "     Sonarqube:${SonarqubeVersion} already pulled"
           return
      else
-          nimbusapp sonarqube:${sonarqubeVersion} pull
-          echo "     sonarqube:${sonarqubeVersion} pulled"
+          nimbusapp sonarqube:${SonarqubeVersion} pull
+          echo "     sonarqube:${SonarqubeVersion} pulled"
      fi
 }
 

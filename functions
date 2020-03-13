@@ -172,7 +172,7 @@ function startLFTChrome() {
      if docker ps | grep -q leanft-chrome; then
           echo "     LeanFT-Chrome:${LFTChromeVersion} already running"
           return
-     elif ! docker container ls -a | grep -q jira; then
+     elif ! docker container ls -a | grep -q leanft-chrome; then
           nimbusapp leanft-chrome:${LFTChromeVersion} up
           echo "     LeanFT-Chrome:${LFTChromeVersion} started"
      else

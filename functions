@@ -655,31 +655,34 @@ function restartMFConnect() {
 
 function restartPPM() {
      if docker ps | grep -q ppm; then
+          nimbusapp ppm:${PPMVersion} restart
           echo "     PPM:${PPMVersion} already restarted"
           return
      else
-          nimbusapp ppm:${PPMVersion} restart
           echo "     PPM:${PPMVersion} not running, no need to restart"
+          return
      fi
 }
 
 function restartRPA() {
      if docker ps | grep -q rpa; then
+          nimbusapp rpa:${RPAVersion} restart
           echo "     RPA:${RPAVersion} already restarted"
           return
      else
-          nimbusapp rpa:${RPAVersion} restart
           echo "     RPA:${RPAVersion} not running, no need to restart"
+          return
      fi
 }
 
 function restartSonarqube() {
      if docker ps | grep -q sonarqube; then
+          nimbusapp sonarqube:${SonarqubeVersion} restart
           echo "     Sonarqube:${SonarqubeVersion} restarted"
           return
      else
-          nimbusapp sonarqube:${SonarqubeVersion} restart
-          echo "     sonarqube:${SonarqubeVersion} not running, no need to restart"
+          echo "     Sonarqube:${SonarqubeVersion} not running, no need to restart"
+          return
      fi
 }
 

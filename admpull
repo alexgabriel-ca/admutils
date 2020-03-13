@@ -13,8 +13,8 @@ echo ""
 source functions
 docker login
 echo ""
-PS3='Select the container(s) to pull, or 16 to quit. '
-options=("Autopass" "ALM" "ALM Octane" "AOS" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "MF Connect" "PPM" "RPA" "SV" "UFT Mobile" "All" "Quit")
+PS3='Select the container(s) to pull, or 17 to quit. '
+options=("Autopass" "ALM" "ALM Octane" "AOS" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "MF Connect" "PPM" "RPA" "Sonarqube" "SV" "UFT Mobile" "All" "Quit")
 select opt in "${options[@]}"; do
      case ${opt} in
      "Autopass")
@@ -42,10 +42,19 @@ select opt in "${options[@]}"; do
           pullIntelliJ
           ;;
      "JIRA")
-          startJIRA
+          pullJIRA
           ;;
      "MF Connect")
           pullMFConnect
+          ;;
+     "PPM")
+          pullPPM
+          ;;
+     "RPA")
+          pullRPA
+          ;;
+     "Sonarqube")
+          pullSonarqube
           ;;
      "SV")
           pullSV
@@ -66,6 +75,7 @@ select opt in "${options[@]}"; do
           pullMFConnect
           pullPPM
           pullRPA
+          pullSonarqube
           pullSV
           pullUFTM
           continue

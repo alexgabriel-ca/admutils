@@ -9,8 +9,8 @@ echo ""
 echo "This is a short shell script that lets you stop the most common ADM containers. If you have suggestions for improvement, please contact me by emailing alex.gabriel@microfocus.com"
 echo ""
 source functions
-PS3='Select the container(s) to stop, or 16 to quit. '
-options=("Autopass" "ALM" "ALM Octane" "AOS" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "MF Connect" "PPM" "RPA" "SV" "UFT Mobile" "All" "Quit")
+PS3='Select the container(s) to stop, or 17 to quit. '
+options=("Autopass" "ALM" "ALM Octane" "AOS" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "MF Connect" "PPM" "RPA" "Sonarqube" "SV" "UFT Mobile" "All" "Quit")
 select opt in "${options[@]}"; do
      case ${opt} in
      "Autopass")
@@ -39,7 +39,6 @@ select opt in "${options[@]}"; do
           ;;
      "JIRA")
           stopJIRA
-          continue
           ;;
      "MF Connect")
           stopMFConnect
@@ -50,6 +49,9 @@ select opt in "${options[@]}"; do
      "RPA")
           stopRPA
           ;;
+     "Sonarqube")
+          stopSonarqube
+          ;;
      "SV")
           stopSV
           ;;
@@ -57,20 +59,21 @@ select opt in "${options[@]}"; do
           stopUFTM
           ;;
      "All")
-          stopUFTM
-          stopSV
-          stopRPA
-          stopPPM
-          stopMFConnect
+          stopAutopass
+          stopALM
+          stopALMOctane
+          stopAOS
+          stopDA
+          stopDevOps
+          stopFortify
           stopIntelliJ
           stopJIRA
-          stopFortify
-          stopDevOps
-          stopDA
-          stopAOS
-          stopALMOctane
-          stopALM
-          stopAutopass
+          stopMFConnect
+          stopPPM
+          stopRPA
+          stopSonarqube
+          stopSV
+          stopUFTM
           continue
           ;;
      "Quit")

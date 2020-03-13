@@ -654,7 +654,7 @@ function restartMFConnect() {
 }
 
 function restartPPM() {
-     if docker image ls -a | grep -q ppm; then
+     if docker ps | grep -q ppm; then
           echo "     PPM:${PPMVersion} already restarted"
           return
      else
@@ -664,7 +664,7 @@ function restartPPM() {
 }
 
 function restartRPA() {
-     if docker image ls -a | grep -q rpa; then
+     if docker ps | grep -q rpa; then
           echo "     RPA:${RPAVersion} already restarted"
           return
      else
@@ -674,7 +674,7 @@ function restartRPA() {
 }
 
 function restartSonarqube() {
-     if ! docker ps | grep -q sonarqube; then
+     if docker ps | grep -q sonarqube; then
           echo "     Sonarqube:${SonarqubeVersion} restarted"
           return
      else

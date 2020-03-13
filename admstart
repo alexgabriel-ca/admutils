@@ -10,11 +10,11 @@ echo "This is a short shell script that lets you start the most common ADM conta
 echo ""
 source functions
 docker login
-PS3='Select the container(s) to start, or 17 to quit. '
-options=("Autopass" "ALM" "ALM Octane" "AOS" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "MF Connect" "PPM" "RPA" "Sonarqube" "SV" "UFT Mobile" "All" "Quit")
+PS3='Select the container(s) to start, or 19 to quit. '
+options=("Autopass" "ALM Octane" "ALM" "AOS" "AOS-QA" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "LeanFT-Chrome" "MF Connect" "PPM" "RPA" "Sonarqube" "SV" "UFT Mobile" "All" "Quit")
 select opt in "${options[@]}"; do
      case ${opt} in
-     "Autopass")
+    "Autopass")
           startAutopass
           ;;
      "ALM")
@@ -25,6 +25,9 @@ select opt in "${options[@]}"; do
           ;;
      "AOS")
           startAOS
+          ;;
+     "AOS-QA")
+          startAOSQA
           ;;
      "DA")
           startDA
@@ -40,6 +43,9 @@ select opt in "${options[@]}"; do
           ;;
      "JIRA")
           startJIRA
+          ;;
+     "LeanFT-Chrome")
+          startLFTChrome
           ;;
      "MF Connect")
           startMFConnect
@@ -64,16 +70,18 @@ select opt in "${options[@]}"; do
           startALM
           startALMOctane
           startAOS
+          startAOSQA
           startDA
           startDevOps
           startFortify
           startIntelliJ
           startJIRA
+          startLFTChrome
           startMFConnect
           startPPM
           startRPA
-          startSonarqube
           startSV
+          startSonarqube
           startUFTM
           continue
           ;;

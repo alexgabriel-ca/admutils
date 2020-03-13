@@ -7,19 +7,21 @@
 
 ALMOctaneVersion="15.0.46.68"
 ALMVersion="15.0.1"
+AOSQAVersion="15.0"
 AOSVersion="2.2"
 AutopassVersion="10.9.2"
 DAVersion="6.3.1"
 DevOpsVersion="2.2.1"
 IntelliJVersion="2.2.0"
 JIRAVersion="8.0.2"
+LFTChromeVersion="2.2"
 MFConnectVersion="4.2"
 PPMVersion="9.55"
 RPAVersion="2019.11"
 SCAVersion="19.1.2"
-SonarqubeVersion="7.7"
 SSCVersion="19.1.0"
 SVVersion="5.2"
+SonarqubeVersion="7.7"
 UFTMVersion="3.3"
 
 #All start functions check for the existence of the relevant container.
@@ -62,6 +64,19 @@ function startAOS() {
      else
           nimbusapp aos:${AOSVersion} start
           echo "     AOS:${AOSVersion} started"
+     fi
+}
+
+function startAOSQA() {
+     if docker ps | grep -q aos-qa; then
+          echo "     AOS already running"
+          return
+     elif ! docker container ls -a | grep -q aos-qa; then
+          nimbusapp aos-qa:${AOSQAVersion} up
+          echo "     AOS:${AOSQAVersion} started"
+     else
+          nimbusapp aos-qa:${AOSQAVersion} start
+          echo "     AOS:${AOSQAVersion} started"
      fi
 }
 
@@ -152,6 +167,20 @@ function startJIRA() {
           echo "     JIRA:${JIRAVersion} started"
      fi
 }
+
+function startLFTChrome() {
+     if docker ps | grep -q leanft-chrome; then
+          echo "     LeanFT-Chrome:${LFTChromeVersion} already running"
+          return
+     elif ! docker container ls -a | grep -q jira; then
+          nimbusapp leanft-chrome:${LFTChromeVersion} up
+          echo "     LeanFT-Chrome:${LFTChromeVersion} started"
+     else
+          nimbusapp leanft-chrome:${LFTChromeVersion} start
+          echo "     LeanFT-Chrome:${LFTChromeVersion} started"
+     fi
+}
+
 function startMFConnect() {
      if docker ps | grep -q mfconnect; then
           echo "     MF Connect:${MFConnectVersion} already running"
@@ -263,6 +292,16 @@ function stopAOS() {
      fi
 }
 
+function stopAOSQA() {
+     if ! docker ps | grep -q aos-qa; then
+          echo "     AOS-QA:${AOSQAVersion} already stopped"
+          return
+     else
+          nimbusapp aos-qa:${AOSQAVersion} stop
+          echo "     AOS-QA:${AOSQAVersion} stopped"
+     fi
+}
+
 function stopAutopass() {
      if ! docker ps | grep -q autopass; then
           echo "     Autopass:${AutopassVersion} already stopped"
@@ -324,6 +363,16 @@ function stopJIRA() {
      else
           nimbusapp jira:${JIRAVersion} stop
           echo "     JIRA:${JIRAVersion} stopped"
+     fi
+}
+
+function stopLFTChrome() {
+     if ! docker ps | grep -q leanft-chrome; then
+          echo "     LeanFT-Chrome:${LFTChromeVersion} already stopped"
+          return
+     else
+          nimbusapp leanft-chrome:${JIRAVersion} stop
+          echo "     LeanFT-Chrome:${LFTChromeVersion} stopped"
      fi
 }
 
@@ -390,6 +439,7 @@ function stopUFTM() {
 #All pull functions check for the existence of the relevant image.
 #If the container is not found, the nimbusapp pull command is issued.
 #If the container is found, a message indicating this is shown.
+
 function pullALM() {
      if docker image ls -a | grep -q alm; then
           echo "     ALM:${ALMVersion} already pulled"
@@ -409,15 +459,6 @@ function pullALMOctane() {
           echo "     ALM Octane:${ALMOctaneVersion} pulled"
      fi
 }
-function pullAutopass() {
-     if docker image ls -a | grep -q autopass; then
-          echo "     Autopass:${AutopassVersion} already pulled"
-          return
-     else
-          nimbusapp autopass:${AutopassVersion} pull
-          echo "     Autopass:${AutopassVersion} pulled"
-     fi
-}
 
 function pullAOS() {
      if docker image ls -a | grep -q aos; then
@@ -426,6 +467,26 @@ function pullAOS() {
      else
           nimbusapp aos:${AOSVersion} pull
           echo "     AOS:${AOSVersion} pulled"
+     fi
+}
+
+function pullAOSQA() {
+     if docker image ls -a | grep -q aos-qa; then
+          echo "     AOS-QA:${AOSQAVersion} already pulled"
+          return
+     else
+          nimbusapp aos-qa:${AOSQAVersion} pull
+          echo "     AOS-QA:${AOSQAVersion} pulled"
+     fi
+}
+
+function pullAutopass() {
+     if docker image ls -a | grep -q autopass; then
+          echo "     Autopass:${AutopassVersion} already pulled"
+          return
+     else
+          nimbusapp autopass:${AutopassVersion} pull
+          echo "     Autopass:${AutopassVersion} pulled"
      fi
 }
 
@@ -474,6 +535,7 @@ function pullIntelliJ() {
           echo "     IntelliJ:${IntelliJVersion} pulled"
      fi
 }
+
 function pullJIRA() {
      if docker image ls -a | grep -q jira; then
           echo "     JIRA:${JIRAVersion} already pulled"
@@ -481,6 +543,16 @@ function pullJIRA() {
      else
           nimbusapp jira:${JIRAVersion} pull
           echo "     JIRA:${JIRAVersion} pulled"
+     fi
+}
+
+function pullLFTChrome() {
+     if docker image ls -a | grep -q leanft-chrome; then
+          echo "     LeanFT-Chrome:${LFTChromeVersion} already pulled"
+          return
+     else
+          nimbusapp leanft-chrome:${LFTChromeVersion} pull
+          echo "     LeanFT-Chrome:${LFTChromeVersion} pulled"
      fi
 }
 
@@ -576,6 +648,18 @@ function restartAOS() {
           return
      fi
 }
+
+
+function restartAOSQA() {
+     if docker ps | grep -q aos-qa; then
+          nimbusapp aos-qa:${AOSQAVersion} restart
+          echo "     AOS-QA:${AOSQAVersion} restarted."
+     else
+          echo "     AOS-QA:${AOSQAVersion} not running, no need to restart"
+          return
+     fi
+}
+
 function restartAutopass() {
      if docker ps | grep -q autopass; then
           nimbusapp autopass:${AutopassVersion} restart
@@ -639,6 +723,17 @@ function restartJIRA() {
           echo "     JIRA:${JIRAVersion} restarted."
      else
           echo "     JIRA:${JIRAVersion} not running, no need to restart"
+          return
+     fi
+}
+
+
+function restartLFTChrome() {
+     if docker ps | grep -q leanft-chrome; then
+          nimbusapp leanft-chrome:${LFTChromeVersion} restart
+          echo "     LeanFT-Chrome:${LFTChromeVersion} restarted."
+     else
+          echo "     LeanFT-Chrome:${LFTChromeVersion} not running, no need to restart"
           return
      fi
 }

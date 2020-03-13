@@ -13,76 +13,84 @@ echo ""
 source functions
 docker login
 echo ""
-PS3='Select the container(s) to pull, or 17 to quit. '
-options=("Autopass" "ALM" "ALM Octane" "AOS" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "MF Connect" "PPM" "RPA" "Sonarqube" "SV" "UFT Mobile" "All" "Quit")
+PS3='Select the container(s) to pull, or 19 to quit. '
+options=("Autopass" "ALM Octane" "ALM" "AOS" "AOS-QA" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "LeanFT-Chrome" "MF Connect" "PPM" "RPA" "Sonarqube" "SV" "UFT Mobile" "All" "Quit")
 select opt in "${options[@]}"; do
      case ${opt} in
-     "Autopass")
-          pullAutopass
-          ;;
-     "ALM")
-          pullALM
-          ;;
-     "ALM Octane")
-          pullALMOctane
-          ;;
-     "AOS")
-          pullAOS
-          ;;
-     "DA")
-          pullDA
-          ;;
-     "DevOps")
-          pullDevOps
-          ;;
-     "Fortify")
-          pullFortify
-          ;;
-     "IntelliJ")
-          pullIntelliJ
-          ;;
-     "JIRA")
-          pullJIRA
-          ;;
-     "MF Connect")
-          pullMFConnect
-          ;;
-     "PPM")
-          pullPPM
-          ;;
-     "RPA")
-          pullRPA
-          ;;
-     "Sonarqube")
-          pullSonarqube
-          ;;
-     "SV")
-          pullSV
-          ;;
-     "UFT Mobile")
-          pullUFTM
-          ;;
-     "All")
-          pullAutopass
-          pullALM
-          pullALMOctane
-          pullAOS
-          pullDA
-          pullDevOps
-          pullFortify
-          pullIntelliJ
-          pullJIRA
-          pullMFConnect
-          pullPPM
-          pullRPA
-          pullSonarqube
-          pullSV
-          pullUFTM
-          continue
-          ;;
-     "Quit")
-          exit
-          ;;
-     *) echo "Invalid option $REPLY" ;;
+          "Autopass")
+               pullAutopass
+               ;;
+          "ALM")
+               pullALM
+               ;;
+          "ALM Octane")
+               pullALMOctane
+               ;;
+          "AOS")
+               pullAOS
+               ;;
+          "AOS-QA")
+               pullAOSQA
+               ;;
+          "DA")
+               pullDA
+               ;;
+          "DevOps")
+               pullDevOps
+               ;;
+          "Fortify")
+               pullFortify
+               ;;
+          "IntelliJ")
+               pullIntelliJ
+               ;;
+          "JIRA")
+               pullJIRA
+               ;;
+          "LeanFT-Chrome")
+               pullLFTChrome
+               ;;
+          "MF Connect")
+               pullMFConnect
+               ;;
+          "PPM")
+               pullPPM
+               ;;
+          "RPA")
+               pullRPA
+               ;;
+          "Sonarqube")
+               pullSonarqube
+               ;;
+          "SV")
+               pullSV
+               ;;
+          "UFT Mobile")
+               pullUFTM
+               ;;
+          "All")
+               pullALM
+               pullALMOctane
+               pullAOS
+               pullAOSQA
+               pullAutopass
+               pullDA
+               pullDevOps
+               pullFortify
+               pullIntelliJ
+               pullJIRA
+               pullLFTChrome
+               pullMFConnect
+               pullPPM
+               pullRPA
+               pullSV
+               pullSonarqube
+               pullUFTM
+               continue
+               ;;
+          "Quit")
+               exit
+               ;;
+          *) echo "Invalid option $REPLY" ;;
      esac
 done

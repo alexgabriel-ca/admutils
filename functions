@@ -359,7 +359,7 @@ function stopRPA() {
 
 function stopSonarqube() {
      if ! docker ps | grep -q sonarqube; then
-          echo "     Sonarqube:${sonarqubeVersion} already stopped"
+          echo "     Sonarqube:${SonarqubeVersion} already stopped"
           return
      else
           nimbusapp sonarqube:${SonarqubeVersion} stop

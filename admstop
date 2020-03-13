@@ -65,23 +65,23 @@ select opt in "${options[@]}"; do
                stopUFTM
                ;;
           "All")
-               stopALMOctane
-               stopAOS
-               stopAutopass
-               stopDA
-               stopDevOps
-               stopFortify
-               stopIntelliJ
-               stopAOSQA
-               stopLFTChrome
-               stopJIRA
-               stopMFConnect
-               stopPPM
-               stopRPA
+               stopUFTM
                stopSonarqube
                stopSV
-               stopUFTM
+               stopRPA
+               stopPPM
+               stopMFConnect
+               stopLFTChrome
+               stopJIRA
+               stopIntelliJ
+               stopFortify
+               stopDevOps
+               stopDA
+               stopAOSQA
+               stopAOS
+               stopALMOctane
                stopALM
+               stopAutopass
                continue
                ;;
           "Quit")

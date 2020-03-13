@@ -649,7 +649,6 @@ function restartAOS() {
      fi
 }
 
-
 function restartAOSQA() {
      if docker ps | grep -q aos-qa; then
           nimbusapp aos-qa:${AOSQAVersion} restart
@@ -726,7 +725,6 @@ function restartJIRA() {
           return
      fi
 }
-
 
 function restartLFTChrome() {
      if docker ps | grep -q leanft-chrome; then

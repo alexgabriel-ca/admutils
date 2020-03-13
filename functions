@@ -514,7 +514,7 @@ function pullRPA() {
 }
 
 function pullSonarqube() {
-     if ! docker ps | grep -q sonarqube; then
+     if ! docker image ls -a | grep -q sonarqube; then
           echo "     Sonarqube:${SonarqubeVersion} already pulled"
           return
      else

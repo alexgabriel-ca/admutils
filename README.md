@@ -39,17 +39,22 @@ Since each script runs as an executable file, you can issue the desired command 
 `admrestart`  
 
 Each command displays a numbered menu of items to choose.  The following containers are currently supported:
+* Advantage Online Shopping
+* Advantage Online Shopping QA
 * ALM
 * ALM Octane
-* Advantage Online Shopping
 * Autopass
 * Deployment Automation
 * DevOps (Jenkins)
 * Fortify
 * IntelliJ
 * JIRA
+* LeanFT-Chrome
 * Micro Focus Connect
+* Project and Portfolio Management
+* Robotic Process Automation
 * Service Virtualization
+* Sonarqube
 * UFT Mobile
 
 More containers will be added to the list as time permits.

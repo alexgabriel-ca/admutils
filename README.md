@@ -22,13 +22,15 @@ This stops the selected container.
 This restarts the selected container.
 
 ## Installation
-These utilities can be installed by cloning this repo to your local hard drive.
+These utilities can be installed by cloning this repo to your local hard drive.  The latest version of [nimbusapp](https://github.com/admpresales/nimbusapp/) is recommended.
 
 `cd ~/Downloads`  
 `git clone https://github.com/alexgabriel-ca/admutils`  
 `cd admutils/`  
-`chmod a+x admpull admrestart admstart admstop functions`  
 `sudo cp  admpull admrestart admstart admstop functions /usr/local/bin`  
+`cd /usr/local/bin`  
+`chmod a+x admpull admrestart admstart admstop`  
+`cd`  
 
 ## Usage
 Since each script runs as an executable file, you can issue the desired command from any location after installation.  

@@ -22,13 +22,15 @@ This stops the selected container.
 This restarts the selected container.
 
 ## Installation
-These utilities can be installed by cloning this repo to your local hard drive.
+These utilities can be installed by cloning this repo to your local hard drive.  The latest version of [nimbusapp](https://github.com/admpresales/nimbusapp/) is recommended.
 
 `cd ~/Downloads`  
 `git clone https://github.com/alexgabriel-ca/admutils`  
 `cd admutils/`  
-`chmod a+x admpull admrestart admstart admstop functions`  
 `sudo cp  admpull admrestart admstart admstop functions /usr/local/bin`  
+`cd /usr/local/bin`  
+`chmod a+x admpull admrestart admstart admstop`  
+`cd`  
 
 ## Usage
 Since each script runs as an executable file, you can issue the desired command from any location after installation.  
@@ -39,17 +41,22 @@ Since each script runs as an executable file, you can issue the desired command 
 `admrestart`  
 
 Each command displays a numbered menu of items to choose.  The following containers are currently supported:
+* Advantage Online Shopping
+* Advantage Online Shopping QA
 * ALM
 * ALM Octane
-* Advantage Online Shopping
 * Autopass
 * Deployment Automation
 * DevOps (Jenkins)
 * Fortify
 * IntelliJ
 * JIRA
+* LeanFT-Chrome
 * Micro Focus Connect
+* Project and Portfolio Management
+* Robotic Process Automation
 * Service Virtualization
+* Sonarqube
 * UFT Mobile
 
 More containers will be added to the list as time permits.

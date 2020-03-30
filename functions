@@ -443,7 +443,10 @@ function stopUFTM() {
 function pullALM() {
 	if docker image ls -a | grep -q alm; then
 		echo "     ALM:${ALMVersion} already pulled"
-		return
+		read -rp "     Would you like to pull it again? [yn] " repullALM
+		if [ "$repullALM" == y ]; then
+			nimbusapp alm:${ALMVersion} pull
+		fi
 	else
 		nimbusapp alm:${ALMVersion} pull
 		echo "     ALM:${ALMVersion} pulled"

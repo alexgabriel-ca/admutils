@@ -482,10 +482,7 @@ function pullAOS() {
 function pullAOSQA() {
 	if docker image ls -a | grep -q aos-main-qa; then
 		echo "     AOS-QA:${AOSQAVersion} already pulled"
-		read -rp "     Would you like to pull it again? [yn] " repullAOSQA
-		if [ "$repullAOSQA" == y ]; then
-			nimbusapp aos-qa:${AOSVersion} pull
-		fi
+		return
 	else
 		nimbusapp aos-qa:${AOSQAVersion} pull
 		echo "     AOS-QA:${AOSQAVersion} pulled"
@@ -508,7 +505,10 @@ function pullAutopass() {
 function pullDA() {
 	if docker image ls -a | grep -q da-server; then
 		echo "     Deployment Automation:${DAVersion} already pulled"
-		return
+		read -rp "     Would you like to pull it again? [yn] " repullDA
+		if [ "$repullDA" == y ]; then
+			nimbusapp da:${DAVersion} pull
+		fi
 	else
 		nimbusapp da:${DAVersion} pull
 		echo "     Deployment Automation:${DAVersion} pulled"

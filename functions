@@ -484,7 +484,7 @@ function pullAOSQA() {
 		echo "     AOS-QA:${AOSQAVersion} already pulled"
 		read -rp "     Would you like to pull it again? [yn] " repullAOSQA
 		if [ "$repullAOSQA" == y ]; then
-			nimbusapp aos-qa:${AOSQAVersion} pull
+			nimbusapp aos-qa:${AOSVersion} pull
 		fi
 	else
 		nimbusapp aos-qa:${AOSQAVersion} pull

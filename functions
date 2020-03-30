@@ -488,7 +488,7 @@ function pullAutopass() {
 		echo "     Autopass:${AutopassVersion} already pulled"
 		read -rp "     Would you like to pull it again? [yn] " repullAutopass
 		if [ "$repullAutopass" == y ]; then
-			nimbusapp aoutopass:${AutopassVersion} pull
+			nimbusapp autopass:${AutopassVersion} pull
 		fi
 	else
 		nimbusapp autopass:${AutopassVersion} pull

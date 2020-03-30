@@ -577,7 +577,10 @@ function pullJIRA() {
 function pullLFTChrome() {
 	if docker image ls -a | grep -q leanft-chrome; then
 		echo "     LeanFT-Chrome:${LFTChromeVersion} already pulled"
-		return
+		read -rp "     Would you like to pull it again? [yn] " repullLFT
+		if [ "$repullLFT" == y ]; then
+			nimbusapp leanft-chrome:${LFTChromeVersion} pull
+		fi
 	else
 		nimbusapp leanft-chrome:${LFTChromeVersion} pull
 		echo "     LeanFT-Chrome:${LFTChromeVersion} pulled"
@@ -587,7 +590,10 @@ function pullLFTChrome() {
 function pullMFConnect() {
 	if docker image ls -a | grep -q mfconnect; then
 		echo "     MF Connect:${MFConnectVersion} already pulled"
-		return
+		read -rp "     Would you like to pull it again? [yn] " repullMFConnect
+		if [ "$repullMFConnect" == y ]; then
+			nimbusapp mfconnect:${MFConnectVersion} pull
+		fi
 	else
 		nimbusapp mfconnect:${MFConnectVersion} pull
 		echo "     MF Connect:${MFConnectVersion} pulled"
@@ -597,7 +603,10 @@ function pullMFConnect() {
 function pullPPM() {
 	if docker image ls -a | grep -q ppm; then
 		echo "     PPM:${PPMVersion} already pulled"
-		return
+		read -rp "     Would you like to pull it again? [yn] " repullPPM
+		if [ "$repullPPM" == y ]; then
+			nimbusapp ppm:${PPMVersion} pull
+		fi
 	else
 		nimbusapp ppm:${PPMVersion} pull
 		echo "     PPM:${PPMVersion} pulled"
@@ -607,7 +616,10 @@ function pullPPM() {
 function pullRPA() {
 	if docker image ls -a | grep -q rpa; then
 		echo "     RPA:${RPAVersion} already pulled"
-		return
+		read -rp "     Would you like to pull it again? [yn] " repullRPA
+		if [ "$repullRPA" == y ]; then
+			nimbusapp rpa:${RPAVersion} pull
+		fi
 	else
 		nimbusapp rpa:${RPAVersion} pull
 		echo "     RPA:${RPAVersion} pulled"
@@ -617,7 +629,10 @@ function pullRPA() {
 function pullSonarqube() {
 	if docker image ls -a | grep -q sonarqube; then
 		echo "     Sonarqube:${SonarqubeVersion} already pulled"
-		return
+		read -rp "     Would you like to pull it again? [yn] " repullSonar
+		if [ "$repullSonar" == y ]; then
+			nimbusapp sonarqube:${SonarqubeVersion} pull
+		fi
 	else
 		nimbusapp sonarqube:${SonarqubeVersion} pull
 		echo "     sonarqube:${SonarqubeVersion} pulled"
@@ -627,7 +642,10 @@ function pullSonarqube() {
 function pullSV() {
 	if docker image ls -a | grep -q sv; then
 		echo "     SV:${SVVersion} already pulled"
-		return
+		read -rp "     Would you like to pull it again? [yn] " repullSV
+		if [ "$repullSV" == y ]; then
+			nimbusapp sv:${SVVersion} pull
+		fi
 	else
 		nimbusapp sv:${SVVersion} pull
 		echo "     SV:${SVVersion} pulled"
@@ -637,7 +655,10 @@ function pullSV() {
 function pullUFTM() {
 	if docker image ls -a | grep -q uft-mobile; then
 		echo "     UFT Mobile:${UFTMVersion} already pulled"
-		return
+		read -rp "     Would you like to pull it again? [yn] " repullUFTM
+		if [ "$repullUFTM" == y ]; then
+			nimbusapp uft-mobile:${UFTMVersion} pull
+		fi
 	else
 		nimbusapp uft-mobile:${UFTMVersion} pull
 		echo "     UFT Mobile:${UFTMVersion} pulled"

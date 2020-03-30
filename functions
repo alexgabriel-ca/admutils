@@ -551,7 +551,10 @@ function pullFortify() {
 function pullIntelliJ() {
 	if docker image ls -a | grep -q intellij; then
 		echo "     IntelliJ:${IntelliJVersion} already pulled"
-		return
+		read -rp "     Would you like to pull it again? [yn] " repullIntelliJ
+		if [ "$repullIntelliJ" == y ]; then
+			nimbusapp intellij:${IntelliJVersion} pull
+		fi
 	else
 		nimbusapp intellij:${IntelliJVersion} pull
 		echo "     IntelliJ:${IntelliJVersion} pulled"

@@ -482,7 +482,10 @@ function pullAOS() {
 function pullAOSQA() {
 	if docker image ls -a | grep -q aos-main-qa; then
 		echo "     AOS-QA:${AOSQAVersion} already pulled"
-		return
+		read -rp "     Would you like to pull it again? [yn] " repullAOSQA
+		if [ "$repullAOSQA" == y ]; then
+			nimbusapp aos-qa:${AOSQAVersion} pull
+		fi
 	else
 		nimbusapp aos-qa:${AOSQAVersion} pull
 		echo "     AOS-QA:${AOSQAVersion} pulled"

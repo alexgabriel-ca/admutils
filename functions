@@ -456,7 +456,10 @@ function pullALM() {
 function pullALMOctane() {
 	if docker image ls -a | grep -q octane; then
 		echo "     ALM Octane:${ALMOctaneVersion} already pulled"
-		return
+		read -rp "     Would you like to pull it again? [yn] " repullOctane
+		if [ "$repullOctane" == y ]; then
+			nimbusapp octane:${ALMOctaneVersion} pull
+		fi
 	else
 		nimbusapp octane:${ALMOctaneVersion} pull
 		echo "     ALM Octane:${ALMOctaneVersion} pulled"

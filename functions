@@ -564,7 +564,10 @@ function pullIntelliJ() {
 function pullJIRA() {
 	if docker image ls -a | grep -q jira; then
 		echo "     JIRA:${JIRAVersion} already pulled"
-		return
+		read -rp "     Would you like to pull it again? [yn] " repullJIRA
+		if [ "$repullJIRA" == y ]; then
+			nimbusapp jira:${JIRAVersion} pull
+		fi
 	else
 		nimbusapp jira:${JIRAVersion} pull
 		echo "     JIRA:${JIRAVersion} pulled"

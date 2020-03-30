@@ -486,7 +486,6 @@ function pullAOSQA() {
 function pullAutopass() {
 	if docker image ls -a | grep -q autopass; then
 		echo "     Autopass:${AutopassVersion} already pulled"
-		return
 		read -rp "     Would you like to pull it again? [yn] " repullAutopass
 		if [ "$repullAutopass" == y ]; then
 			nimbusapp aoutopass:${AutopassVersion} pull

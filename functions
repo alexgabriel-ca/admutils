@@ -531,7 +531,11 @@ function pullDevOps() {
 function pullFortify() {
 	if docker image ls -a | grep -q sca && docker image ls -a | grep -q ssc; then
 		echo "     Fortify:${SSCVersion} already pulled"
-		return
+		read -rp "     Would you like to pull it again? [yn] " repullFortify
+		if [ "$repullFortify" == y ]; then
+			nimbusapp sca:${SCAVersion} pull
+			nimbusapp ssc:${SSCVersion} pull
+		fi
 	fi
 
 	if ! docker image ls -a | grep -q sca; then

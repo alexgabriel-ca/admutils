@@ -69,14 +69,14 @@ function startAOS() {
 
 function startAOSQA() {
 	if docker ps | grep -q aos-main-qa; then
-		echo "     AOS already running"
+		echo "     AOS-QA already running"
 		return
 	elif ! docker container ls -a | grep -q aos-main-qa; then
 		nimbusapp aos-qa:${AOSQAVersion} up
-		echo "     AOS:${AOSQAVersion} started"
+		echo "     AOS-QA:${AOSQAVersion} started"
 	else
 		nimbusapp aos-qa:${AOSQAVersion} start
-		echo "     AOS:${AOSQAVersion} started"
+		echo "     AOS-QA:${AOSQAVersion} started"
 	fi
 }
 

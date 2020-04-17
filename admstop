@@ -1,7 +1,7 @@
 #!/bin/bash
 #Author: Alex Gabriel <alex.gabriel@microfocus.com>
-#Created: 04/02/2020
-#Modified: 08/03/2020
+#Created: 04-Feb-2020
+#Modified: 17-Apr-2020
 #Description: Short shell script that allows users to stop the most common ADM solutions when preparing for a demo.
 #License: GPL 3.0
 
@@ -9,84 +9,55 @@ echo ""
 echo "This is a short shell script that lets you stop the most common ADM containers. If you have suggestions for improvement, please contact me by emailing alex.gabriel@microfocus.com"
 echo ""
 source functions
-PS3='Select the container(s) to stop, or 19 to quit. '
-options=("Autopass" "ALM Octane" "ALM" "AOS" "AOS-QA" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "LeanFT-Chrome" "MF Connect" "PPM" "RPA" "Sonarqube" "SV" "UFT Mobile" "All" "Quit")
-select opt in "${options[@]}"; do
-     case ${opt} in
-          "Autopass")
-               stopAutopass
-               ;;
-          "ALM")
-               stopALM
-               ;;
-          "ALM Octane")
-               stopALMOctane
-               ;;
-          "AOS")
-               stopAOS
-               ;;
-          "AOS-QA")
-               stopAOS
-               ;;
-          "DA")
-               stopDA
-               ;;
-          "DevOps")
-               stopDevOps
-               ;;
-          "Fortify")
-               stopFortify
-               ;;
-          "IntelliJ")
-               stopIntelliJ
-               ;;
-          "JIRA")
-               stopJIRA
-               ;;
-          "LeanFT-Chrome")
-               stopLFTChrome
-               ;;
-          "MF Connect")
-               stopMFConnect
-               ;;
-          "PPM")
-               stopPPM
-               ;;
-          "RPA")
-               stopRPA
-               ;;
-          "Sonarqube")
-               stopSonarqube
-               ;;
-          "SV")
-               stopSV
-               ;;
-          "UFT Mobile")
-               stopUFTM
-               ;;
-          "All")
-               stopUFTM
-               stopSonarqube
-               stopSV
-               stopRPA
-               stopPPM
-               stopMFConnect
-               stopLFTChrome
-               stopJIRA
-               stopIntelliJ
-               stopFortify
-               stopDevOps
-               stopDA
-               stopAOSQA
-               stopAOS
-               stopALMOctane
-               stopALM
-               stopAutopass
-               continue
-               ;;
-          "Quit")
-               exit
-               ;;
-          *) echo "Invalid option $REPLY" ;;
-     esac
+while :
+do
+    cat<<EOF
+
+    Select the container(s) to stop:
+
+    (1) Autopass
+    (2) ALM
+    (3) ALM Octane
+    (4) AOS
+    (5) AOS-QA
+    (6) DA
+    (7) DevOps
+    (8) Fortify
+    (9) IntelliJ
+    (10) JIRA
+    (11) LeanFT-Chrome
+    (12) MF Connect
+    (13) PPM
+    (14) RPA
+    (15) Sonarqube
+    (16) SV
+    (17) UFT Mobile
+    (18) All
+    (Q)uit
+EOF
+    read
+    case "$REPLY" in
+    "1")  stopAutopass ;;
+    "2")  stopALM ;;
+    "3")  stopALMOctane ;;
+    "4")  stopAOS ;;
+    "5")  stopAOSQA ;;
+    "6")  stopDA ;;
+    "7")  stopDevOps ;;
+    "8")  stopFortify ;;
+    "9")  stopIntelliJ ;;
+    "10")  stopJIRA ;;
+    "11")  stopLFTChrome ;;
+    "12")  stopMFConnect ;;
+    "13")  stopPPM ;;
+    "14")  stopRPA ;;
+    "15")  stopSonarqube ;;
+    "16")  stopSV ;;
+    "17")  stopUFTMobile ;;
+    "18")  stopAutopass ; stopALM ; stopALMOctane ; stopAOS ; stopAOSQA ; stopDA ; stopDevOps ; stopFortify ; stopIntelliJ ; stopJIRA ; stopLFTChrome ; stopMFConnect ; stopPPM ; stopRPA ; stopSV ; stopSonarqube ; stopUFTM ;;
+    "Q")  exit ;;
+    "q")  exit ;;
+     * )  echo "Invalid Option" ;;
+    esac
+    sleep 1
 done

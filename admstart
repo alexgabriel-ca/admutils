@@ -1,7 +1,7 @@
 #!/bin/bash
 #Author: Alex Gabriel <alex.gabriel@microfocus.com>
-#Created: 04/02/2020
-#Modified: 08/03/2020
+#Created: 04-Feb-2020
+#Modified: 17-Apr-2020
 #Description: Short shell script that allows users to start the most common ADM solutions when preparing for a demo.
 #License: GPL 3.0
 
@@ -10,84 +10,55 @@ echo "This is a short shell script that lets you start the most common ADM conta
 echo ""
 source functions
 docker login
-PS3='Select the container(s) to start, or 19 to quit. '
-options=("Autopass" "ALM Octane" "ALM" "AOS" "AOS-QA" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "LeanFT-Chrome" "MF Connect" "PPM" "RPA" "Sonarqube" "SV" "UFT Mobile" "All" "Quit")
-select opt in "${options[@]}"; do
-     case ${opt} in
-          "Autopass")
-               startAutopass
-               ;;
-          "ALM")
-               startALM
-               ;;
-          "ALM Octane")
-               startALMOctane
-               ;;
-          "AOS")
-               startAOS
-               ;;
-          "AOS-QA")
-               startAOSQA
-               ;;
-          "DA")
-               startDA
-               ;;
-          "DevOps")
-               startDevOps
-               ;;
-          "Fortify")
-               startFortify
-               ;;
-          "IntelliJ")
-               startIntelliJ
-               ;;
-          "JIRA")
-               startJIRA
-               ;;
-          "LeanFT-Chrome")
-               startLFTChrome
-               ;;
-          "MF Connect")
-               startMFConnect
-               ;;
-          "PPM")
-               startPPM
-               ;;
-          "RPA")
-               startRPA
-               ;;
-          "Sonarqube")
-               startSonarqube
-               ;;
-          "SV")
-               startSV
-               ;;
-          "UFT Mobile")
-               startUFTM
-               ;;
-          "All")
-               startAutopass
-               startALM
-               startALMOctane
-               startAOS
-               startAOSQA
-               startDA
-               startDevOps
-               startFortify
-               startIntelliJ
-               startJIRA
-               startLFTChrome
-               startMFConnect
-               startPPM
-               startRPA
-               startSV
-               startSonarqube
-               startUFTM
-               continue
-               ;;
-          "Quit")
-               exit
-               ;;
-          *) echo "Invalid option $REPLY" ;;
-     esac
+while :
+do
+    cat<<EOF
+
+    Select the container(s) to start:
+
+    (1) Autopass
+    (2) ALM
+    (3) ALM Octane
+    (4) AOS
+    (5) AOS-QA
+    (6) DA
+    (7) DevOps
+    (8) Fortify
+    (9) IntelliJ
+    (10) JIRA
+    (11) LeanFT-Chrome
+    (12) MF Connect
+    (13) PPM
+    (14) RPA
+    (15) Sonarqube
+    (16) SV
+    (17) UFT Mobile
+    (18) All
+    (Q)uit
+EOF
+    read
+    case "$REPLY" in
+    "1")  startAutopass ;;
+    "2")  startALM ;;
+    "3")  startALMOctane ;;
+    "4")  startAOS ;;
+    "5")  startAOSQA ;;
+    "6")  startDA ;;
+    "7")  startDevOps ;;
+    "8")  startFortify ;;
+    "9")  startIntelliJ ;;
+    "10")  startJIRA ;;
+    "11")  startLFTChrome ;;
+    "12")  startMFConnect ;;
+    "13")  startPPM ;;
+    "14")  startRPA ;;
+    "15")  startSonarqube ;;
+    "16")  startSV ;;
+    "17")  startUFTMobile ;;
+    "18")  startAutopass ; startALM ; startALMOctane ; startAOS ; startAOSQA ; startDA ; startDevOps ; startFortify ; startIntelliJ ; startJIRA ; startLFTChrome ; startMFConnect ; startPPM ; startRPA ; startSV ; startSonarqube ; startUFTM ;;
+    "Q")  exit ;;
+    "q")  exit ;;
+     * )  echo "Invalid Option" ;;
+    esac
+    sleep 1
 done

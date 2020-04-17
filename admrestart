@@ -1,7 +1,7 @@
 #!/bin/bash
 #Author: Alex Gabriel <alex.gabriel@microfocus.com>
-#Created: 21/02/2020
-#Modified: 08/03/2020
+#Created: 04-Feb-2020
+#Modified: 17-Apr-2020
 #Description: Short shell script that allows users to restart the most common ADM solutions when preparing for a demo.
 #License: GPL 3.0
 
@@ -9,84 +9,55 @@ echo ""
 echo "This is a short shell script that lets you restart the most common ADM containers. If the container is running, a message is displayed.  If you have suggestions for improvement, please contact me by emailing alex.gabriel@microfocus.com"
 echo ""
 source functions
-PS3='Select the container(s) to restart, or 19 to quit. '
-options=("Autopass" "ALM Octane" "ALM" "AOS" "AOS-QA" "DA" "DevOps" "Fortify" "IntelliJ" "JIRA" "LeanFT-Chrome" "MF Connect" "PPM" "RPA" "Sonarqube" "SV" "UFT Mobile" "All" "Quit")
-select opt in "${options[@]}"; do
-     case ${opt} in
-          "Autopass")
-               restartAutopass
-               ;;
-          "ALM")
-               restartALM
-               ;;
-          "ALM Octane")
-               restartALMOctane
-               ;;
-          "AOS")
-               restartAOS
-               ;;
-          "AOS-QA")
-               restartAOSQA
-               ;;
-          "DA")
-               restartDA
-               ;;
-          "DevOps")
-               restartDevOps
-               ;;
-          "Fortify")
-               restartFortify
-               ;;
-          "IntelliJ")
-               restartIntelliJ
-               ;;
-          "JIRA")
-               restartJIRA
-               ;;
-          "LeanFT-Chrome")
-               restartLFTChrome
-               ;;
-          "MF Connect")
-               restartMFConnect
-               ;;
-          "PPM")
-               restartPPM
-               ;;
-          "RPA")
-               restartRPA
-               ;;
-          "Sonarqube")
-               restartSonarqube
-               ;;
-          "SV")
-               restartSV
-               ;;
-          "UFT Mobile")
-               restartUFTM
-               ;;
-          "All")
-               restartAutopass
-               restartALM
-               restartALMOctane
-               restartAOS
-               restartAOSQA
-               restartDA
-               restartDevOps
-               restartFortify
-               restartIntelliJ
-               restartJIRA
-               restartLFTChrome
-               restartMFConnect
-               restartPPM
-               restartRPA
-               restartSV
-               restartSonarqube
-               restartUFTM
-               continue
-               ;;
-          "Quit")
-               exit
-               ;;
-          *) echo "Invalid option $REPLY" ;;
-     esac
+while :
+do
+    cat<<EOF
+
+    Select the container(s) to restart:
+
+    (1) Autopass
+    (2) ALM
+    (3) ALM Octane
+    (4) AOS
+    (5) AOS-QA
+    (6) DA
+    (7) DevOps
+    (8) Fortify
+    (9) IntelliJ
+    (10) JIRA
+    (11) LeanFT-Chrome
+    (12) MF Connect
+    (13) PPM
+    (14) RPA
+    (15) Sonarqube
+    (16) SV
+    (17) UFT Mobile
+    (18) All
+    (Q)uit
+EOF
+    read
+    case "$REPLY" in
+    "1")  restartAutopass ;;
+    "2")  restartALM ;;
+    "3")  restartALMOctane ;;
+    "4")  restartAOS ;;
+    "5")  restartAOSQA ;;
+    "6")  restartDA ;;
+    "7")  restartDevOps ;;
+    "8")  restartFortify ;;
+    "9")  restartIntelliJ ;;
+    "10")  restartJIRA ;;
+    "11")  restartLFTChrome ;;
+    "12")  restartMFConnect ;;
+    "13")  restartPPM ;;
+    "14")  restartRPA ;;
+    "15")  restartSonarqube ;;
+    "16")  restartSV ;;
+    "17")  restartUFTMobile ;;
+    "18")  restartAutopass ; restartALM ; restartALMOctane ; restartAOS ; restartAOSQA ; restartDA ; restartDevOps ; restartFortify ; restartIntelliJ ; restartJIRA ; restartLFTChrome ; restartMFConnect ; restartPPM ; restartRPA ; restartSV ; restartSonarqube ; restartUFTM ;;
+    "Q")  exit ;;
+    "q")  exit ;;
+     * )  echo "Invalid Option" ;;
+    esac
+    sleep 1
 done

@@ -53,7 +53,7 @@ EOF
     "14")  stopRPA ;;
     "15")  stopSonarqube ;;
     "16")  stopSV ;;
-    "17")  stopUFTMobile ;;
+    "17")  stopUFTM ;;
     "18")  stopUFTM ; stopSV ; stopSonarqube ; stopRPA ; stopPPM ; stopMFConnect ; stopLFTChrome ; stopJIRA ; stopIntelliJ ; stopFortify ; stopDevOps ; stopDA ; stopAOSQA ; stopAOS ; stopALMOctane ; stopALM ; stopAutopass ;;
     "Q")  exit ;;
     "q")  exit ;;

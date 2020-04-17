@@ -54,7 +54,7 @@ EOF
     "15")  restartSonarqube ;;
     "16")  restartSV ;;
     "17")  restartUFTMobile ;;
-    "18")  restartAutopass ; restartALM ; restartALMOctane ; restartAOS ; restartAOSQA ; restartDA ; restartDevOps ; restartFortify ; restartIntelliJ ; restartJIRA ; restartLFTChrome ; restartMFConnect ; restartPPM ; restartRPA ; restartSV ; restartSonarqube ; restartUFTM ;;
+    "18")  restartAutopass ; restartALM ; restartALMOctane ; restartAOS ; restartAOSQA ; restartDA ; restartDevOps ; restartFortify ; restartIntelliJ ; restartJIRA ; restartLFTChrome ; restartMFConnect ; restartPPM ; restartRPA ; restartSonarqube ; restartSV ; restartUFTM ;;
     "Q")  exit ;;
     "q")  exit ;;
      * )  echo "Invalid Option" ;;

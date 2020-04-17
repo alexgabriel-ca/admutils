@@ -57,7 +57,7 @@ EOF
     "15")  pullSonarqube ;;
     "16")  pullSV ;;
     "17")  pullUFTMobile ;;
-    "18")  pullAutopass ; pullALM ; pullALMOctane ; pullAOS ; pullAOSQA ; pullDA ; pullDevOps ; pullFortify ; pullIntelliJ ; pullJIRA ; pullLFTChrome ; pullMFConnect ; pullPPM ; pullRPA ; pullSV ; pullSonarqube ; pullUFTM ;;
+    "18")  pullAutopass ; pullALM ; pullALMOctane ; pullAOS ; pullAOSQA ; pullDA ; pullDevOps ; pullFortify ; pullIntelliJ ; pullJIRA ; pullLFTChrome ; pullMFConnect ; pullPPM ; pullRPA ; pullSonarqube ; pullSV ; pullUFTM ;;
     "Q")  exit ;;
     "q")  exit ;;
      * )  echo "Invalid Option" ;;

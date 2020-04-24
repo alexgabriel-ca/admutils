@@ -29,7 +29,7 @@ These utilities can be installed by cloning this repo to your local hard drive. 
 `cd admutils/`  
 `sudo cp  admpull admrestart admstart admstop functions /usr/local/bin`  
 `cd /usr/local/bin`  
-`chmod a+x admpull admrestart admstart admstop`  
+`sudo chmod a+x admpull admrestart admstart admstop`  
 `cd`  
 
 ## Usage

@@ -56,7 +56,7 @@ function startALMOctane() {
 
 function startAOS() {
 	if docker ps | grep -q aos-main-app:${AOSVersion}; then
-		echo "     AOS already running"
+		echo "     AOS:${AOSVersion} already running"
 		return
 	elif ! docker container ls -a | grep -q aos; then
 		nimbusapp aos:${AOSVersion} up
@@ -71,7 +71,7 @@ function startAOSQA() {
 	if docker ps | grep -q aos-main-qa:${AOSQAVersion}; then
 		echo "     AOS-QA already running"
 		return
-	elif ! docker container ls -a | grep -q aos-main-qa; then
+	elif ! docker container ls -a | grep -q aos-main-qa:${AOSQAVersion}; then
 		nimbusapp aos-qa:${AOSQAVersion} up
 		echo "     AOS-QA:${AOSQAVersion} started"
 	else

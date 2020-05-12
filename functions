@@ -22,7 +22,7 @@ SCAVersion="19.2.3"
 SSCVersion="19.2.0"
 SVVersion="5.2"
 SonarqubeVersion="7.7"
-UFTMVersion="3.3"
+UFTMVersion="3.4"
 
 #All start functions check for the existence of the relevant container.
 #If the container is not found, the nimbusapp up command is issued.

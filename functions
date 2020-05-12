@@ -441,7 +441,7 @@ function stopUFTM() {
 #If the container is found, a message indicating this is shown.
 
 function pullALM() {
-	if docker image ls -a | grep alm:${ALMVersion}; then
+	if docker container ls -a | grep -q alm:${ALMVersion}; then
 		echo "     ALM:${ALMVersion} already pulled"
 		read -rp "     Would you like to pull it again? [yn] " repullALM
 		if [ "$repullALM" == y ]; then

@@ -29,7 +29,7 @@ UFTMVersion="3.4"
 #If the container is found, the nimbusapp start command is issued.
 
 function startALM() {
-	if docker ps | grep -q alm; then
+	if docker ps | grep -q alm:${ALMVersion}; then
 		echo "     ALM:${ALMVersion} already running"
 		return
 	elif ! docker container ls -a | grep -q alm; then
@@ -42,7 +42,7 @@ function startALM() {
 }
 
 function startALMOctane() {
-	if docker ps | grep -q octane; then
+	if docker ps | grep -q octane:${ALMOctaneVersion}; then
 		echo "     ALM Octane:${ALMOctaneVersion} already running"
 		return
 	elif ! docker container ls -a | grep -q octane; then
@@ -55,7 +55,7 @@ function startALMOctane() {
 }
 
 function startAOS() {
-	if docker ps | grep -q aos-main; then
+	if docker ps | grep -q aos-main-app:${AOSVersion}; then
 		echo "     AOS already running"
 		return
 	elif ! docker container ls -a | grep -q aos; then
@@ -68,7 +68,7 @@ function startAOS() {
 }
 
 function startAOSQA() {
-	if docker ps | grep -q aos-main-qa; then
+	if docker ps | grep -q aos-main-qa:${AOSQAVersion}; then
 		echo "     AOS-QA already running"
 		return
 	elif ! docker container ls -a | grep -q aos-main-qa; then
@@ -81,7 +81,7 @@ function startAOSQA() {
 }
 
 function startAutopass() {
-	if docker ps | grep -q autopass; then
+	if docker ps | grep -q autopass:${AutopassVersion}; then
 		echo "     Autopass:${AutopassVersion} already running"
 		return
 	elif ! docker container ls -a | grep -q autopass; then
@@ -94,7 +94,7 @@ function startAutopass() {
 }
 
 function startDA() {
-	if docker ps | grep -q da-server; then
+	if docker ps | grep -q da-server:${DAVersion}; then
 		echo "     Deployment Automation:${DAVersion} already running"
 		return
 	elif ! docker container ls -a | grep -q da-server; then
@@ -107,7 +107,7 @@ function startDA() {
 }
 
 function startDevOps() {
-	if docker ps | grep -q devops; then
+	if docker ps | grep -q devops:${DevOpsVersion}; then
 		echo "     DevOps:${DevOpsVersion} already running"
 		return
 	elif ! docker container ls -a | grep -q devops; then
@@ -120,7 +120,7 @@ function startDevOps() {
 }
 
 function startFortify() {
-	if docker ps | grep -q sca || docker ps | grep -q ssc; then
+	if docker ps | grep -q sca:${SCAVersion} || docker ps | grep -q ssc:${SSCVersion}; then
 		echo "     Fortify:${SCAVersion} already running"
 		return
 	fi
@@ -133,8 +133,8 @@ function startFortify() {
 		echo "     SCA:${SCAVersion} started"
 	fi
 
-	if ! docker container ls -a | grep -q ssc; then
-		nimbusapp ssc:${SCAVersion} up
+	if ! docker container ls -a | grep -q ssc:${SSCVersion}; then
+		nimbusapp ssc:${SSCVersion} up
 		echo "     SSC:${SSCVersion} started"
 	else
 		nimbusapp ssc:${SSCVersion} start
@@ -143,7 +143,7 @@ function startFortify() {
 }
 
 function startIntelliJ() {
-	if docker ps | grep -q intellij; then
+	if docker ps | grep -q intellij:${IntelliJVersion}; then
 		echo "     IntelliJ:${IntelliJVersion} already running"
 		return
 	elif ! docker container ls -a | grep -q intellij; then
@@ -156,7 +156,7 @@ function startIntelliJ() {
 }
 
 function startJIRA() {
-	if docker ps | grep -q jira; then
+	if docker ps | grep -q jira:${JIRAVersion}; then
 		echo "     JIRA:${JIRAVersion} already running"
 		return
 	elif ! docker container ls -a | grep -q jira; then
@@ -169,7 +169,7 @@ function startJIRA() {
 }
 
 function startLFTChrome() {
-	if docker ps | grep -q leanft-chrome; then
+	if docker ps | grep -q leanft-chrome:${LFTChromeVersion}; then
 		echo "     LeanFT-Chrome:${LFTChromeVersion} already running"
 		return
 	elif ! docker container ls -a | grep -q leanft-chrome; then
@@ -182,7 +182,7 @@ function startLFTChrome() {
 }
 
 function startMFConnect() {
-	if docker ps | grep -q mfconnect; then
+	if docker ps | grep -q mfconnect:${MFConnectVersion}; then
 		echo "     MF Connect:${MFConnectVersion} already running"
 		return
 	elif ! docker container ls -a | grep -q mfconnect; then
@@ -195,7 +195,7 @@ function startMFConnect() {
 }
 
 function startPPM() {
-	if docker ps | grep -q ppm; then
+	if docker ps | grep -q ppm:${PPMVersion}; then
 		echo "     Project and Portfolio Management:${PPMVersion} already running"
 		return
 	elif ! docker container ls -a | grep -q ppm; then
@@ -208,7 +208,7 @@ function startPPM() {
 }
 
 function startRPA() {
-	if docker ps | grep -q rpa; then
+	if docker ps | grep -q rpa:${RPAVersion}; then
 		echo "     Robotic Process Automation:${RPAVersion} already running"
 		return
 	elif ! docker container ls -a | grep -q rpa; then
@@ -221,8 +221,8 @@ function startRPA() {
 }
 
 function startSonarqube() {
-	if docker ps | grep -q sonarqube; then
-		echo "     Sonarqube:${SVVersion} already running"
+	if docker ps | grep -q sonarqube:${SonarqubeVersion}; then
+		echo "     Sonarqube:${SonarqubeVersion} already running"
 		return
 	elif ! docker container ls -a | grep -q sonarqube; then
 		nimbusapp sonarqube:${SonarqubeVersion} up
@@ -234,7 +234,7 @@ function startSonarqube() {
 }
 
 function startSV() {
-	if docker ps | grep -q sv; then
+	if docker ps | grep -q sv:${SVVersion}; then
 		echo "     SV:${SVVersion} already running"
 		return
 	elif ! docker container ls -a | grep -q sv; then
@@ -247,7 +247,7 @@ function startSV() {
 }
 
 function startUFTM() {
-	if docker ps | grep -q uft-mobile; then
+	if docker ps | grep -q uft-mobile:${UFTMVersion}; then
 		echo "     UFT Mobile:${UFTMVersion} already running"
 		return
 	elif ! docker container ls -a | grep -q uft-mobile; then

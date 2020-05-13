@@ -2,7 +2,7 @@
 
 ADM Utilities is a series of shell scripts intended to ensure the process of pulling, starting, stopping, and restarting ADM docker containers is as easy as possible.
 
-Both a valid docker login as well as access to the appropriate repo within docker is required for these scripts to run.
+Both a valid docker login as well as access to the appropriate repo within docker is required for these scripts to run.  If the docker login fails, the prompt to login will be displayed.  The menu itself will only display when a successful authentication has occurred.
 
 Each script uses the same menu system to present numbered choices for users.
 

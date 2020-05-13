@@ -9,7 +9,7 @@ echo ""
 echo "This is a short shell script that lets you start the most common ADM containers from the admpresales Docker repository. If the containers do not exist, they will be pulled first, and then started.  If you have suggestions for improvement, please contact me by emailing alex.gabriel@microfocus.com"
 echo ""
 source functions
-docker login
+if docker login; then
 while :
 do
     cat<<EOF
@@ -62,3 +62,7 @@ EOF
     esac
     sleep 1
 done
+
+	else
+		docker login
+	fi

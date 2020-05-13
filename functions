@@ -441,7 +441,7 @@ function stopUFTM() {
 #If the container is found, a message indicating this is shown.
 
 function pullALM() {
-	if docker image ls -a | grep -q alm:${ALMVersion}; then
+	if docker image ls -a | grep -q alm; then
 		echo "     ALM:${ALMVersion} already pulled"
 		read -rp "     Would you like to pull it again? [yn] " repullALM
 		if [ "$repullALM" == y ]; then
@@ -454,7 +454,7 @@ function pullALM() {
 }
 
 function pullALMOctane() {
-	if docker image ls -a | grep -q octane:${ALMOctaneVersion}; then
+	if docker image ls -a | grep -q octane; then
 		echo "     ALM Octane:${ALMOctaneVersion} already pulled"
 		read -rp "     Would you like to pull it again? [yn] " repullOctane
 		if [ "$repullOctane" == y ]; then
@@ -467,7 +467,7 @@ function pullALMOctane() {
 }
 
 function pullAOS() {
-	if docker image ls -a | grep -q aos-main-app:${AOSVersion}; then
+	if docker image ls -a | grep -q aos-main-app; then
 		echo "     AOS:${AOSVersion} already pulled"
 		read -rp "     Would you like to pull it again? [yn] " repullAOS
 		if [ "$repullAOS" == y ]; then
@@ -480,7 +480,7 @@ function pullAOS() {
 }
 
 function pullAOSQA() {
-	if docker image ls -a | grep -q aos-main-qa:${AOSQAVersion}; then
+	if docker image ls -a | grep -q aos-main-qa; then
 		echo "     AOS-QA:${AOSQAVersion} already pulled"
 		read -rp "     Would you like to pull it again? [yn] " repullAOSQA
 		if [ "$repullAOQAS" == y ]; then

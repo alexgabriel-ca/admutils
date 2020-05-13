@@ -53,7 +53,7 @@ EOF
     "14")  restartRPA ;;
     "15")  restartSonarqube ;;
     "16")  restartSV ;;
-    "17")  restartUFTMobile ;;
+    "17")  restartUFTM ;;
     "18")  restartAutopass ; restartALM ; restartALMOctane ; restartAOS ; restartAOSQA ; restartDA ; restartDevOps ; restartFortify ; restartIntelliJ ; restartJIRA ; restartLFTChrome ; restartMFConnect ; restartPPM ; restartRPA ; restartSonarqube ; restartSV ; restartUFTM ;;
     "Q")  exit ;;
     "q")  exit ;;

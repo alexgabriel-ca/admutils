@@ -54,7 +54,7 @@ EOF
     "14")  startRPA ;;
     "15")  startSonarqube ;;
     "16")  startSV ;;
-    "17")  startUFTMobile ;;
+    "17")  startUFTM ;;
     "18")  startAutopass ; startALM ; startALMOctane ; startAOS ; startAOSQA ; startDA ; startDevOps ; startFortify ; startIntelliJ ; startJIRA ; startLFTChrome ; startMFConnect ; startPPM ; startRPA ; startSonarqube ; startSV ; startUFTM ;;
     "Q")  exit ;;
     "q")  exit ;;

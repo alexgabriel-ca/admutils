@@ -12,10 +12,10 @@ echo "A valid Docker login is required for this script to run properly."
 echo ""
 source functions
 
-if docker login; then
 
 while :
 do
+if docker login; then
     cat<<EOF
 
     Select the container(s) to pull:
@@ -65,7 +65,7 @@ EOF
      * )  echo "Invalid Option" ;;
     esac
     sleep 1
-done
 	else
 		docker login
 	fi
+done

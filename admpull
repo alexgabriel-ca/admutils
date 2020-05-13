@@ -11,7 +11,9 @@ echo ""
 echo "A valid Docker login is required for this script to run properly."
 echo ""
 source functions
-docker login
+
+if docker login; then
+
 while :
 do
     cat<<EOF
@@ -64,3 +66,6 @@ EOF
     esac
     sleep 1
 done
+	else
+		docker login
+	fi

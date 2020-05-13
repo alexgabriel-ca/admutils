@@ -10,7 +10,7 @@ Development and testing of the ADM Utilities was done via the Nimbus Server VM. 
 
 ## Overview
 ### ADM Pull
-This pulls the selected container from Docker, but does not start it.  This is useful when provisioning a new server, as the process can take quite some time, depending on the containers selected.  It is best, if downloading all containers, to run the script overnight.
+This pulls the selected container from Docker, but does not start it.  This is useful when provisioning a new server, as the process can take quite some time, depending on the containers selected.  It is best, if downloading all containers, to run the script overnight.  A check has been added to validate whether the container exists, and if so, the user will be prompted whether to pull down the container again.
 
 ### ADM Start
 This starts the selected container.  In the event that the admpull command has not been issued used before admstart, the container will be pulled from Docker, and then started.

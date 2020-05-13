@@ -454,7 +454,7 @@ function pullALM() {
 }
 
 function pullALMOctane() {
-	if docker image ls -a | grep octane:${ALMOctaneVersion}; then
+	if docker container ls -a | grep octane:${ALMOctaneVersion}; then
 		echo "     ALM Octane:${ALMOctaneVersion} already pulled"
 		read -rp "     Would you like to pull it again? [yn] " repullOctane
 		if [ "$repullOctane" == y ]; then
@@ -467,7 +467,7 @@ function pullALMOctane() {
 }
 
 function pullAOS() {
-	if docker image ls -a | grep -q aos; then
+	if docker container ls -a | grep -q aos; then
 		echo "     AOS:${AOSVersion} already pulled"
 		read -rp "     Would you like to pull it again? [yn] " repullAOS
 		if [ "$repullAOS" == y ]; then
@@ -480,9 +480,12 @@ function pullAOS() {
 }
 
 function pullAOSQA() {
-	if docker image ls -a | grep -q aos-main-qa:${AOSQAVersion}; then
+	if docker container ls -a | grep -q aos-main-qa:${AOSQAVersion}; then
 		echo "     AOS-QA:${AOSQAVersion} already pulled"
-		return
+		read -rp "     Would you like to pull it again? [yn] " repullAOSQA
+		if [ "$repullAOQAS" == y ]; then
+			nimbusapp aos-qa:${AOSQAVersion} pull
+		fi
 	else
 		nimbusapp aos-qa:${AOSQAVersion} pull
 		echo "     AOS-QA:${AOSQAVersion} pulled"

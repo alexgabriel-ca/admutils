@@ -10,8 +10,8 @@ echo "This is a short shell script that lets you pull the most common ADM contai
 echo ""
 echo "A valid Docker login is required for this script to run properly."
 echo ""
-source functions
 
+source functions
 
 while :
 do

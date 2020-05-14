@@ -1,7 +1,7 @@
 #!/bin/bash
 #Author: Alex Gabriel <alex.gabriel@microfocus.com>
 #Created: 04-Feb-2020
-#Modified: 24-Apr-2020
+#Modified: 14-May-2020
 #Description: Short shell script that allows users to start the most common ADM solutions when preparing for a demo.
 #License: GPL 3.0
 
@@ -29,10 +29,10 @@ UFTMVersion="3.4"
 #If the container is found, the nimbusapp start command is issued.
 
 function startALM() {
-	if docker ps | grep -q alm:${ALMVersion}; then
+	if docker ps | grep -Eq '(^|\s)alm($|\s)'; then
 		echo "     ALM:${ALMVersion} already running"
 		return
-	elif ! docker container ls -a | grep -q alm:${ALMVersion}; then
+	elif ! docker container ls -a | grep -Eq '(^|\s)alm($|\s)'; then
 		nimbusapp alm:${ALMVersion} up
 		echo "     ALM:${ALMVersion} started"
 	else
@@ -42,10 +42,10 @@ function startALM() {
 }
 
 function startALMOctane() {
-	if docker ps | grep -q octane:${ALMOctaneVersion}; then
+	if docker ps | grep -Eq '(^|\s)octane($|\s)'; then
 		echo "     ALM Octane:${ALMOctaneVersion} already running"
 		return
-	elif ! docker container ls -a | grep -q octane:${ALMOctaneVersion}; then
+	elif ! docker container ls -a | grep -Eq '(^|\s)octane($|\s)'; then
 		nimbusapp octane:${ALMOctaneVersion} up
 		echo "     ALM Octane:${ALMOctaneVersion} started"
 	else
@@ -55,10 +55,10 @@ function startALMOctane() {
 }
 
 function startAOS() {
-	if docker ps | grep -q aos-main-app:${AOSVersion}; then
+	if docker ps | grep -E '(^|\s)aos-main($|\s)'; then
 		echo "     AOS:${AOSVersion} already running"
 		return
-	elif ! docker container ls -a | grep -q aos; then
+	elif ! docker container ls -a | grep -Eq '(^|\s)aos-main($|\s)'; then
 		nimbusapp aos:${AOSVersion} up
 		echo "     AOS:${AOSVersion} started"
 	else
@@ -68,10 +68,10 @@ function startAOS() {
 }
 
 function startAOSQA() {
-	if docker ps | grep -q aos-main-qa:${AOSQAVersion}; then
+	if docker ps | grep -E '(^|\s)aos-main-qa($|\s)'; then
 		echo "     AOS-QA already running"
 		return
-	elif ! docker container ls -a | grep -q aos-main-qa:${AOSQAVersion}; then
+	elif ! docker container ls -a | grep -Eq '(^|\s)aos-main-qa($|\s)'; then
 		nimbusapp aos-qa:${AOSQAVersion} up
 		echo "     AOS-QA:${AOSQAVersion} started"
 	else
@@ -81,10 +81,10 @@ function startAOSQA() {
 }
 
 function startAutopass() {
-	if docker ps | grep -q autopass:${AutopassVersion}; then
+	if docker ps | grep -Eq '(^|\s)autopass($|\s)'; then
 		echo "     Autopass:${AutopassVersion} already running"
 		return
-	elif ! docker container ls -a | grep -q autopass:${AutopassVersion}; then
+	elif ! docker container ls -a | grep -Eq '(^|\s)autopass($|\s)'; then
 		nimbusapp autopass:${AutopassVersion} up
 		echo "     Autopass:${AutopassVersion} started"
 	else
@@ -94,10 +94,10 @@ function startAutopass() {
 }
 
 function startDA() {
-	if docker ps | grep -q da-server:${DAVersion}; then
+	if docker ps | grep -Eq '(^|\s)da-server($|\s)'; then
 		echo "     Deployment Automation:${DAVersion} already running"
 		return
-	elif ! docker container ls -a | grep -q da-server:${DAVersion}; then
+	elif ! docker container ls -a | grep -Eq '(^|\s)da-server($|\s)'; then
 		nimbusapp da:${DAVersion} up
 		echo "     Deployment Automation:${DAVersion} started"
 	else
@@ -107,11 +107,11 @@ function startDA() {
 }
 
 function startDevOps() {
-	if docker ps | grep -q devops:${DevOpsVersion}; then
+	if docker ps | grep -Eq '(^|\s)devops($|\s)'; then
 		echo "     DevOps:${DevOpsVersion} already running"
 		return
 	elif ! docker container ls -a | grep -q devops; then
-		nimbusapp devops:${DevOpsVersion} up
+		nimbusapp grep -Eq '(^|\s)devops($|\s)' up
 		echo "     DevOps:${DevOpsVersion} started"
 	else
 		nimbusapp devops:${DevOpsVersion} start
@@ -120,12 +120,12 @@ function startDevOps() {
 }
 
 function startFortify() {
-	if docker ps | grep -q sca:${SCAVersion} || docker ps | grep -q ssc:${SSCVersion}; then
+	if docker ps | grep -Eq '(^|\s)sca($|\s)' || docker ps | grep -Eq '(^|\s)ssc($|\s)'; then
 		echo "     Fortify:${SCAVersion} already running"
 		return
 	fi
 
-	if ! docker container ls -a | grep -q sca:${SCAVersion}; then
+	if ! docker container ls -a | grep -Eq '(^|\s)sca($|\s)'; then
 		nimbusapp sca:${SCAVersion} up
 		echo "     SCA:${SCAVersion} started"
 	else
@@ -133,7 +133,7 @@ function startFortify() {
 		echo "     SCA:${SCAVersion} started"
 	fi
 
-	if ! docker container ls -a | grep -q ssc:${SSCVersion}; then
+	if ! docker container ls -a | grep -Eq '(^|\s)ssc($|\s)'; then
 		nimbusapp ssc:${SSCVersion} up
 		echo "     SSC:${SSCVersion} started"
 	else
@@ -143,10 +143,10 @@ function startFortify() {
 }
 
 function startIntelliJ() {
-	if docker ps | grep -q intellij:${IntelliJVersion}; then
+	if docker ps | grep -Eq '(^|\s)intellij($|\s)'; then
 		echo "     IntelliJ:${IntelliJVersion} already running"
 		return
-	elif ! docker container ls -a | grep -q intellij:${IntelliJVersion}; then
+	elif ! docker container ls -a | grep -Eq '(^|\s)intellij($|\s)'; then
 		nimbusapp intellij:${IntelliJVersion} up
 		echo "     IntelliJ:${IntelliJVersion} started"
 	else
@@ -156,10 +156,10 @@ function startIntelliJ() {
 }
 
 function startJIRA() {
-	if docker ps | grep -q jira:${JIRAVersion}; then
+	if docker ps | grep -Eq '(^|\s)jira($|\s)'; then
 		echo "     JIRA:${JIRAVersion} already running"
 		return
-	elif ! docker container ls -a | grep -q jira:${JIRAVersion}; then
+	elif ! docker container ls -a | grep -Eq '(^|\s)jira($|\s)'; then
 		nimbusapp jira:${JIRAVersion} up
 		echo "     JIRA:${JIRAVersion} started"
 	else
@@ -169,10 +169,10 @@ function startJIRA() {
 }
 
 function startLFTChrome() {
-	if docker ps | grep -q leanft-chrome:${LFTChromeVersion}; then
+	if docker ps | grep -Eq '(^|\s)leanft-chrome($|\s)'; then
 		echo "     LeanFT-Chrome:${LFTChromeVersion} already running"
 		return
-	elif ! docker container ls -a | grep -q leanft-chrome:${LFTChromeVersion}; then
+	elif ! docker container ls -a | grep -Eq '(^|\s)leanft-chrome($|\s)'; then
 		nimbusapp leanft-chrome:${LFTChromeVersion} up
 		echo "     LeanFT-Chrome:${LFTChromeVersion} started"
 	else
@@ -182,10 +182,10 @@ function startLFTChrome() {
 }
 
 function startMFConnect() {
-	if docker ps | grep -q mfconnect:${MFConnectVersion}; then
+	if docker ps | grep -Eq '(^|\s)mfconnect($|\s)'; then
 		echo "     MF Connect:${MFConnectVersion} already running"
 		return
-	elif ! docker container ls -a | grep -q mfconnect:${MFConnectVersion}; then
+	elif ! docker container ls -a | grep -Eq '(^|\s)mfconnect($|\s)'; then
 		nimbusapp mfconnect:${MFConnectVersion} up
 		echo "     MF Connect:${MFConnectVersion} started"
 	else
@@ -195,10 +195,10 @@ function startMFConnect() {
 }
 
 function startPPM() {
-	if docker ps | grep -q ppm:${PPMVersion}; then
+	if docker ps | grep -Eq '(^|\s)ppm($|\s)'; then
 		echo "     Project and Portfolio Management:${PPMVersion} already running"
 		return
-	elif ! docker container ls -a | grep -q ppm:${PPMVersion}; then
+	elif ! docker container ls -a | grep -Eq '(^|\s)ppm($|\s)'; then
 		nimbusapp ppm:${PPMVersion} up
 		echo "     Project and Portfolio Management:${PPMVersion} started"
 	else
@@ -208,10 +208,10 @@ function startPPM() {
 }
 
 function startRPA() {
-	if docker ps | grep -q rpa:${RPAVersion}; then
+	if docker ps | grep -Eq '(^|\s)rpa($|\s)'; then
 		echo "     Robotic Process Automation:${RPAVersion} already running"
 		return
-	elif ! docker container ls -a | grep -q rpa:${RPAVersion}; then
+	elif ! docker container ls -a | grep -Eq '(^|\s)rpa($|\s)'; then
 		nimbusapp rpa:${RPAVersion} up
 		echo "     Robotic Process Automation:${RPAVersion} started"
 	else
@@ -221,10 +221,10 @@ function startRPA() {
 }
 
 function startSonarqube() {
-	if docker ps | grep -q sonarqube:${SonarqubeVersion}; then
+	if docker ps | grep -Eq '(^|\s)sonarqube($|\s)'; then
 		echo "     Sonarqube:${SonarqubeVersion} already running"
 		return
-	elif ! docker container ls -a | grep -q sonarqube:${SonarqubeVersion}; then
+	elif ! docker container ls -a | grep -Eq '(^|\s)sonarqube($|\s)'; then
 		nimbusapp sonarqube:${SonarqubeVersion} up
 		echo "     Sonarqube:${SonarqubeVersion} started"
 	else
@@ -234,10 +234,10 @@ function startSonarqube() {
 }
 
 function startSV() {
-	if docker ps | grep -q sv:${SVVersion}; then
+	if docker ps | grep -Eq '(^|\s)sv($|\s)'; then
 		echo "     SV:${SVVersion} already running"
 		return
-	elif ! docker container ls -a | grep -q sv:${SVVersion}; then
+	elif ! docker container ls -a | grep -Eq '(^|\s)sv($|\s)'; then
 		nimbusapp sv:${SVVersion} up
 		echo "     SV:${SVVersion} started"
 	else
@@ -247,10 +247,10 @@ function startSV() {
 }
 
 function startUFTM() {
-	if docker ps | grep -q uft-mobile:${UFTMVersion}; then
+	if docker ps | grep -Eq '(^|\s)uft-mobile($|\s)'; then
 		echo "     UFT Mobile:${UFTMVersion} already running"
 		return
-	elif ! docker container ls -a | grep -q uft-mobile:${UFTMVersion}; then
+	elif ! docker container ls -a | grep -Eq '(^|\s)uft-mobile($|\s)'; then
 		nimbusapp uft-mobile:${UFTMVersion} up
 		echo "     UFT Mobile:${UFTMVersion} started"
 	else
@@ -263,7 +263,7 @@ function startUFTM() {
 #If the container is running, the nimbusapp stop command is issued.
 
 function stopALM() {
-	if ! docker ps | grep -q alm:${ALMVersion}; then
+	if ! docker ps | grep -Eq '(^|\s)alm($|\s)'; then
 		echo "     ALM:${ALMVersion} already stopped"
 		return
 	else
@@ -273,7 +273,7 @@ function stopALM() {
 }
 
 function stopALMOctane() {
-	if ! docker ps | grep -q octane:${ALMOctaneVersion}; then
+	if ! docker ps | grep -Eq '(^|\s)octane($|\s)'; then
 		echo "     ALM Octane:${ALMOctaneVersion} already stopped"
 		return
 	else
@@ -283,7 +283,7 @@ function stopALMOctane() {
 }
 
 function stopAOS() {
-	if ! docker ps | grep -q aos-main-app:${AOSVersion}; then
+	if ! docker ps | grep -Eq '(^|\s)aos-main($|\s)'; then
 		echo "     AOS:${AOSVersion} already stopped"
 		return
 	else
@@ -293,7 +293,7 @@ function stopAOS() {
 }
 
 function stopAOSQA() {
-	if ! docker ps | grep -q aos-main-qa:${AOSQAVersion}; then
+	if ! docker ps | grep -Eq '(^|\s)aos-main-qa($|\s)'; then
 		echo "     AOS-QA:${AOSQAVersion} already stopped"
 		return
 	else
@@ -303,7 +303,7 @@ function stopAOSQA() {
 }
 
 function stopAutopass() {
-	if ! docker ps | grep -q autopass:${AutopassVersion}; then
+	if ! docker ps | grep -Eq '(^|\s)autopass($|\s)'; then
 		echo "     Autopass:${AutopassVersion} already stopped"
 		return
 	else
@@ -312,7 +312,7 @@ function stopAutopass() {
 	fi
 }
 function stopDA() {
-	if ! docker ps | grep -q da-server:${DAVersion}; then
+	if ! docker ps | grep -Eq '(^|\s)da-server($|\s)'; then
 		echo "     Deployment Automation:${DAVersion} already stopped"
 		return
 	else
@@ -322,7 +322,7 @@ function stopDA() {
 }
 
 function stopDevOps() {
-	if ! docker ps | grep -q devops:${DevOpsVersion}; then
+	if ! docker ps | grep -Eq '(^|\s)devops($|\s)'; then
 		echo "     DevOps:${DevOpsVersion} already stopped"
 		return
 	else
@@ -332,22 +332,22 @@ function stopDevOps() {
 }
 
 function stopFortify() {
-	if ! docker ps | grep -q sca:${SCAVersion} && ! docker ps | grep -q ssc:${SSCVersion}; then
+	if ! docker ps | grep -Eq '(^|\s)sca($|\s)' && ! docker ps | grep -Eq '(^|\s)ssc($|\s)'; then
 		echo "     Fortify:${SSCVersion} already stopped"
 		return
 	fi
 
-	if docker ps | grep -q sca:${SCAVersion}; then
+	if docker ps | grep -Eq '(^|\s)sca($|\s)'; then
 		nimbusapp sca:${SCAVersion} stop
 	fi
-	if docker ps | grep -q ssc:${SSCVersion}; then
+	if docker ps | grep -Eq '(^|\s)ssc($|\s)'; then
 		nimbusapp ssc:${SSCVersion} stop
 		echo "     Fortify:${SSCVersion} stopped"
 	fi
 }
 
 function stopIntelliJ() {
-	if ! docker ps | grep -q intellij:${IntelliJVersion}; then
+	if ! docker ps | grep -Eq '(^|\s)intellij($|\s)'; then
 		echo "     IntelliJ:${IntelliJVersion} already stopped"
 		return
 	else
@@ -357,7 +357,7 @@ function stopIntelliJ() {
 }
 
 function stopJIRA() {
-	if ! docker ps | grep -q jira:${JIRAVersion}; then
+	if ! docker ps | grep -Eq '(^|\s)jira($|\s)'; then
 		echo "     JIRA:${JIRAVersion} already stopped"
 		return
 	else
@@ -367,7 +367,7 @@ function stopJIRA() {
 }
 
 function stopLFTChrome() {
-	if ! docker ps | grep -q leanft-chrome:${LFTChromeVersion}; then
+	if ! docker ps | grep -Eq '(^|\s)leanft-chrome($|\s)'; then
 		echo "     LeanFT-Chrome:${LFTChromeVersion} already stopped"
 		return
 	else
@@ -377,7 +377,7 @@ function stopLFTChrome() {
 }
 
 function stopMFConnect() {
-	if ! docker ps | grep -q mfconnect:${MFConnectVersion}; then
+	if ! docker ps | grep -Eq '(^|\s)mfconnect($|\s)'; then
 		echo "     MF Connect:${MFConnectVersion} already stopped"
 		return
 	else
@@ -387,7 +387,7 @@ function stopMFConnect() {
 }
 
 function stopPPM() {
-	if ! docker ps | grep -q ppm:${PPMVersion}; then
+	if ! docker ps | grep -Eq '(^|\s)ppm($|\s)'; then
 		echo "     Project and Portfolio Management:${PPMVersion} already stopped"
 		return
 	else
@@ -397,7 +397,7 @@ function stopPPM() {
 }
 
 function stopRPA() {
-	if ! docker ps | grep -q rpa:${RPAVersion}; then
+	if ! docker ps | grep -Eq '(^|\s)rpa($|\s)'; then
 		echo "     Robotic Process Automation:${RPAVersion} already stopped"
 		return
 	else
@@ -407,7 +407,7 @@ function stopRPA() {
 }
 
 function stopSonarqube() {
-	if ! docker ps | grep -q sonarqube:${SonarqubeVersion}; then
+	if ! docker ps | grep -Eq '(^|\s)sonarqube($|\s)'; then
 		echo "     Sonarqube:${SonarqubeVersion} already stopped"
 		return
 	else
@@ -417,7 +417,7 @@ function stopSonarqube() {
 }
 
 function stopSV() {
-	if ! docker ps | grep -q sv:${SVVersion}; then
+	if ! docker ps | grep -Eq '(^|\s)sv($|\s)'; then
 		echo "     SV:${SVVersion} already stopped"
 		return
 	else
@@ -427,7 +427,7 @@ function stopSV() {
 }
 
 function stopUFTM() {
-	if ! docker ps | grep -q uft-mobile:${UFTMVersion}; then
+	if ! docker ps | grep -Eq '(^|\s)uft-mobile($|\s)'; then
 		echo "     UFT Mobile:${UFTMVersion} already stopped"
 		return
 	else
@@ -672,7 +672,7 @@ function pullUFTM() {
 #
 #
 function restartALM() {
-	if docker ps | grep -q alm:${ALMVersion}; then
+	if docker ps | grep -Eq '(^|\s)alm($|\s)'; then
 		nimbusapp alm:${ALMVersion} restart
 		echo "     ALM:${ALMVersion} restarted."
 	else
@@ -682,7 +682,7 @@ function restartALM() {
 }
 
 function restartALMOctane() {
-	if docker ps | grep -q octane:${ALMOctaneVersion}; then
+	if docker ps | grep -Eq '(^|\s)octane($|\s)'; then
 		nimbusapp octane:${ALMOctaneVersion} restart
 		echo "     Octane:${ALMOctaneVersion} restarted."
 	else
@@ -702,7 +702,7 @@ function restartAOS() {
 }
 
 function restartAOSQA() {
-	if docker ps | grep -q aos-main-qa:${AOSQAVersion}; then
+	if docker ps | grep -Eq '(^|\s)aos-main-qa($|\s)'; then
 		nimbusapp aos-qa:${AOSQAVersion} restart
 		echo "     AOS-QA:${AOSQAVersion} restarted."
 	else
@@ -712,7 +712,7 @@ function restartAOSQA() {
 }
 
 function restartAutopass() {
-	if docker ps | grep -q autopass:${AutopassVersion}; then
+	if docker ps | grep -Eq '(^|\s)autopass($|\s)'; then
 		nimbusapp autopass:${AutopassVersion} restart
 		echo "     Autopass:${AutopassVersion} restarted."
 	else
@@ -722,7 +722,7 @@ function restartAutopass() {
 }
 
 function restartDA() {
-	if docker ps | grep -q da-server:${DAVersion}; then
+	if docker ps | grep -Eq '(^|\s)da-server($|\s)'; then
 		nimbusapp da:${DAVersion} restart
 		echo "     Deployment Automation:${DAVersion} restarted."
 	else
@@ -742,14 +742,14 @@ function restartDevOps() {
 }
 
 function restartFortify() {
-	if docker ps | grep -q sca:${SCAVersion}; then
+	if docker ps | grep -Eq '(^|\s)sca($|\s)'; then
 		nimbusapp sca:${SCAVersion} restart
 		echo "     SCAsca:${SCAVersion} restarted."
 	else
 		echo "     SCAsca:${SCAVersion} not running, no need to restart"
 		return
 	fi
-	if docker ps | grep -q ssc:${SSCVersion}; then
+	if docker ps | grep -Eq '(^|\s)ssc($|\s)'; then
 		nimbusapp ssc:${SSCVersion} restart
 		echo "     SSC:${SSCVersion} restarted."
 	else
@@ -759,7 +759,7 @@ function restartFortify() {
 }
 
 function restartIntelliJ() {
-	if docker ps | grep -q intellij:${IntelliJVersion}; then
+	if docker ps | grep -Eq '(^|\s)intellij($|\s)'; then
 		nimbusapp intellij:${IntelliJVersion} restart
 		echo "     IntelliJ:${IntelliJVersion} restarted."
 	else
@@ -769,7 +769,7 @@ function restartIntelliJ() {
 }
 
 function restartJIRA() {
-	if docker ps | grep -q jira:${JIRAVersion}; then
+	if docker ps | grep -Eq '(^|\s)jira($|\s)'; then
 		nimbusapp jira:${JIRAVersion} restart
 		echo "     JIRA:${JIRAVersion} restarted."
 	else
@@ -779,7 +779,7 @@ function restartJIRA() {
 }
 
 function restartLFTChrome() {
-	if docker ps | grep -q leanft-chrome:${LFTChromeVersion}; then
+	if docker ps | grep -Eq '(^|\s)leanft-chrome($|\s)'; then
 		nimbusapp leanft-chrome:${LFTChromeVersion} restart
 		echo "     LeanFT-Chrome:${LFTChromeVersion} restarted."
 	else
@@ -789,7 +789,7 @@ function restartLFTChrome() {
 }
 
 function restartMFConnect() {
-	if docker ps | grep -q mfconnect:${MFConnectVersion}; then
+	if docker ps | grep -Eq '(^|\s)mfconnect($|\s)'; then
 		nimbusapp mfconnect:${MFConnectVersion} restart
 		echo "     MF Connect:${MFConnectVersion} restarted."
 	else
@@ -799,7 +799,7 @@ function restartMFConnect() {
 }
 
 function restartPPM() {
-	if docker ps | grep -q ppm:${PPMVersion}; then
+	if docker ps | grep -Eq '(^|\s)ppm($|\s)'; then
 		nimbusapp ppm:${PPMVersion} restart
 		echo "     PPM:${PPMVersion} already restarted"
 		return
@@ -810,7 +810,7 @@ function restartPPM() {
 }
 
 function restartRPA() {
-	if docker ps | grep -q rpa:${RPAVersion}; then
+	if docker ps | grep -Eq '(^|\s)rpa($|\s)'; then
 		nimbusapp rpa:${RPAVersion} restart
 		echo "     RPA:${RPAVersion} already restarted"
 		return
@@ -821,7 +821,7 @@ function restartRPA() {
 }
 
 function restartSonarqube() {
-	if docker ps | grep -q sonarqube:${SonarqubeVersion}; then
+	if docker ps | grep -Eq '(^|\s)sonarqube($|\s)'; then
 		nimbusapp sonarqube:${SonarqubeVersion} restart
 		echo "     Sonarqube:${SonarqubeVersion} restarted"
 		return
@@ -832,7 +832,7 @@ function restartSonarqube() {
 }
 
 function restartSV() {
-	if docker ps | grep -q sv:${SVVersion}; then
+	if docker ps | grep -Eq '(^|\s)sv($|\s)'; then
 		nimbusapp sv:${SVVersion} restart
 		echo "     SV:${SVVersion} restarted"
 	else
@@ -842,7 +842,7 @@ function restartSV() {
 }
 
 function restartUFTM() {
-	if docker ps | grep -q uft-mobile:${UFTMVersion}; then
+	if docker ps | grep -Eq '(^|\s)uft-mobile($|\s)'; then
 		nimbusapp uft-mobile:${UFTMVersion} restart
 		echo "     UFT Mobile:${UFTMVersion} restarted"
 	else

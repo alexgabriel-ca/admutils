@@ -110,7 +110,7 @@ function startDevOps() {
 	if docker ps | grep -Eq '(^|\s)devops($|\s)'; then
 		echo "     DevOps:${DevOpsVersion} already running"
 		return
-	elif ! docker container ls -a | grep -q devops; then
+	elif ! docker container ls -a | grep -Eq '(^|\s)devops($|\s)'; then
 		nimbusapp grep -Eq '(^|\s)devops($|\s)' up
 		echo "     DevOps:${DevOpsVersion} started"
 	else
@@ -441,7 +441,7 @@ function stopUFTM() {
 #If the container is found, a message indicating this is shown.
 
 function pullALM() {
-	if docker image ls -a | grep -q alm; then
+	if docker image ls -a | grep -Eq alm; then
 		echo "     ALM:${ALMVersion} already exists"
 		read -rp "     Would you like to pull it again? [yn] " repullALM
 		if [ "$repullALM" == y ]; then
@@ -454,7 +454,7 @@ function pullALM() {
 }
 
 function pullALMOctane() {
-	if docker image ls -a | grep -q octane; then
+	if docker image ls -a | grep -Eq octane; then
 		echo "     ALM Octane:${ALMOctaneVersion} already exists"
 		read -rp "     Would you like to pull it again? [yn] " repullOctane
 		if [ "$repullOctane" == y ]; then
@@ -467,7 +467,7 @@ function pullALMOctane() {
 }
 
 function pullAOS() {
-	if docker image ls -a | grep -q aos-main-app; then
+	if docker image ls -a | grep -Eq aos-main-app; then
 		echo "     AOS:${AOSVersion} already exists"
 		read -rp "     Would you like to pull it again? [yn] " repullAOS
 		if [ "$repullAOS" == y ]; then
@@ -480,7 +480,7 @@ function pullAOS() {
 }
 
 function pullAOSQA() {
-	if docker image ls -a | grep -q aos-main-app; then
+	if docker image ls -a | grep -Eq aos-main-qa; then
 		echo "     AOS-QA:${AOSQAVersion} already exists"
 		read -rp "     Would you like to pull it again? [yn] " repullAOSQA
 		if [ "$repullAOQAS" == y ]; then
@@ -493,7 +493,7 @@ function pullAOSQA() {
 }
 
 function pullAutopass() {
-	if docker image ls -a | grep -q autopass; then
+	if docker image ls -a | grep -Eq autopass; then
 		echo "     Autopass:${AutopassVersion} already exists"
 		read -rp "     Would you like to pull it again? [yn] " repullAutopass
 		if [ "$repullAutopass" == y ]; then
@@ -506,7 +506,7 @@ function pullAutopass() {
 }
 
 function pullDA() {
-	if docker image ls -a | grep -q da-server; then
+	if docker image ls -a | grep -Eq da-server; then
 		echo "     Deployment Automation:${DAVersion} already exists"
 		read -rp "     Would you like to pull it again? [yn] " repullDA
 		if [ "$repullDA" == y ]; then
@@ -519,7 +519,7 @@ function pullDA() {
 }
 
 function pullDevOps() {
-	if docker image ls -a | grep -q devops; then
+	if docker image ls -a | grep -Eq devops; then
 		echo "     DevOps:${DevOpsVersion} already exists"
 		read -rp "     Would you like to pull it again? [yn] " repullDevOps
 		if [ "$repullDevOps" == y ]; then
@@ -532,7 +532,7 @@ function pullDevOps() {
 }
 
 function pullFortify() {
-	if docker image ls -a | grep -q sca && docker image ls -a | grep -q ssc; then
+	if docker image ls -a | grep -Eq sca && docker image ls -a | grep -Eq ssc; then
 		echo "     Fortify:${SSCVersion} already exists"
 		read -rp "     Would you like to pull it again? [yn] " repullFortify
 		if [ "$repullFortify" == y ]; then
@@ -541,18 +541,18 @@ function pullFortify() {
 		fi
 	fi
 
-	if ! docker image ls -a | grep -q sca; then
+	if ! docker image ls -a | grep -Eq sca; then
 		nimbusapp sca:${SCAVersion} pull
 		echo "     SCA:${SCAVersion} pulled"
 	fi
-	if ! docker image ls -a | grep -q ssc; then
+	if ! docker image ls -a | grep -Eq ssc; then
 		nimbusapp ssc:${SSCVersion} pull
 		echo "     SSC:${SSCVersion} pulled"
 	fi
 }
 
 function pullIntelliJ() {
-	if docker image ls -a | grep -q intellij; then
+	if docker image ls -a | grep -Eq intellij; then
 		echo "     IntelliJ:${IntelliJVersion} already exists"
 		read -rp "     Would you like to pull it again? [yn] " repullIntelliJ
 		if [ "$repullIntelliJ" == y ]; then
@@ -565,7 +565,7 @@ function pullIntelliJ() {
 }
 
 function pullJIRA() {
-	if docker image ls -a | grep -q jira; then
+	if docker image ls -a | grep -Eq jira; then
 		echo "     JIRA:${JIRAVersion} already exists"
 		read -rp "     Would you like to pull it again? [yn] " repullJIRA
 		if [ "$repullJIRA" == y ]; then
@@ -578,7 +578,7 @@ function pullJIRA() {
 }
 
 function pullLFTChrome() {
-	if docker image ls -a | grep -q leanft-chrome; then
+	if docker image ls -a | grep -Eq leanft-chrome; then
 		echo "     LeanFT-Chrome:${LFTChromeVersion} already exists"
 		read -rp "     Would you like to pull it again? [yn] " repullLFT
 		if [ "$repullLFT" == y ]; then
@@ -591,7 +591,7 @@ function pullLFTChrome() {
 }
 
 function pullMFConnect() {
-	if docker image ls -a | grep -q mfconnect; then
+	if docker image ls -a | grep -Eq mfconnect; then
 		echo "     MF Connect:${MFConnectVersion} already exists"
 		read -rp "     Would you like to pull it again? [yn] " repullMFConnect
 		if [ "$repullMFConnect" == y ]; then
@@ -604,7 +604,7 @@ function pullMFConnect() {
 }
 
 function pullPPM() {
-	if docker image ls -a | grep -q ppm; then
+	if docker image ls -a | grep -Eq ppm; then
 		echo "     PPM:${PPMVersion} already exists"
 		read -rp "     Would you like to pull it again? [yn] " repullPPM
 		if [ "$repullPPM" == y ]; then
@@ -617,7 +617,7 @@ function pullPPM() {
 }
 
 function pullRPA() {
-	if docker image ls -a | grep -q rpa; then
+	if docker image ls -a | grep -Eq rpa; then
 		echo "     RPA:${RPAVersion} already exists"
 		read -rp "     Would you like to pull it again? [yn] " repullRPA
 		if [ "$repullRPA" == y ]; then
@@ -630,7 +630,7 @@ function pullRPA() {
 }
 
 function pullSonarqube() {
-	if docker image ls -a | grep -q sonarqube; then
+	if docker image ls -a | grep -Eq sonarqube; then
 		echo "     Sonarqube:${SonarqubeVersion} already exists"
 		read -rp "     Would you like to pull it again? [yn] " repullSonar
 		if [ "$repullSonar" == y ]; then
@@ -643,7 +643,7 @@ function pullSonarqube() {
 }
 
 function pullSV() {
-	if docker image ls -a | grep -q sv; then
+	if docker image ls -a | grep -Eq sv; then
 		echo "     SV:${SVVersion} already exists"
 		read -rp "     Would you like to pull it again? [yn] " repullSV
 		if [ "$repullSV" == y ]; then
@@ -656,7 +656,7 @@ function pullSV() {
 }
 
 function pullUFTM() {
-	if docker image ls -a | grep -q uft-mobile; then
+	if docker image ls -a |  uft-mobile; then
 		echo "     UFT Mobile:${UFTMVersion} already exists"
 		read -rp "     Would you like to pull it again? [yn] " repullUFTM
 		if [ "$repullUFTM" == y ]; then
@@ -692,7 +692,7 @@ function restartALMOctane() {
 }
 
 function restartAOS() {
-	if docker ps | grep -q aos; then
+	if docker ps | grep -Eq '(^|\s)aos-main-app($|\s)'; then
 		nimbusapp aos:${AOSVersion} restart
 		echo "     AOS:${AOSVersion} restarted."
 	else
@@ -732,7 +732,7 @@ function restartDA() {
 }
 
 function restartDevOps() {
-	if docker ps | grep -q devops; then
+	if docker ps | grep -Eq '(^|\s)devops($|\s)'; then
 		nimbusapp devops:${DevOpsVersion} restart
 		echo "     DevOps:${DevOpsVersion} restarted."
 	else

@@ -27,9 +27,9 @@ These utilities can be installed by cloning this repo to your local hard drive. 
 `cd ~/Downloads`  
 `git clone https://github.com/alexgabriel-ca/admutils`  
 `cd admutils/`  
-`sudo cp admpull admrestart admstart admstop functions pullfunctions.sh restartfunctions.sh startfunctions.sh stopfunctions.sh /usr/local/bin`
-`cd /usr/local/bin`
-`sudo chmod a+x admpull admrestart admstart admstop`
+`sudo cp admpull admrestart admstart admstop functions pullfunctions.sh restartfunctions.sh startfunctions.sh stopfunctions.sh /usr/local/bin`  
+`cd /usr/local/bin`  
+`sudo chmod a+x admpull admrestart admstart admstop`  
 `cd`  
 
 ## Usage

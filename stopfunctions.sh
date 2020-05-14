@@ -59,7 +59,7 @@ function stopAutopass() {
 	fi
 }
 function stopDA() {
-	if ! docker ps | grep -Eq '(^|\s)da-server($|\s)'; then
+	if ! docker ps | grep -Eq da; then
 		echo "     Deployment Automation:${DAVersion} already stopped"
 		return
 	else

@@ -92,7 +92,7 @@ function startDevOps() {
 		echo "     DevOps:${DevOpsVersion} already running"
 		return
 	elif ! docker container ls -a | grep -Eq '(^|\s)devops($|\s)'; then
-		nimbusapp grep -Eq '(^|\s)devops($|\s)' up
+		nimbusapp devops:${DevOpsVersion} up
 		echo "     DevOps:${DevOpsVersion} started"
 	else
 		nimbusapp devops:${DevOpsVersion} start

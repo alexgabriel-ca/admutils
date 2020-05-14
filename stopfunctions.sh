@@ -144,7 +144,7 @@ function stopPPM() {
 }
 
 function stopRPA() {
-	if ! docker ps | grep -Eq '(^|\s)rpa($|\s)'; then
+	if ! docker ps | grep -Eq '(^|\s)rpa-central($|\s)'; then
 		echo "     Robotic Process Automation:${RPAVersion} already stopped"
 		return
 	else

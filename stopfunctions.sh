@@ -164,7 +164,7 @@ function stopSonarqube() {
 }
 
 function stopSV() {
-	if ! docker ps | grep -Eq '(^|\s)sv-server($|\s)'; then
+	if ! docker ps | grep -Eq '(^|\s)sv($|\s)'; then
 		echo "     SV:${SVVersion} already stopped"
 		return
 	else

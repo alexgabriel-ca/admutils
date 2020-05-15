@@ -13,7 +13,7 @@ Development and testing of the ADM Utilities was done via the Nimbus Server VM. 
 This pulls the selected container from Docker, but does not start it.  This is useful when provisioning a new server, as the process can take quite some time, depending on the containers selected.  It is best, if downloading all containers, to run the script overnight.  A check has been added to validate whether the container exists, and if so, the user will be prompted whether to pull down the container again.  Docker login prompt now loops if the authentication attempt is rejected.
 
 ### ADM Start
-This starts the selected container.  In the event that the admpull command has not been issued used before admstart, the container will be pulled from Docker, and then started.
+This starts the selected container.  In the event that the admpull command has not been issued used before admstart, the container will be pulled from Docker, and then started.  Docker login prompt now loops if the authentication attempt is rejected.
 
 ### ADM Stop
 This stops the selected container.
@@ -22,15 +22,11 @@ This stops the selected container.
 This restarts the selected container.
 
 ## Installation
-These utilities can be installed by cloning this repo to your local hard drive.  The latest version of [nimbusapp](https://github.com/admpresales/nimbusapp/) is recommended.  Docker login prompt now loops if the authentication attempt is rejected.
+These utilities can be installed by cloning this repo to your local hard drive.  The latest version of [nimbusapp](https://github.com/admpresales/nimbusapp/) is recommended.  
 
-`cd ~/Downloads`  
-`git clone https://github.com/alexgabriel-ca/admutils`  
-`cd admutils/`  
-`sudo cp admpull admrestart admstart admstop functions pullfunctions.sh restartfunctions.sh startfunctions.sh stopfunctions.sh /usr/local/bin`  
-`cd /usr/local/bin`  
-`sudo chmod a+x admpull admrestart admstart admstop`  
-`cd`  
+Install this using the following command inside your local Nimbus Server.
+
+`wget -nv https://github.com/alexgabriel-ca/admutils/releases/download/v3.0/admutils.tar.gz -O- | sudo tar -xz -C /usr/local/bin`  
 
 ## Usage
 Since each script runs as an executable file, you can issue the desired command from any location after installation.  

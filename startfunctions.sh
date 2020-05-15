@@ -36,7 +36,7 @@ function startALMOctane() {
 }
 
 function startAOS() {
-	if docker ps | grep -E '(^|\s)aos-main($|\s)'; then
+	if docker ps | grep -Eq '(^|\s)aos-main($|\s)'; then
 		echo "     AOS:${AOSVersion} already running"
 		return
 	elif ! docker container ls -a | grep -Eq '(^|\s)aos-main($|\s)'; then
@@ -49,7 +49,7 @@ function startAOS() {
 }
 
 function startAOSQA() {
-	if docker ps | grep -E '(^|\s)aos-main-qa($|\s)'; then
+	if docker ps | grep -Eq '(^|\s)aos-main-qa($|\s)'; then
 		echo "     AOS-QA already running"
 		return
 	elif ! docker container ls -a | grep -Eq '(^|\s)aos-main-qa($|\s)'; then

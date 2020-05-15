@@ -225,7 +225,7 @@ function pullSV() {
 }
 
 function pullUFTM() {
-	if docker image ls -a |  uft-mobile; then
+	if docker image ls -a | grep -Eq uft-mobile; then
 		echo "     UFT Mobile:${UFTMVersion} already exists"
 		read -rp "     Would you like to pull it again? [yn] " repullUFTM
 		if [ "$repullUFTM" == y ]; then

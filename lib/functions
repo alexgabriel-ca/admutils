@@ -24,7 +24,7 @@ SVVersion="5.3"
 SonarqubeVersion="7.7"
 UFTMVersion="3.4"
 
-source ./pullfunctions.sh
-source ./restartfunctions.sh
-source ./startfunctions.sh
-source ./stopfunctions.sh
+source /usr/local/bin/lib/pullfunctions.sh
+source /usr/local/bin/lib/restartfunctions.sh
+source /usr/local/bin/lib/startfunctions.sh
+source /usr/local/bin/lib/stopfunctions.sh

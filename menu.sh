@@ -125,7 +125,7 @@ function ACTIONS {
 ERROR=" "
 
 #Clear screen for menu
-clear
+#clear
 
 #Menu function
 function MENU {

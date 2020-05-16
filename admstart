@@ -10,59 +10,11 @@ echo "This is a short shell script that lets you start the most common ADM conta
 echo ""
 source functions
 source menu.sh
-#while :
-#do
-#if docker login; then
-#    cat<<EOF
-#
-#    Select the container(s) to start:
-#
-#    (1) Autopass
-#    (2) ALM
-#    (3) ALM Octane
-#    (4) AOS
-#    (5) AOS-QA
-#    (6) DA
-#    (7) DevOps
-#    (8) Fortify
-#    (9) IntelliJ
-#    (10) JIRA
-#    (11) LeanFT-Chrome
-#    (12) MF Connect
-#    (13) PPM
-#    (14) RPA
-#    (15) Sonarqube
-#    (16) SV
-#    (17) UFT Mobile
-#    (18) All
-#    (Q)uit
-#EOF
-#    read
-#    case "$REPLY" in
-#    "1")  startAutopass ;;
-#    "2")  startALM ;;
-#    "3")  startALMOctane ;;
-#    "4")  startAOS ;;
-#    "5")  startAOSQA ;;
-#    "6")  startDA ;;
-#    "7")  startDevOps ;;
-#    "8")  startFortify ;;
-#    "9")  startIntelliJ ;;
-#    "10")  startJIRA ;;
-#    "11")  startLFTChrome ;;
-#    "12")  startMFConnect ;;
-#    "13")  startPPM ;;
-#    "14")  startRPA ;;
-#    "15")  startSonarqube ;;
-#    "16")  startSV ;;
-#    "17")  startUFTM ;;
-#    "18")  startAutopass ; startALM ; startALMOctane ; startAOS ; startAOSQA ; startDA ; startDevOps ; startFortify ; startIntelliJ ; startJIRA ; startLFTChrome ; startMFConnect ; startPPM ; startRPA ; startSonarqube ; startSV ; startUFTM ;;
-#    "Q")  exit ;;
-#    "q")  exit ;;
-#     * )  echo "Invalid Option" ;;
-#    esac
-#    sleep 1
-#	else
-#		docker login
-#	fi
-#done
+while :
+do
+if docker login; then
+    sleep 1
+	else
+		docker login
+	fi
+done

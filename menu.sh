@@ -129,7 +129,7 @@ clear
 
 #Menu function
 function MENU {
-    docker login
+
     echo "Menu Options"
     for NUM in ${!options[@]}; do
         echo "[""${choices[NUM]:- }""]" $(( NUM+1 ))") ${options[NUM]}"

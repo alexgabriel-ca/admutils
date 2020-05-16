@@ -17,7 +17,7 @@ if docker login; then
 		docker login
 	fi
 
-source lib/functions
+source ./lib/functions
 
 options[0]="Autopass"
 options[1]="ALM"

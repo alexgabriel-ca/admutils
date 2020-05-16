@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #Author: Alex Gabriel <alex.gabriel@microfocus.com>
 #Created: 14-May-2020
-#Modified: 14-May-2020
+#Modified: 16-May-2020
 #Description: This file contains all functions by admrestart.
 #License: GPL 3.0
 

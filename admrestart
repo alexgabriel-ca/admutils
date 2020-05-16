@@ -1,7 +1,7 @@
 #!/bin/bash
 #Author: Alex Gabriel <alex.gabriel@microfocus.com>
 #Created: 04-Feb-2020
-#Modified: 17-Apr-2020
+#Modified: 16-May-2020
 #Description: Short shell script that allows users to restart the most common ADM solutions when preparing for a demo.
 #License: GPL 3.0
 
@@ -13,7 +13,7 @@ if docker login; then
 	else
 		docker login
 	fi
-source functions
+source lib/functions
 options[0]="Autopass"
 options[1]="ALM"
 options[2]="ALM Octane"

@@ -11,61 +11,155 @@ echo ""
 echo "A valid Docker login is required for this script to run properly."
 echo ""
 
-source functions
-
-while :
-do
 if docker login; then
-    cat<<EOF
-
-    Select the container(s) to pull:
-
-    (1) Autopass
-    (2) ALM
-    (3) ALM Octane
-    (4) AOS
-    (5) AOS-QA
-    (6) DA
-    (7) DevOps
-    (8) Fortify
-    (9) IntelliJ
-    (10) JIRA
-    (11) LeanFT-Chrome
-    (12) MF Connect
-    (13) PPM
-    (14) RPA
-    (15) Sonarqube
-    (16) SV
-    (17) UFT Mobile
-    (18) All
-    (Q)uit
-EOF
-    read
-    case "$REPLY" in
-    "1")  pullAutopass ;;
-    "2")  pullALM ;;
-    "3")  pullALMOctane ;;
-    "4")  pullAOS ;;
-    "5")  pullAOSQA ;;
-    "6")  pullDA ;;
-    "7")  pullDevOps ;;
-    "8")  pullFortify ;;
-    "9")  pullIntelliJ ;;
-    "10")  pullJIRA ;;
-    "11")  pullLFTChrome ;;
-    "12")  pullMFConnect ;;
-    "13")  pullPPM ;;
-    "14")  pullRPA ;;
-    "15")  pullSonarqube ;;
-    "16")  pullSV ;;
-    "17")  pullUFTM ;;
-    "18")  pullAutopass ; pullALM ; pullALMOctane ; pullAOS ; pullAOSQA ; pullDA ; pullDevOps ; pullFortify ; pullIntelliJ ; pullJIRA ; pullLFTChrome ; pullMFConnect ; pullPPM ; pullRPA ; pullSonarqube ; pullSV ; pullUFTM ;;
-    "Q")  exit ;;
-    "q")  exit ;;
-     * )  echo "Invalid Option" ;;
-    esac
     sleep 1
 	else
 		docker login
 	fi
+
+source functions
+
+options[0]="Autopass"
+options[1]="ALM"
+options[2]="ALM Octane"
+options[3]="AOS"
+options[4]="AOS-QA"
+options[5]="DA"
+options[6]="DevOps"
+options[7]="Fortify"
+options[8]="IntelliJ"
+options[9]="JIRA"
+options[10]="LeanFT Chrome"
+options[11]="MF Connect"
+options[12]="PPM"
+options[13]="RPA"
+options[14]="Sonarqube"
+options[15]="SV"
+options[16]="UFT Mobile"
+options[17]="All"
+
+#Actions to take based on selection
+function ACTIONS {
+    if [[ ${choices[0]} ]]; then
+        #Option 1 selected
+        pullAutopass
+    fi
+    if [[ ${choices[1]} ]]; then
+        #Option 2 selected
+        pullALM
+    fi
+    if [[ ${choices[2]} ]]; then
+        #Option 3 selected
+        pullALMOctane
+    fi
+    if [[ ${choices[3]} ]]; then
+        #Option 4 selected
+        pullAOS
+    fi
+    if [[ ${choices[4]} ]]; then
+        #Option 5 selected
+	   pullAOSQA
+    fi
+    if [[ ${choices[5]} ]]; then
+        #Option 5 selected
+        pullDA
+    fi
+    if [[ ${choices[6]} ]]; then
+        #Option 5 selected
+        pullDevOps
+    fi
+    if [[ ${choices[7]} ]]; then
+        #Option 5 selected
+        pullFortify
+    fi
+    if [[ ${choices[8]} ]]; then
+        #Option 5 selected
+        pullIntelliJ
+    fi
+    if [[ ${choices[9]} ]]; then
+        #Option 5 selected
+       pullJIRA
+    fi
+    if [[ ${choices[10]} ]]; then
+        #Option 5 selected
+        pullLFTChrome
+    fi
+    if [[ ${choices[11]} ]]; then
+        #Option 5 selected
+        pullMFConnect
+    fi
+    if [[ ${choices[12]} ]]; then
+        #Option 5 selected
+        pullPPM
+    fi
+    if [[ ${choices[13]} ]]; then
+        #Option 5 selected
+        pullRPA
+    fi
+    if [[ ${choices[14]} ]]; then
+        #Option 5 selected
+        pullSonarqube
+    fi
+    if [[ ${choices[15]} ]]; then
+        #Option 5 selected
+        pullSV
+    fi
+    if [[ ${choices[16]} ]]; then
+        #Option 5 selected
+        pullUFTM
+    fi
+    if [[ ${choices[17]} ]]; then
+        #Option 5 selected
+        pullAutopass
+        pullALM
+        pullALMOctane
+        pullAOS
+        pullAOSQA
+        pullDA
+        pullDevOps
+        pullFortify
+        pullIntelliJ
+        pullJIRA
+        pullLFTChrome
+        pullMFConnect
+        pullPPM
+        pullRPA
+        pullSonarqube
+        pullSV
+        pullUFTM
+    fi
+}
+
+#Variables
+ERROR=" "
+
+#Clear screen for menu
+#clear
+
+#Menu function
+function MENU {
+
+    echo "Menu Options"
+    for NUM in ${!options[@]}; do
+        echo "[""${choices[NUM]:- }""]" $(( NUM+1 ))") ${options[NUM]}"
+    done
+    echo "$ERROR"
+}
+
+#Menu loop
+while MENU && read -e -p "Select the desired options using their number (again to uncheck, ENTER when done): " -n2 SELECTION && [[ -n "$SELECTION" ]]; do
+    clear
+    if [[ "$SELECTION" == *[[:digit:]]* && $SELECTION -ge 1 && $SELECTION -le ${#options[@]} ]]; then
+        (( SELECTION-- ))
+        if [[ "${choices[SELECTION]}" == "+" ]]; then
+            choices[SELECTION]=""
+        else
+            choices[SELECTION]="+"
+        fi
+            ERROR=" "
+    else
+        ERROR="Invalid option: $SELECTION"
+    fi
 done
+
+ACTIONS

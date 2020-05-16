@@ -8,56 +8,153 @@
 echo ""
 echo "This is a short shell script that lets you stop the most common ADM containers. If you have suggestions for improvement, please contact me by emailing alex.gabriel@microfocus.com"
 echo ""
-source functions
-while :
-do
-    cat<<EOF
-
-    Select the container(s) to stop:
-
-    (1) Autopass
-    (2) ALM
-    (3) ALM Octane
-    (4) AOS
-    (5) AOS-QA
-    (6) DA
-    (7) DevOps
-    (8) Fortify
-    (9) IntelliJ
-    (10) JIRA
-    (11) LeanFT-Chrome
-    (12) MF Connect
-    (13) PPM
-    (14) RPA
-    (15) Sonarqube
-    (16) SV
-    (17) UFT Mobile
-    (18) All
-    (Q)uit
-EOF
-    read
-    case "$REPLY" in
-    "1")  stopAutopass ;;
-    "2")  stopALM ;;
-    "3")  stopALMOctane ;;
-    "4")  stopAOS ;;
-    "5")  stopAOSQA ;;
-    "6")  stopDA ;;
-    "7")  stopDevOps ;;
-    "8")  stopFortify ;;
-    "9")  stopIntelliJ ;;
-    "10")  stopJIRA ;;
-    "11")  stopLFTChrome ;;
-    "12")  stopMFConnect ;;
-    "13")  stopPPM ;;
-    "14")  stopRPA ;;
-    "15")  stopSonarqube ;;
-    "16")  stopSV ;;
-    "17")  stopUFTM ;;
-    "18")  stopUFTM ; stopSV ; stopSonarqube ; stopRPA ; stopPPM ; stopMFConnect ; stopLFTChrome ; stopJIRA ; stopIntelliJ ; stopFortify ; stopDevOps ; stopDA ; stopAOSQA ; stopAOS ; stopALMOctane ; stopALM ; stopAutopass ;;
-    "Q")  exit ;;
-    "q")  exit ;;
-     * )  echo "Invalid Option" ;;
-    esac
+if docker login; then
     sleep 1
+	else
+		docker login
+	fi
+source functions
+options[0]="Autopass"
+options[1]="ALM"
+options[2]="ALM Octane"
+options[3]="AOS"
+options[4]="AOS-QA"
+options[5]="DA"
+options[6]="DevOps"
+options[7]="Fortify"
+options[8]="IntelliJ"
+options[9]="JIRA"
+options[10]="LeanFT Chrome"
+options[11]="MF Connect"
+options[12]="PPM"
+options[13]="RPA"
+options[14]="Sonarqube"
+options[15]="SV"
+options[16]="UFT Mobile"
+options[17]="All"
+
+#Actions to take based on selection
+function ACTIONS {
+    if [[ ${choices[0]} ]]; then
+        #Option 1 selected
+        stopAutopass
+    fi
+    if [[ ${choices[1]} ]]; then
+        #Option 2 selected
+        stopALM
+    fi
+    if [[ ${choices[2]} ]]; then
+        #Option 3 selected
+        stopALMOctane
+    fi
+    if [[ ${choices[3]} ]]; then
+        #Option 4 selected
+        stopAOS
+    fi
+    if [[ ${choices[4]} ]]; then
+        #Option 5 selected
+	   stopAOSQA
+    fi
+    if [[ ${choices[5]} ]]; then
+        #Option 5 selected
+        stopDA
+    fi
+    if [[ ${choices[6]} ]]; then
+        #Option 5 selected
+        stopDevOps
+    fi
+    if [[ ${choices[7]} ]]; then
+        #Option 5 selected
+        stopFortify
+    fi
+    if [[ ${choices[8]} ]]; then
+        #Option 5 selected
+        stopIntelliJ
+    fi
+    if [[ ${choices[9]} ]]; then
+        #Option 5 selected
+       stopJIRA
+    fi
+    if [[ ${choices[10]} ]]; then
+        #Option 5 selected
+        stopLFTChrome
+    fi
+    if [[ ${choices[11]} ]]; then
+        #Option 5 selected
+        stopMFConnect
+    fi
+    if [[ ${choices[12]} ]]; then
+        #Option 5 selected
+        stopPPM
+    fi
+    if [[ ${choices[13]} ]]; then
+        #Option 5 selected
+        stopRPA
+    fi
+    if [[ ${choices[14]} ]]; then
+        #Option 5 selected
+        stopSonarqube
+    fi
+    if [[ ${choices[15]} ]]; then
+        #Option 5 selected
+        stopSV
+    fi
+    if [[ ${choices[16]} ]]; then
+        #Option 5 selected
+        stopUFTM
+    fi
+    if [[ ${choices[17]} ]]; then
+        #Option 5 selected
+        stopAutopass
+        stopALM
+        stopALMOctane
+        stopAOS
+        stopAOSQA
+        stopDA
+        stopDevOps
+        stopFortify
+        stopIntelliJ
+        stopJIRA
+        stopLFTChrome
+        stopMFConnect
+        stopPPM
+        stopRPA
+        stopSonarqube
+        stopSV
+        stopUFTM
+    fi
+}
+
+#Variables
+ERROR=" "
+
+#Clear screen for menu
+#clear
+
+#Menu function
+function MENU {
+
+    echo "Menu Options"
+    for NUM in ${!options[@]}; do
+        echo "[""${choices[NUM]:- }""]" $(( NUM+1 ))") ${options[NUM]}"
+    done
+    echo "$ERROR"
+}
+
+#Menu loop
+while MENU && read -e -p "Select the desired options using their number (again to uncheck, ENTER when done): " -n2 SELECTION && [[ -n "$SELECTION" ]]; do
+    clear
+    if [[ "$SELECTION" == *[[:digit:]]* && $SELECTION -ge 1 && $SELECTION -le ${#options[@]} ]]; then
+        (( SELECTION-- ))
+        if [[ "${choices[SELECTION]}" == "+" ]]; then
+            choices[SELECTION]=""
+        else
+            choices[SELECTION]="+"
+        fi
+            ERROR=" "
+    else
+        ERROR="Invalid option: $SELECTION"
+    fi
 done
+
+ACTIONS

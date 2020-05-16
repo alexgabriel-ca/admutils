@@ -139,7 +139,7 @@ function MENU {
 
 #Menu loop
 while MENU && read -e -p "Select the desired options using their number (again to uncheck, ENTER when done): " -n2 SELECTION && [[ -n "$SELECTION" ]]; do
-    #clear
+    clear
     if [[ "$SELECTION" == *[[:digit:]]* && $SELECTION -ge 1 && $SELECTION -le ${#options[@]} ]]; then
         (( SELECTION-- ))
         if [[ "${choices[SELECTION]}" == "+" ]]; then

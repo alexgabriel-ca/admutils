@@ -139,7 +139,6 @@ ERROR=" "
 #Menu function
 function MENU {
 
-    echo "Menu Options"
     for NUM in ${!options[@]}; do
         echo "[""${choices[NUM]:- }""]" $(( NUM+1 ))") ${options[NUM]}"
     done

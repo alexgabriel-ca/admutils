@@ -22,11 +22,11 @@ This stops the selected container.
 This restarts the selected container.
 
 ## Installation
-These utilities can be installed by cloning this repo to your local hard drive.  The latest version of [nimbusapp](https://github.com/admpresales/nimbusapp/) is recommended.  
-
 Install this using the following command inside your local Nimbus Server.
 
 `wget -nv https://github.com/alexgabriel-ca/admutils/releases/download/latest/admutils.tar.gz -O- | sudo tar -xz -C /usr/local/bin`  
+
+The latest version of [nimbusapp](https://github.com/admpresales/nimbusapp/) is recommended.  
 
 ## Usage
 Since each script runs as an executable file, you can issue the desired command from any location after installation.  

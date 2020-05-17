@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #Author: Alex Gabriel <alex.gabriel@microfocus.com>
 #Created: 04-Feb-2020
-#Modified: 16-May-2020
+#Modified: 17-May-2020
 #Description: Short shell script that allows users to pull the most common ADM solutions when preparing for a demo.
 #License: GPL 3.0
 
@@ -12,7 +12,7 @@ echo "A valid Docker login is required for this script to run properly."
 echo ""
 
 if docker login; then
-    sleep 1
+	 sleep 1
 	else
 		docker login
 	fi
@@ -40,94 +40,94 @@ options[17]="All"
 
 #Actions to take based on selection
 function ACTIONS {
-    if [[ ${choices[0]} ]]; then
-        #Option 1 selected
-        pullAutopass
-    fi
-    if [[ ${choices[1]} ]]; then
-        #Option 2 selected
-        pullALM
-    fi
-    if [[ ${choices[2]} ]]; then
-        #Option 3 selected
-        pullALMOctane
-    fi
-    if [[ ${choices[3]} ]]; then
-        #Option 4 selected
-        pullAOS
-    fi
-    if [[ ${choices[4]} ]]; then
-        #Option 5 selected
+	 if [[ ${choices[0]} ]]; then
+	 	 #Option 1 selected
+	 	 pullAutopass
+	 fi
+	 if [[ ${choices[1]} ]]; then
+	 	 #Option 2 selected
+	 	 pullALM
+	 fi
+	 if [[ ${choices[2]} ]]; then
+	 	 #Option 3 selected
+	 	 pullALMOctane
+	 fi
+	 if [[ ${choices[3]} ]]; then
+	 	 #Option 4 selected
+	 	 pullAOS
+	 fi
+	 if [[ ${choices[4]} ]]; then
+	 	 #Option 5 selected
 	   pullAOSQA
-    fi
-    if [[ ${choices[5]} ]]; then
-        #Option 5 selected
-        pullDA
-    fi
-    if [[ ${choices[6]} ]]; then
-        #Option 5 selected
-        pullDevOps
-    fi
-    if [[ ${choices[7]} ]]; then
-        #Option 5 selected
-        pullFortify
-    fi
-    if [[ ${choices[8]} ]]; then
-        #Option 5 selected
-        pullIntelliJ
-    fi
-    if [[ ${choices[9]} ]]; then
-        #Option 5 selected
-       pullJIRA
-    fi
-    if [[ ${choices[10]} ]]; then
-        #Option 5 selected
-        pullLFTChrome
-    fi
-    if [[ ${choices[11]} ]]; then
-        #Option 5 selected
-        pullMFConnect
-    fi
-    if [[ ${choices[12]} ]]; then
-        #Option 5 selected
-        pullPPM
-    fi
-    if [[ ${choices[13]} ]]; then
-        #Option 5 selected
-        pullRPA
-    fi
-    if [[ ${choices[14]} ]]; then
-        #Option 5 selected
-        pullSonarqube
-    fi
-    if [[ ${choices[15]} ]]; then
-        #Option 5 selected
-        pullSV
-    fi
-    if [[ ${choices[16]} ]]; then
-        #Option 5 selected
-        pullUFTM
-    fi
-    if [[ ${choices[17]} ]]; then
-        #Option 5 selected
-        pullAutopass
-        pullALM
-        pullALMOctane
-        pullAOS
-        pullAOSQA
-        pullDA
-        pullDevOps
-        pullFortify
-        pullIntelliJ
-        pullJIRA
-        pullLFTChrome
-        pullMFConnect
-        pullPPM
-        pullRPA
-        pullSonarqube
-        pullSV
-        pullUFTM
-    fi
+	 fi
+	 if [[ ${choices[5]} ]]; then
+	 	 #Option 5 selected
+	 	 pullDA
+	 fi
+	 if [[ ${choices[6]} ]]; then
+	 	 #Option 5 selected
+	 	 pullDevOps
+	 fi
+	 if [[ ${choices[7]} ]]; then
+	 	 #Option 5 selected
+	 	 pullFortify
+	 fi
+	 if [[ ${choices[8]} ]]; then
+	 	 #Option 5 selected
+	 	 pullIntelliJ
+	 fi
+	 if [[ ${choices[9]} ]]; then
+	 	 #Option 5 selected
+	    pullJIRA
+	 fi
+	 if [[ ${choices[10]} ]]; then
+	 	 #Option 5 selected
+	 	 pullLFTChrome
+	 fi
+	 if [[ ${choices[11]} ]]; then
+	 	 #Option 5 selected
+	 	 pullMFConnect
+	 fi
+	 if [[ ${choices[12]} ]]; then
+	 	 #Option 5 selected
+	 	 pullPPM
+	 fi
+	 if [[ ${choices[13]} ]]; then
+	 	 #Option 5 selected
+	 	 pullRPA
+	 fi
+	 if [[ ${choices[14]} ]]; then
+	 	 #Option 5 selected
+	 	 pullSonarqube
+	 fi
+	 if [[ ${choices[15]} ]]; then
+	 	 #Option 5 selected
+	 	 pullSV
+	 fi
+	 if [[ ${choices[16]} ]]; then
+	 	 #Option 5 selected
+	 	 pullUFTM
+	 fi
+	 if [[ ${choices[17]} ]]; then
+	 	 #Option 5 selected
+	 	 pullAutopass
+	 	 pullALM
+	 	 pullALMOctane
+	 	 pullAOS
+	 	 pullAOSQA
+	 	 pullDA
+	 	 pullDevOps
+	 	 pullFortify
+	 	 pullIntelliJ
+	 	 pullJIRA
+	 	 pullLFTChrome
+	 	 pullMFConnect
+	 	 pullPPM
+	 	 pullRPA
+	 	 pullSonarqube
+	 	 pullSV
+	 	 pullUFTM
+	 fi
 }
 
 #Variables
@@ -139,26 +139,26 @@ ERROR=" "
 #Menu function
 function MENU {
 
-    for NUM in ${!options[@]}; do
-        echo "[""${choices[NUM]:- }""]" $(( NUM+1 ))") ${options[NUM]}"
-    done
-    echo "$ERROR"
+	 for NUM in "${!options[@]}"; do
+	 	 echo "[""${choices[NUM]:- }""]" $(( NUM+1 ))") ${options[NUM]}"
+	 done
+	 echo "$ERROR"
 }
 
 #Menu loop
-while MENU && read -e -p "Select the desired options using their number (again to uncheck, ENTER when done): " -n2 SELECTION && [[ -n "$SELECTION" ]]; do
-    clear
-    if [[ "$SELECTION" == *[[:digit:]]* && $SELECTION -ge 1 && $SELECTION -le ${#options[@]} ]]; then
-        (( SELECTION-- ))
-        if [[ "${choices[SELECTION]}" == "+" ]]; then
-            choices[SELECTION]=""
-        else
-            choices[SELECTION]="+"
-        fi
-            ERROR=" "
-    else
-        ERROR="Invalid option: $SELECTION"
-    fi
+while MENU && read -e -r -p "Select the desired options using their number (again to uncheck, ENTER when done): " -n2 SELECTION && [[ -n "$SELECTION" ]]; do
+	 clear
+	 if [[ "$SELECTION" == *[[:digit:]]* && $SELECTION -ge 1 && $SELECTION -le ${#options[@]} ]]; then
+	 	 (( SELECTION-- ))
+	 	 if [[ "${choices[SELECTION]}" == "+" ]]; then
+	 	 	 choices[SELECTION]=""
+	 	 else
+	 		  choices[SELECTION]="+"
+	 	 fi
+	 	 	 ERROR=" "
+	 else
+	 	 ERROR="Invalid option: $SELECTION"
+	 fi
 done
 
 ACTIONS

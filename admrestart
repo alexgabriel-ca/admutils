@@ -1,15 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #Author: Alex Gabriel <alex.gabriel@microfocus.com>
 #Created: 04-Feb-2020
-#Modified: 16-May-2020
+#Modified: 17-May-2020
 #Description: Short shell script that allows users to restart the most common ADM solutions when preparing for a demo.
 #License: GPL 3.0
 
 echo ""
 echo "This is a short shell script that lets you restart the most common ADM containers. If the container is running, a message is displayed.  If you have suggestions for improvement, please contact me by emailing alex.gabriel@microfocus.com"
 echo ""
+
 if docker login; then
-    sleep 1
+	 sleep 1
 	else
 		docker login
 	fi
@@ -37,94 +38,94 @@ options[17]="All"
 
 #Actions to take based on selection
 function ACTIONS {
-    if [[ ${choices[0]} ]]; then
-        #Option 1 selected
-        restartAutopass
-    fi
-    if [[ ${choices[1]} ]]; then
-        #Option 2 selected
-        restartALM
-    fi
-    if [[ ${choices[2]} ]]; then
-        #Option 3 selected
-        restartALMOctane
-    fi
-    if [[ ${choices[3]} ]]; then
-        #Option 4 selected
-        restartAOS
-    fi
-    if [[ ${choices[4]} ]]; then
-        #Option 5 selected
+	 if [[ ${choices[0]} ]]; then
+	 	 #Option 1 selected
+	 	 restartAutopass
+	 fi
+	 if [[ ${choices[1]} ]]; then
+	 	 #Option 2 selected
+	 	 restartALM
+	 fi
+	 if [[ ${choices[2]} ]]; then
+	 	 #Option 3 selected
+	 	 restartALMOctane
+	 fi
+	 if [[ ${choices[3]} ]]; then
+	 	 #Option 4 selected
+	 	 restartAOS
+	 fi
+	 if [[ ${choices[4]} ]]; then
+	 	 #Option 5 selected
 	   restartAOSQA
-    fi
-    if [[ ${choices[5]} ]]; then
-        #Option 5 selected
-        restartDA
-    fi
-    if [[ ${choices[6]} ]]; then
-        #Option 5 selected
-        restartDevOps
-    fi
-    if [[ ${choices[7]} ]]; then
-        #Option 5 selected
-        restartFortify
-    fi
-    if [[ ${choices[8]} ]]; then
-        #Option 5 selected
-        restartIntelliJ
-    fi
-    if [[ ${choices[9]} ]]; then
-        #Option 5 selected
-       restartJIRA
-    fi
-    if [[ ${choices[10]} ]]; then
-        #Option 5 selected
-        restartLFTChrome
-    fi
-    if [[ ${choices[11]} ]]; then
-        #Option 5 selected
-        restartMFConnect
-    fi
-    if [[ ${choices[12]} ]]; then
-        #Option 5 selected
-        restartPPM
-    fi
-    if [[ ${choices[13]} ]]; then
-        #Option 5 selected
-        restartRPA
-    fi
-    if [[ ${choices[14]} ]]; then
-        #Option 5 selected
-        restartSonarqube
-    fi
-    if [[ ${choices[15]} ]]; then
-        #Option 5 selected
-        restartSV
-    fi
-    if [[ ${choices[16]} ]]; then
-        #Option 5 selected
-        restartUFTM
-    fi
-    if [[ ${choices[17]} ]]; then
-        #Option 5 selected
-        restartAutopass
-        restartALM
-        restartALMOctane
-        restartAOS
-        restartAOSQA
-        restartDA
-        restartDevOps
-        restartFortify
-        restartIntelliJ
-        restartJIRA
-        restartLFTChrome
-        restartMFConnect
-        restartPPM
-        restartRPA
-        restartSonarqube
-        restartSV
-        restartUFTM
-    fi
+	 fi
+	 if [[ ${choices[5]} ]]; then
+	 	 #Option 5 selected
+	 	 restartDA
+	 fi
+	 if [[ ${choices[6]} ]]; then
+	 	 #Option 5 selected
+	 	 restartDevOps
+	 fi
+	 if [[ ${choices[7]} ]]; then
+	 	 #Option 5 selected
+	 	 restartFortify
+	 fi
+	 if [[ ${choices[8]} ]]; then
+	 	 #Option 5 selected
+	 	 restartIntelliJ
+	 fi
+	 if [[ ${choices[9]} ]]; then
+	 	 #Option 5 selected
+		 restartJIRA
+	 fi
+	 if [[ ${choices[10]} ]]; then
+	 	 #Option 5 selected
+	 	 restartLFTChrome
+	 fi
+	 if [[ ${choices[11]} ]]; then
+	 	 #Option 5 selected
+	 	 restartMFConnect
+	 fi
+	 if [[ ${choices[12]} ]]; then
+	 	 #Option 5 selected
+	 	 restartPPM
+	 fi
+	 if [[ ${choices[13]} ]]; then
+	 	 #Option 5 selected
+	 	 restartRPA
+	 fi
+	 if [[ ${choices[14]} ]]; then
+	 	 #Option 5 selected
+	 	 restartSonarqube
+	 fi
+	 if [[ ${choices[15]} ]]; then
+	 	 #Option 5 selected
+	 	 restartSV
+	 fi
+	 if [[ ${choices[16]} ]]; then
+	 	 #Option 5 selected
+	 	 restartUFTM
+	 fi
+	 if [[ ${choices[17]} ]]; then
+	 	 #Option 5 selected
+	 	 restartAutopass
+	 	 restartALM
+	 	 restartALMOctane
+	 	 restartAOS
+	 	 restartAOSQA
+	 	 restartDA
+	 	 restartDevOps
+	 	 restartFortify
+	 	 restartIntelliJ
+	 	 restartJIRA
+	 	 restartLFTChrome
+	 	 restartMFConnect
+	 	 restartPPM
+	 	 restartRPA
+	 	 restartSonarqube
+	 	 restartSV
+	 	 restartUFTM
+	 fi
 }
 
 #Variables
@@ -136,26 +137,26 @@ ERROR=" "
 #Menu function
 function MENU {
 
-    for NUM in ${!options[@]}; do
-        echo "[""${choices[NUM]:- }""]" $(( NUM+1 ))") ${options[NUM]}"
-    done
-    echo "$ERROR"
+	 for NUM in "${!options[@]}"; do
+	 	 echo "[""${choices[NUM]:- }""]" $(( NUM+1 ))") ${options[NUM]}"
+	 done
+	 echo "$ERROR"
 }
 
 #Menu loop
-while MENU && read -e -p "Select the desired options using their number (again to uncheck, ENTER when done): " -n2 SELECTION && [[ -n "$SELECTION" ]]; do
-    clear
-    if [[ "$SELECTION" == *[[:digit:]]* && $SELECTION -ge 1 && $SELECTION -le ${#options[@]} ]]; then
-        (( SELECTION-- ))
-        if [[ "${choices[SELECTION]}" == "+" ]]; then
-            choices[SELECTION]=""
-        else
-            choices[SELECTION]="+"
-        fi
-            ERROR=" "
-    else
-        ERROR="Invalid option: $SELECTION"
-    fi
+while MENU && read -e -r -p "Select the desired options using their number (again to uncheck, ENTER when done): " -n2 SELECTION && [[ -n "$SELECTION" ]]; do
+	 clear
+	 if [[ "$SELECTION" == *[[:digit:]]* && $SELECTION -ge 1 && $SELECTION -le ${#options[@]} ]]; then
+	 	 (( SELECTION-- ))
+	 	 if [[ "${choices[SELECTION]}" == "+" ]]; then
+	 	 	 choices[SELECTION]=""
+	 	 else
+	 	 	 choices[SELECTION]="+"
+	 	 fi
+	 	 	 ERROR=" "
+	 else
+	 	 ERROR="Invalid option: $SELECTION"
+	 fi
 done
 
 ACTIONS

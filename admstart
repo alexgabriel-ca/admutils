@@ -1,15 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #Author: Alex Gabriel <alex.gabriel@microfocus.com>
 #Created: 04-Feb-2020
-#Modified: 16-May-2020
+#Modified: 17-May-2020
 #Description: Short shell script that allows users to start the most common ADM solutions when preparing for a demo.
 #License: GPL 3.0
 
 echo ""
 echo "This is a short shell script that lets you start the most common ADM containers from the admpresales Docker repository. If the containers do not exist, they will be pulled first, and then started.  If you have suggestions for improvement, please contact me by emailing alex.gabriel@microfocus.com"
 echo ""
+
 if docker login; then
-    sleep 1
+	 sleep 1
 	else
 		docker login
 	fi
@@ -37,94 +38,94 @@ options[17]="All"
 
 #Actions to take based on selection
 function ACTIONS {
-    if [[ ${choices[0]} ]]; then
-        #Option 1 selected
-        startAutopass
-    fi
-    if [[ ${choices[1]} ]]; then
-        #Option 2 selected
-        startALM
-    fi
-    if [[ ${choices[2]} ]]; then
-        #Option 3 selected
-        startALMOctane
-    fi
-    if [[ ${choices[3]} ]]; then
-        #Option 4 selected
-        startAOS
-    fi
-    if [[ ${choices[4]} ]]; then
-        #Option 5 selected
+	 if [[ ${choices[0]} ]]; then
+	 	 #Option 1 selected
+	 	 startAutopass
+	 fi
+	 if [[ ${choices[1]} ]]; then
+	 	 #Option 2 selected
+	 	 startALM
+	 fi
+	 if [[ ${choices[2]} ]]; then
+	 	 #Option 3 selected
+	 	 startALMOctane
+	 fi
+	 if [[ ${choices[3]} ]]; then
+	 	 #Option 4 selected
+	 	 startAOS
+	 fi
+	 if [[ ${choices[4]} ]]; then
+	 	 #Option 5 selected
 	   startAOSQA
-    fi
-    if [[ ${choices[5]} ]]; then
-        #Option 5 selected
-        startDA
-    fi
-    if [[ ${choices[6]} ]]; then
-        #Option 5 selected
-        startDevOps
-    fi
-    if [[ ${choices[7]} ]]; then
-        #Option 5 selected
-        startFortify
-    fi
-    if [[ ${choices[8]} ]]; then
-        #Option 5 selected
-        startIntelliJ
-    fi
-    if [[ ${choices[9]} ]]; then
-        #Option 5 selected
-       startJIRA
-    fi
-    if [[ ${choices[10]} ]]; then
-        #Option 5 selected
-        startLFTChrome
-    fi
-    if [[ ${choices[11]} ]]; then
-        #Option 5 selected
-        startMFConnect
-    fi
-    if [[ ${choices[12]} ]]; then
-        #Option 5 selected
-        startPPM
-    fi
-    if [[ ${choices[13]} ]]; then
-        #Option 5 selected
-        startRPA
-    fi
-    if [[ ${choices[14]} ]]; then
-        #Option 5 selected
-        startSonarqube
-    fi
-    if [[ ${choices[15]} ]]; then
-        #Option 5 selected
-        startSV
-    fi
-    if [[ ${choices[16]} ]]; then
-        #Option 5 selected
-        startUFTM
-    fi
-    if [[ ${choices[17]} ]]; then
-        #Option 5 selected
-        startAutopass
-        startALM
-        startALMOctane
-        startAOS
-        startAOSQA
-        startDA
-        startDevOps
-        startFortify
-        startIntelliJ
-        startJIRA
-        startLFTChrome
-        startMFConnect
-        startPPM
-        startRPA
-        startSonarqube
-        startSV
-        startUFTM
-    fi
+	 fi
+	 if [[ ${choices[5]} ]]; then
+	 	 #Option 5 selected
+	 	 startDA
+	 fi
+	 if [[ ${choices[6]} ]]; then
+	 	 #Option 5 selected
+	 	 startDevOps
+	 fi
+	 if [[ ${choices[7]} ]]; then
+	 	 #Option 5 selected
+	 	 startFortify
+	 fi
+	 if [[ ${choices[8]} ]]; then
+	 	 #Option 5 selected
+	 	 startIntelliJ
+	 fi
+	 if [[ ${choices[9]} ]]; then
+	 	 #Option 5 selected
+	    startJIRA
+	 fi
+	 if [[ ${choices[10]} ]]; then
+	 	 #Option 5 selected
+	 	 startLFTChrome
+	 fi
+	 if [[ ${choices[11]} ]]; then
+	 	 #Option 5 selected
+	 	 startMFConnect
+	 fi
+	 if [[ ${choices[12]} ]]; then
+	 	 #Option 5 selected
+	 	 startPPM
+	 fi
+	 if [[ ${choices[13]} ]]; then
+	 	 #Option 5 selected
+	 	 startRPA
+	 fi
+	 if [[ ${choices[14]} ]]; then
+	 	 #Option 5 selected
+	 	 startSonarqube
+	 fi
+	 if [[ ${choices[15]} ]]; then
+	 	 #Option 5 selected
+	 	 startSV
+	 fi
+	 if [[ ${choices[16]} ]]; then
+	 	 #Option 5 selected
+	 	 startUFTM
+	 fi
+	 if [[ ${choices[17]} ]]; then
+	 	 #Option 5 selected
+	 	 startAutopass
+	 	 startALM
+	 	 startALMOctane
+	 	 startAOS
+	 	 startAOSQA
+	 	 startDA
+	 	 startDevOps
+	 	 startFortify
+	 	 startIntelliJ
+	 	 startJIRA
+	 	 startLFTChrome
+	 	 startMFConnect
+	 	 startPPM
+	 	 startRPA
+	 	 startSonarqube
+	 	 startSV
+	 	 startUFTM
+	 fi
 }
 
 #Variables
@@ -136,26 +137,26 @@ ERROR=" "
 #Menu function
 function MENU {
 
-    for NUM in ${!options[@]}; do
-        echo "[""${choices[NUM]:- }""]" $(( NUM+1 ))") ${options[NUM]}"
-    done
-    echo "$ERROR"
+	 for NUM in "${!options[@]}"; do
+	 	 echo "[""${choices[NUM]:- }""]" $(( NUM+1 ))") ${options[NUM]}"
+	 done
+	 echo "$ERROR"
 }
 
 #Menu loop
-while MENU && read -e -p "Select the desired options using their number (again to uncheck, ENTER when done): " -n2 SELECTION && [[ -n "$SELECTION" ]]; do
-    clear
-    if [[ "$SELECTION" == *[[:digit:]]* && $SELECTION -ge 1 && $SELECTION -le ${#options[@]} ]]; then
-        (( SELECTION-- ))
-        if [[ "${choices[SELECTION]}" == "+" ]]; then
-            choices[SELECTION]=""
-        else
-            choices[SELECTION]="+"
-        fi
-            ERROR=" "
-    else
-        ERROR="Invalid option: $SELECTION"
-    fi
+while MENU && read -e -r -p "Select the desired options using their number (again to uncheck, ENTER when done): " -n2 SELECTION && [[ -n "$SELECTION" ]]; do
+	 clear
+	 if [[ "$SELECTION" == *[[:digit:]]* && $SELECTION -ge 1 && $SELECTION -le ${#options[@]} ]]; then
+	 	 (( SELECTION-- ))
+	 	 if [[ "${choices[SELECTION]}" == "+" ]]; then
+	 	 	 choices[SELECTION]=""
+	 	 else
+	 	 	 choices[SELECTION]="+"
+	 	 fi
+	 	 	 ERROR=" "
+	 else
+	 	 ERROR="Invalid option: $SELECTION"
+	 fi
 done
 
 ACTIONS

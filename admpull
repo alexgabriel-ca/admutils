@@ -146,7 +146,7 @@ function MENU {
 }
 
 #Menu loop
-while MENU && read -e -r -p "Select the desired options using their number (again to uncheck, ENTER when done): " -n2 SELECTION && [[ -n "$SELECTION" ]]; do
+while MENU && read -e -r -p "Select the desired container using its number (enter the same number to uncheck). Press enter after items 1-9, and press enter when all containers have been selected to pull them: " -n2 SELECTION && [[ -n "$SELECTION" ]]; do
 	 clear
 	 if [[ "$SELECTION" == *[[:digit:]]* && $SELECTION -ge 1 && $SELECTION -le ${#options[@]} ]]; then
 	 	 (( SELECTION-- ))

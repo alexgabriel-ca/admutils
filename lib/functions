@@ -5,7 +5,7 @@
 #Description: Short shell script that allows users to start the most common ADM solutions when preparing for a demo.
 #License: GPL 3.0
 
-ALMOctaneVersion="15.0.46.68"
+ALMOctaneVersion="15.0.60.90"
 ALMVersion="15.0.1"
 AOSQAVersion="2.3"
 AOSVersion="2.3"

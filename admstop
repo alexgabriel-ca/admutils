@@ -34,7 +34,7 @@ options[13]="RPA"
 options[14]="Sonarqube"
 options[15]="SV"
 options[16]="UFT Mobile"
-options[17]="All"
+options[17]="All (Resource intensive)"
 
 #Actions to take based on selection
 function ACTIONS {

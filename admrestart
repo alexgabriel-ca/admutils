@@ -15,7 +15,7 @@ if docker login; then
 		docker login
 	fi
 
-source /usr/local/bin/lib/functions
+source functions
 
 options[0]="Autopass"
 options[1]="ALM"
@@ -39,92 +39,76 @@ options[17]="All"
 #Actions to take based on selection
 function ACTIONS {
 	 if [[ ${choices[0]} ]]; then
-	 	 #Option 1 selected
-	 	 restartAutopass
+	 	 restart autopass ${AutopassVersion}
 	 fi
 	 if [[ ${choices[1]} ]]; then
-	 	 #Option 2 selected
-	 	 restartALM
+	 	 restart alm ${ALMVersion}
 	 fi
 	 if [[ ${choices[2]} ]]; then
-	 	 #Option 3 selected
-	 	 restartALMOctane
+	 	 restart octane ${ALMOctaneVersion}
 	 fi
 	 if [[ ${choices[3]} ]]; then
-	 	 #Option 4 selected
-	 	 restartAOS
+	 	 restart aos ${AOSVersion}
 	 fi
 	 if [[ ${choices[4]} ]]; then
-	 	 #Option 5 selected
-	   restartAOSQA
+	 	 restart aos-qa ${AOSQAVersion}
 	 fi
 	 if [[ ${choices[5]} ]]; then
-	 	 #Option 5 selected
-	 	 restartDA
+	 	 restart da ${DAVersion}
 	 fi
 	 if [[ ${choices[6]} ]]; then
-	 	 #Option 5 selected
-	 	 restartDevOps
+	 	 restart devops ${DevOpsVersion}
 	 fi
 	 if [[ ${choices[7]} ]]; then
-	 	 #Option 5 selected
-	 	 restartFortify
+	 	 restart sca ${SCAVersion}
+	 	 restart ssc ${SSCVersion}
 	 fi
 	 if [[ ${choices[8]} ]]; then
-	 	 #Option 5 selected
-	 	 restartIntelliJ
+	 	 restart intellij ${IntelliJVersion}
 	 fi
 	 if [[ ${choices[9]} ]]; then
-	 	 #Option 5 selected
-		 restartJIRA
+	 	 restart jira ${JIRAVersion}
 	 fi
 	 if [[ ${choices[10]} ]]; then
-	 	 #Option 5 selected
-	 	 restartLFTChrome
+	 	 restart leanft-chrome ${LFTChromeVersion}
 	 fi
 	 if [[ ${choices[11]} ]]; then
-	 	 #Option 5 selected
-	 	 restartMFConnect
+	 	 restart mfconnect ${MFConnectVersion}
 	 fi
 	 if [[ ${choices[12]} ]]; then
-	 	 #Option 5 selected
-	 	 restartPPM
+	 	 restart ppm ${PPMVersion}
 	 fi
 	 if [[ ${choices[13]} ]]; then
-	 	 #Option 5 selected
-	 	 restartRPA
+	 	 restart rpa ${RPAVersion}
 	 fi
 	 if [[ ${choices[14]} ]]; then
-	 	 #Option 5 selected
-	 	 restartSonarqube
+	 	 restart sonarqube ${SonarqubeVersion}
 	 fi
 	 if [[ ${choices[15]} ]]; then
-	 	 #Option 5 selected
-	 	 restartSV
+	 	 restart sv ${SVVersion}
 	 fi
 	 if [[ ${choices[16]} ]]; then
-	 	 #Option 5 selected
-	 	 restartUFTM
+	 	 restart uft-mobile ${UFTMVersion}
 	 fi
 	 if [[ ${choices[17]} ]]; then
-	 	 #Option 5 selected
-	 	 restartAutopass
-	 	 restartALM
-	 	 restartALMOctane
-	 	 restartAOS
-	 	 restartAOSQA
-	 	 restartDA
-	 	 restartDevOps
-	 	 restartFortify
-	 	 restartIntelliJ
-	 	 restartJIRA
-	 	 restartLFTChrome
-	 	 restartMFConnect
-	 	 restartPPM
-	 	 restartRPA
-	 	 restartSonarqube
-	 	 restartSV
-	 	 restartUFTM
+	 	 restart autopass ${AutopassVersion}
+	 	 restart alm ${ALMVersion}
+	 	 restart octane ${ALMOctaneVersion}
+	 	 restart aos ${AOSVersion}
+	 	 restart aos-qa ${AOSQAVersion}
+	 	 restart da ${DAVersion}
+	 	 restart devops ${DevOpsVersion}
+	 	 restart sca ${SCAVersion}
+	 	 restart ssc ${SSCVersion}
+	 	 restart intellij ${IntelliJVersion}
+	 	 restart jira ${JIRAVersion}
+	 	 restart leanft-chrome ${LFTChromeVersion}
+	 	 restart mfconnect ${MFConnectVersion}
+	 	 restart ppm ${PPMVersion}
+	 	 restart rpa ${RPAVersion}
+	 	 restart sonarqube ${SonarqubeVersion}
+	 	 restart sv ${SVVersion}
+	 	 restart uft-mobile ${UFTMVersion}
 	 fi
 }
 

@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+#Author: Alex Gabriel <alex.gabriel@microfocus.com>
+#Created: 04-Feb-2020
+#Modified: 17-May-2020
+#Description: Short shell script that allows users to start the most common ADM solutions when preparing for a demo.
+#License: GPL 3.0
+
+ALMOctaneVersion="15.0.60.90"
+ALMVersion="15.0.1"
+AOSQAVersion="2.3"
+AOSVersion="2.3"
+AutopassVersion="10.9.2"
+DAVersion="6.3.1"
+DevOpsVersion="2.3.0"
+IntelliJVersion="2.3.0"
+JIRAVersion="8.0.2"
+LFTChromeVersion="15.0"
+MFConnectVersion="4.3.0"
+PPMVersion="9.55"
+RPAVersion="2019.11"
+SCAVersion="19.2.3"
+SSCVersion="19.2.0"
+SVVersion="5.3"
+SonarqubeVersion="7.7"
+UFTMVersion="3.4"
+
+function pull(){
+	PRODUCT=$1
+	VERSION=$2
+	echo "Pulling ${PRODUCT}:${VERSION}"
+	if docker image ls -a | grep -Eq "${PRODUCT}"; then
+		echo "	  ${PRODUCT}:${VERSION} already exists"
+		read -rp "	  Would you like to pull it again? [yn] " repull
+		if [ "$repull" == y ]; then
+			nimbusapp "${PRODUCT}":"${VERSION}" pull
+		fi
+	else
+		nimbusapp "${PRODUCT}":"${VERSION}" pull
+		echo "	  ${PRODUCT}:${VERSION} pulled"
+	fi
+}
+
+function restart(){
+	PRODUCT=$1
+	VERSION=$2
+	echo "Restarting ${PRODUCT}:${VERSION}"
+	if docker ps | grep -Eq "${PRODUCT}"; then
+		nimbusapp "${PRODUCT}":"${VERSION}" restart
+		echo "	  ${PRODUCT}:${VERSION} restarted."
+	else
+		echo "	  ${PRODUCT}:${VERSION} not running, no need to restart"
+		return
+	fi
+}
+
+function start(){
+	PRODUCT=$1
+	VERSION=$2
+	echo "Starting ${PRODUCT}:${VERSION}"
+	if docker ps | grep -Eq "${PRODUCT}"; then
+		echo "	  ${PRODUCT}:${VERSION} already running"
+		return
+	elif ! docker container ls -a | grep -Eq "${PRODUCT}"; then
+		nimbusapp "${PRODUCT}":"${VERSION}" up
+		echo "	  ${PRODUCT}:${VERSION} started"
+	else
+		nimbusapp "${PRODUCT}":"${VERSION}" start
+		echo "	  ${PRODUCT}:${VERSION} started"
+	fi
+}
+
+function stop(){
+	PRODUCT=$1
+	VERSION=$2
+	echo "Stopping ${PRODUCT}:${VERSION}"
+	if ! docker ps | grep -Eq "${PRODUCT}"; then
+		echo "	  ${PRODUCT}:${VERSION} already stopped"
+		return
+	else
+		nimbusapp "${PRODUCT}":"${VERSION}" stop
+		echo "	  ${PRODUCT}:${VERSION} stopped"
+	fi
+}

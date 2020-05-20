@@ -15,7 +15,7 @@ if docker login; then
 		docker login
 	fi
 
-source /usr/local/bin/lib/functions
+source functions
 
 options[0]="Autopass"
 options[1]="ALM"
@@ -38,93 +38,77 @@ options[17]="All"
 
 #Actions to take based on selection
 function ACTIONS {
-	 if [[ ${choices[0]} ]]; then
-	 	 #Option 1 selected
-	 	 stopAutopass
+	 	 if [[ ${choices[0]} ]]; then
+	 	 stop autopass ${AutopassVersion}
 	 fi
 	 if [[ ${choices[1]} ]]; then
-	 	 #Option 2 selected
-	 	 stopALM
+	 	 stop alm ${ALMVersion}
 	 fi
 	 if [[ ${choices[2]} ]]; then
-	 	 #Option 3 selected
-	 	 stopALMOctane
+	 	 stop octane ${ALMOctaneVersion}
 	 fi
 	 if [[ ${choices[3]} ]]; then
-	 	 #Option 4 selected
-	 	 stopAOS
+	 	 stop aos ${AOSVersion}
 	 fi
 	 if [[ ${choices[4]} ]]; then
-	 	 #Option 5 selected
-	   stopAOSQA
+	 	 stop aos-qa ${AOSQAVersion}
 	 fi
 	 if [[ ${choices[5]} ]]; then
-	 	 #Option 5 selected
-	 	 stopDA
+	 	 stop da ${DAVersion}
 	 fi
 	 if [[ ${choices[6]} ]]; then
-	 	 #Option 5 selected
-	 	 stopDevOps
+	 	 stop devops ${DevOpsVersion}
 	 fi
 	 if [[ ${choices[7]} ]]; then
-	 	 #Option 5 selected
-	 	 stopFortify
+	 	 stop sca ${SCAVersion}
+	 	 stop ssc ${SSCVersion}
 	 fi
 	 if [[ ${choices[8]} ]]; then
-	 	 #Option 5 selected
-	 	 stopIntelliJ
+	 	 stop intellij ${IntelliJVersion}
 	 fi
 	 if [[ ${choices[9]} ]]; then
-	 	 #Option 5 selected
-	    stopJIRA
+	 	 stop jira ${JIRAVersion}
 	 fi
 	 if [[ ${choices[10]} ]]; then
-	 	 #Option 5 selected
-	 	 stopLFTChrome
+	 	 stop leanft-chrome ${LFTChromeVersion}
 	 fi
 	 if [[ ${choices[11]} ]]; then
-	 	 #Option 5 selected
-	 	 stopMFConnect
+	 	 stop mfconnect ${MFConnectVersion}
 	 fi
 	 if [[ ${choices[12]} ]]; then
-	 	 #Option 5 selected
-	 	 stopPPM
+	 	 stop ppm ${PPMVersion}
 	 fi
 	 if [[ ${choices[13]} ]]; then
-	 	 #Option 5 selected
-	 	 stopRPA
+	 	 stop rpa ${RPAVersion}
 	 fi
 	 if [[ ${choices[14]} ]]; then
-	 	 #Option 5 selected
-	 	 stopSonarqube
+	 	 stop sonarqube ${SonarqubeVersion}
 	 fi
 	 if [[ ${choices[15]} ]]; then
-	 	 #Option 5 selected
-	 	 stopSV
+	 	 stop sv ${SVVersion}
 	 fi
 	 if [[ ${choices[16]} ]]; then
-	 	 #Option 5 selected
-	 	 stopUFTM
+	 	 stop uft-mobile ${UFTMVersion}
 	 fi
 	 if [[ ${choices[17]} ]]; then
-	 	 #Option 5 selected
-	 	 stopAutopass
-	 	 stopALM
-	 	 stopALMOctane
-	 	 stopAOS
-	 	 stopAOSQA
-	 	 stopDA
-	 	 stopDevOps
-	 	 stopFortify
-	 	 stopIntelliJ
-	 	 stopJIRA
-	 	 stopLFTChrome
-	 	 stopMFConnect
-	 	 stopPPM
-	 	 stopRPA
-	 	 stopSonarqube
-	 	 stopSV
-	 	 stopUFTM
+	 	 stop autopass ${AutopassVersion}
+	 	 stop alm ${ALMVersion}
+	 	 stop octane ${ALMOctaneVersion}
+	 	 stop aos ${AOSVersion}
+	 	 stop aos-qa ${AOSQAVersion}
+	 	 stop da ${DAVersion}
+	 	 stop devops ${DevOpsVersion}
+	 	 stop sca ${SCAVersion}
+	 	 stop ssc ${SSCVersion}
+	 	 stop intellij ${IntelliJVersion}
+	 	 stop jira ${JIRAVersion}
+	 	 stop leanft-chrome ${LFTChromeVersion}
+	 	 stop mfconnect ${MFConnectVersion}
+	 	 stop ppm ${PPMVersion}
+	 	 stop rpa ${RPAVersion}
+	 	 stop sonarqube ${SonarqubeVersion}
+	 	 stop sv ${SVVersion}
+	 	 stop uft-mobile ${UFTMVersion}
 	 fi
 }
 

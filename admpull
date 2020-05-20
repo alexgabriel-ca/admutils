@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #Author: Alex Gabriel <alex.gabriel@microfocus.com>
 #Created: 04-Feb-2020
-#Modified: 17-May-2020
+#Modified: 20-May-2020
 #Description: Short shell script that allows users to pull the most common ADM solutions when preparing for a demo.
 #License: GPL 3.0
 
@@ -17,7 +17,7 @@ if docker login; then
 		docker login
 	fi
 
-source /usr/local/bin/lib/functions
+source functions
 
 options[0]="Autopass"
 options[1]="ALM"
@@ -41,92 +41,76 @@ options[17]="All"
 #Actions to take based on selection
 function ACTIONS {
 	 if [[ ${choices[0]} ]]; then
-	 	 #Option 1 selected
-	 	 pullAutopass
+	 	 pull autopass ${AutopassVersion}
 	 fi
 	 if [[ ${choices[1]} ]]; then
-	 	 #Option 2 selected
-	 	 pullALM
+	 	 pull alm ${ALMVersion}
 	 fi
 	 if [[ ${choices[2]} ]]; then
-	 	 #Option 3 selected
-	 	 pullALMOctane
+	 	 pull octane ${ALMOctaneVersion}
 	 fi
 	 if [[ ${choices[3]} ]]; then
-	 	 #Option 4 selected
-	 	 pullAOS
+	 	 pull aos ${AOSVersion}
 	 fi
 	 if [[ ${choices[4]} ]]; then
-	 	 #Option 5 selected
-	   pullAOSQA
+	 	 pull aos-qa ${AOSQAVersion}
 	 fi
 	 if [[ ${choices[5]} ]]; then
-	 	 #Option 5 selected
-	 	 pullDA
+	 	 pull da ${DAVersion}
 	 fi
 	 if [[ ${choices[6]} ]]; then
-	 	 #Option 5 selected
-	 	 pullDevOps
+	 	 pull devops ${DevOpsVersion}
 	 fi
 	 if [[ ${choices[7]} ]]; then
-	 	 #Option 5 selected
-	 	 pullFortify
+	 	 pull sca ${SCAVersion}
+	 	 pull ssc ${SSCVersion}
 	 fi
 	 if [[ ${choices[8]} ]]; then
-	 	 #Option 5 selected
-	 	 pullIntelliJ
+	 	 pull intellij ${IntelliJVersion}
 	 fi
 	 if [[ ${choices[9]} ]]; then
-	 	 #Option 5 selected
-	    pullJIRA
+	 	 pull jira ${JIRAVersion}
 	 fi
 	 if [[ ${choices[10]} ]]; then
-	 	 #Option 5 selected
-	 	 pullLFTChrome
+	 	 pull leanft-chrome ${LFTChromeVersion}
 	 fi
 	 if [[ ${choices[11]} ]]; then
-	 	 #Option 5 selected
-	 	 pullMFConnect
+	 	 pull mfconnect ${MFConnectVersion}
 	 fi
 	 if [[ ${choices[12]} ]]; then
-	 	 #Option 5 selected
-	 	 pullPPM
+	 	 pull ppm ${PPMVersion}
 	 fi
 	 if [[ ${choices[13]} ]]; then
-	 	 #Option 5 selected
-	 	 pullRPA
+	 	 pull rpa ${RPAVersion}
 	 fi
 	 if [[ ${choices[14]} ]]; then
-	 	 #Option 5 selected
-	 	 pullSonarqube
+	 	 pull sonarqube ${SonarqubeVersion}
 	 fi
 	 if [[ ${choices[15]} ]]; then
-	 	 #Option 5 selected
-	 	 pullSV
+	 	 pull sv ${SVVersion}
 	 fi
 	 if [[ ${choices[16]} ]]; then
-	 	 #Option 5 selected
-	 	 pullUFTM
+	 	 pull uft-mobile ${UFTMVersion}
 	 fi
 	 if [[ ${choices[17]} ]]; then
-	 	 #Option 5 selected
-	 	 pullAutopass
-	 	 pullALM
-	 	 pullALMOctane
-	 	 pullAOS
-	 	 pullAOSQA
-	 	 pullDA
-	 	 pullDevOps
-	 	 pullFortify
-	 	 pullIntelliJ
-	 	 pullJIRA
-	 	 pullLFTChrome
-	 	 pullMFConnect
-	 	 pullPPM
-	 	 pullRPA
-	 	 pullSonarqube
-	 	 pullSV
-	 	 pullUFTM
+	 	 pull autopass ${AutopassVersion}
+	 	 pull alm ${ALMVersion}
+	 	 pull octane ${ALMOctaneVersion}
+	 	 pull aos ${AOSVersion}
+	 	 pull aos-qa ${AOSQAVersion}
+	 	 pull da ${DAVersion}
+	 	 pull devops ${DevOpsVersion}
+	 	 pull sca ${SCAVersion}
+	 	 pull ssc ${SSCVersion}
+	 	 pull intellij ${IntelliJVersion}
+	 	 pull jira ${JIRAVersion}
+	 	 pull leanft-chrome ${LFTChromeVersion}
+	 	 pull mfconnect ${MFConnectVersion}
+	 	 pull ppm ${PPMVersion}
+	 	 pull rpa ${RPAVersion}
+	 	 pull sonarqube ${SonarqubeVersion}
+	 	 pull sv ${SVVersion}
+	 	 pull uft-mobile ${UFTMVersion}
 	 fi
 }
 

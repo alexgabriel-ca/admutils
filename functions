@@ -30,14 +30,14 @@ function pull(){
 
 	echo "Pulling ${PRODUCT}:${VERSION}"
 	if docker image ls -a | grep -wq "${PRODUCT}"; then
-		echo "	  ${PRODUCT}:${VERSION} already exists"
-		read -rp "	  Would you like to pull it again? [yn] " repull
+		echo "	${PRODUCT}:${VERSION} already exists"
+		read -rp "	Would you like to pull it again? [yn] " repull
 		if [ "$repull" == y ]; then
 			nimbusapp "${PRODUCT}":"${VERSION}" pull
 		fi
 	else
 		nimbusapp "${PRODUCT}":"${VERSION}" pull
-		echo "	  ${PRODUCT}:${VERSION} pulled"
+		echo "	${PRODUCT}:${VERSION} pulled"
 	fi
 }
 
@@ -47,9 +47,9 @@ function restart(){
 	echo "Restarting ${PRODUCT}:${VERSION}"
 	if docker ps | grep -wq "${PRODUCT}"; then
 		nimbusapp "${PRODUCT}":"${VERSION}" restart
-		echo "	  ${PRODUCT}:${VERSION} restarted."
+		echo "	${PRODUCT}:${VERSION} restarted."
 	else
-		echo "	  ${PRODUCT}:${VERSION} not running, no need to restart"
+		echo "	${PRODUCT}:${VERSION} not running, no need to restart"
 		return
 	fi
 }
@@ -59,14 +59,14 @@ function start(){
 	VERSION=$2
 	echo "Starting ${PRODUCT}:${VERSION}"
 	if docker ps | grep -wq "${PRODUCT}"; then
-		echo "	  ${PRODUCT}:${VERSION} already running"
+		echo "	${PRODUCT}:${VERSION} already running"
 		return
 	elif ! docker container ls -a | grep -wq "${PRODUCT}"; then
 		nimbusapp "${PRODUCT}":"${VERSION}" up
-		echo "	  ${PRODUCT}:${VERSION} started"
+		echo "	${PRODUCT}:${VERSION} started"
 	else
 		nimbusapp "${PRODUCT}":"${VERSION}" start
-		echo "	  ${PRODUCT}:${VERSION} started"
+		echo "	${PRODUCT}:${VERSION} started"
 	fi
 }
 
@@ -75,10 +75,10 @@ function stop(){
 	VERSION=$2
 	echo "Stopping ${PRODUCT}:${VERSION}"
 	if ! docker ps | grep -wq "${PRODUCT}"; then
-		echo "	  ${PRODUCT}:${VERSION} already stopped"
+		echo "	${PRODUCT}:${VERSION} already stopped"
 		return
 	else
 		nimbusapp "${PRODUCT}":"${VERSION}" stop
-		echo "	  ${PRODUCT}:${VERSION} stopped"
+		echo "	${PRODUCT}:${VERSION} stopped"
 	fi
 }

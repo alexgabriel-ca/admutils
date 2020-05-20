@@ -10,7 +10,7 @@ echo "This is a short shell script that lets you restart the most common ADM con
 echo ""
 
 if docker login; then
-	 sleep 1
+	sleep 1
 	else
 		docker login
 	fi
@@ -38,78 +38,78 @@ options[17]="All (Resource intensive)"
 
 #Actions to take based on selection
 function ACTIONS {
-	 if [[ ${choices[0]} ]]; then
-	 	 restart autopass ${AutopassVersion}
-	 fi
-	 if [[ ${choices[1]} ]]; then
-	 	 restart alm ${ALMVersion}
-	 fi
-	 if [[ ${choices[2]} ]]; then
-	 	 restart octane ${ALMOctaneVersion}
-	 fi
-	 if [[ ${choices[3]} ]]; then
-	 	 restart aos ${AOSVersion}
-	 fi
-	 if [[ ${choices[4]} ]]; then
-	 	 restart aos-qa ${AOSQAVersion}
-	 fi
-	 if [[ ${choices[5]} ]]; then
-	 	 restart da ${DAVersion}
-	 fi
-	 if [[ ${choices[6]} ]]; then
-	 	 restart devops ${DevOpsVersion}
-	 fi
-	 if [[ ${choices[7]} ]]; then
-	 	 restart sca ${SCAVersion}
-	 	 restart ssc ${SSCVersion}
-	 fi
-	 if [[ ${choices[8]} ]]; then
-	 	 restart intellij ${IntelliJVersion}
-	 fi
-	 if [[ ${choices[9]} ]]; then
-	 	 restart jira ${JIRAVersion}
-	 fi
-	 if [[ ${choices[10]} ]]; then
-	 	 restart leanft-chrome ${LFTChromeVersion}
-	 fi
-	 if [[ ${choices[11]} ]]; then
-	 	 restart mfconnect ${MFConnectVersion}
-	 fi
-	 if [[ ${choices[12]} ]]; then
-	 	 restart ppm ${PPMVersion}
-	 fi
-	 if [[ ${choices[13]} ]]; then
-	 	 restart rpa ${RPAVersion}
-	 fi
-	 if [[ ${choices[14]} ]]; then
-	 	 restart sonarqube ${SonarqubeVersion}
-	 fi
-	 if [[ ${choices[15]} ]]; then
-	 	 restart sv ${SVVersion}
-	 fi
-	 if [[ ${choices[16]} ]]; then
-	 	 restart uft-mobile ${UFTMVersion}
-	 fi
-	 if [[ ${choices[17]} ]]; then
-	 	 restart autopass ${AutopassVersion}
-	 	 restart alm ${ALMVersion}
-	 	 restart octane ${ALMOctaneVersion}
-	 	 restart aos ${AOSVersion}
-	 	 restart aos-qa ${AOSQAVersion}
-	 	 restart da ${DAVersion}
-	 	 restart devops ${DevOpsVersion}
-	 	 restart sca ${SCAVersion}
-	 	 restart ssc ${SSCVersion}
-	 	 restart intellij ${IntelliJVersion}
-	 	 restart jira ${JIRAVersion}
-	 	 restart leanft-chrome ${LFTChromeVersion}
-	 	 restart mfconnect ${MFConnectVersion}
-	 	 restart ppm ${PPMVersion}
-	 	 restart rpa ${RPAVersion}
-	 	 restart sonarqube ${SonarqubeVersion}
-	 	 restart sv ${SVVersion}
-	 	 restart uft-mobile ${UFTMVersion}
-	 fi
+	if [[ ${choices[0]} ]]; then
+		restart autopass ${AutopassVersion}
+	fi
+	if [[ ${choices[1]} ]]; then
+		restart alm ${ALMVersion}
+	fi
+	if [[ ${choices[2]} ]]; then
+		restart octane ${ALMOctaneVersion}
+	fi
+	if [[ ${choices[3]} ]]; then
+		restart aos ${AOSVersion}
+	fi
+	if [[ ${choices[4]} ]]; then
+		restart aos-qa ${AOSQAVersion}
+	fi
+	if [[ ${choices[5]} ]]; then
+		restart da ${DAVersion}
+	fi
+	if [[ ${choices[6]} ]]; then
+		restart devops ${DevOpsVersion}
+	fi
+	if [[ ${choices[7]} ]]; then
+		restart sca ${SCAVersion}
+		restart ssc ${SSCVersion}
+	fi
+	if [[ ${choices[8]} ]]; then
+		restart intellij ${IntelliJVersion}
+	fi
+	if [[ ${choices[9]} ]]; then
+		restart jira ${JIRAVersion}
+	fi
+	if [[ ${choices[10]} ]]; then
+		restart leanft-chrome ${LFTChromeVersion}
+	fi
+	if [[ ${choices[11]} ]]; then
+		restart mfconnect ${MFConnectVersion}
+	fi
+	if [[ ${choices[12]} ]]; then
+		restart ppm ${PPMVersion}
+	fi
+	if [[ ${choices[13]} ]]; then
+		restart rpa ${RPAVersion}
+	fi
+	if [[ ${choices[14]} ]]; then
+		restart sonarqube ${SonarqubeVersion}
+	fi
+	if [[ ${choices[15]} ]]; then
+		restart sv ${SVVersion}
+	fi
+	if [[ ${choices[16]} ]]; then
+		restart uft-mobile ${UFTMVersion}
+	fi
+	if [[ ${choices[17]} ]]; then
+		restart autopass ${AutopassVersion}
+		restart alm ${ALMVersion}
+		restart octane ${ALMOctaneVersion}
+		restart aos ${AOSVersion}
+		restart aos-qa ${AOSQAVersion}
+		restart da ${DAVersion}
+		restart devops ${DevOpsVersion}
+		restart sca ${SCAVersion}
+		restart ssc ${SSCVersion}
+		restart intellij ${IntelliJVersion}
+		restart jira ${JIRAVersion}
+		restart leanft-chrome ${LFTChromeVersion}
+		restart mfconnect ${MFConnectVersion}
+		restart ppm ${PPMVersion}
+		restart rpa ${RPAVersion}
+		restart sonarqube ${SonarqubeVersion}
+		restart sv ${SVVersion}
+		restart uft-mobile ${UFTMVersion}
+	fi
 }
 
 #Variables
@@ -121,26 +121,26 @@ ERROR=" "
 #Menu function
 function MENU {
 
-	 for NUM in "${!options[@]}"; do
-	 	 echo "[""${choices[NUM]:- }""]" $(( NUM+1 ))") ${options[NUM]}"
-	 done
-	 echo "$ERROR"
+	for NUM in "${!options[@]}"; do
+		echo "[""${choices[NUM]:- }""]" $(( NUM+1 ))") ${options[NUM]}"
+	done
+	echo "$ERROR"
 }
 
 #Menu loop
 while MENU && read -e -r -p "Select the desired container using its number (enter the same number to uncheck). Press enter after items 1-9, and press enter when all containers have been selected to restart them: " -n2 SELECTION && [[ -n "$SELECTION" ]]; do
-	 clear
-	 if [[ "$SELECTION" == *[[:digit:]]* && $SELECTION -ge 1 && $SELECTION -le ${#options[@]} ]]; then
-	 	 (( SELECTION-- ))
-	 	 if [[ "${choices[SELECTION]}" == "+" ]]; then
-	 	 	 choices[SELECTION]=""
-	 	 else
-	 	 	 choices[SELECTION]="+"
-	 	 fi
-	 	 	 ERROR=" "
-	 else
-	 	 ERROR="Invalid option: $SELECTION"
-	 fi
+	clear
+	if [[ "$SELECTION" == *[[:digit:]]* && $SELECTION -ge 1 && $SELECTION -le ${#options[@]} ]]; then
+		(( SELECTION-- ))
+		if [[ "${choices[SELECTION]}" == "+" ]]; then
+			choices[SELECTION]=""
+		else
+			choices[SELECTION]="+"
+		fi
+			ERROR=" "
+	else
+		ERROR="Invalid option: $SELECTION"
+	fi
 done
 
 ACTIONS

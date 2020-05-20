@@ -10,7 +10,7 @@ echo "This is a short shell script that lets you start the most common ADM conta
 echo ""
 
 if docker login; then
-	 sleep 1
+	sleep 1
 	else
 		docker login
 	fi
@@ -38,78 +38,78 @@ options[17]="All (Resource intensive)"
 
 #Actions to take based on selection
 function ACTIONS {
-	 if [[ ${choices[0]} ]]; then
-	 	 start autopass ${AutopassVersion}
-	 fi
-	 if [[ ${choices[1]} ]]; then
-	 	 start alm ${ALMVersion}
-	 fi
-	 if [[ ${choices[2]} ]]; then
-	 	 start octane ${ALMOctaneVersion}
-	 fi
-	 if [[ ${choices[3]} ]]; then
-	 	 start aos ${AOSVersion}
-	 fi
-	 if [[ ${choices[4]} ]]; then
-	 	 start aos-qa ${AOSQAVersion}
-	 fi
-	 if [[ ${choices[5]} ]]; then
-	 	 start da ${DAVersion}
-	 fi
-	 if [[ ${choices[6]} ]]; then
-	 	 start devops ${DevOpsVersion}
-	 fi
-	 if [[ ${choices[7]} ]]; then
-	 	 start sca ${SCAVersion}
-	 	 start ssc ${SSCVersion}
-	 fi
-	 if [[ ${choices[8]} ]]; then
-	 	 start intellij ${IntelliJVersion}
-	 fi
-	 if [[ ${choices[9]} ]]; then
-	 	 start jira ${JIRAVersion}
-	 fi
-	 if [[ ${choices[10]} ]]; then
-	 	 start leanft-chrome ${LFTChromeVersion}
-	 fi
-	 if [[ ${choices[11]} ]]; then
-	 	 start mfconnect ${MFConnectVersion}
-	 fi
-	 if [[ ${choices[12]} ]]; then
-	 	 start ppm ${PPMVersion}
-	 fi
-	 if [[ ${choices[13]} ]]; then
-	 	 start rpa ${RPAVersion}
-	 fi
-	 if [[ ${choices[14]} ]]; then
-	 	 start sonarqube ${SonarqubeVersion}
-	 fi
-	 if [[ ${choices[15]} ]]; then
-	 	 start sv ${SVVersion}
-	 fi
-	 if [[ ${choices[16]} ]]; then
-	 	 start uft-mobile ${UFTMVersion}
-	 fi
-	 if [[ ${choices[17]} ]]; then
-	 	 start autopass ${AutopassVersion}
-	 	 start alm ${ALMVersion}
-	 	 start octane ${ALMOctaneVersion}
-	 	 start aos ${AOSVersion}
-	 	 start aos-qa ${AOSQAVersion}
-	 	 start da ${DAVersion}
-	 	 start devops ${DevOpsVersion}
-	 	 start sca ${SCAVersion}
-	 	 start ssc ${SSCVersion}
-	 	 start intellij ${IntelliJVersion}
-	 	 start jira ${JIRAVersion}
-	 	 start leanft-chrome ${LFTChromeVersion}
-	 	 start mfconnect ${MFConnectVersion}
-	 	 start ppm ${PPMVersion}
-	 	 start rpa ${RPAVersion}
-	 	 start sonarqube ${SonarqubeVersion}
-	 	 start sv ${SVVersion}
-	 	 start uft-mobile ${UFTMVersion}
-	 fi
+	if [[ ${choices[0]} ]]; then
+		start autopass ${AutopassVersion}
+	fi
+	if [[ ${choices[1]} ]]; then
+		start alm ${ALMVersion}
+	fi
+	if [[ ${choices[2]} ]]; then
+		start octane ${ALMOctaneVersion}
+	fi
+	if [[ ${choices[3]} ]]; then
+		start aos ${AOSVersion}
+	fi
+	if [[ ${choices[4]} ]]; then
+		start aos-qa ${AOSQAVersion}
+	fi
+	if [[ ${choices[5]} ]]; then
+		start da ${DAVersion}
+	fi
+	if [[ ${choices[6]} ]]; then
+		start devops ${DevOpsVersion}
+	fi
+	if [[ ${choices[7]} ]]; then
+		start sca ${SCAVersion}
+		start ssc ${SSCVersion}
+	fi
+	if [[ ${choices[8]} ]]; then
+		start intellij ${IntelliJVersion}
+	fi
+	if [[ ${choices[9]} ]]; then
+		start jira ${JIRAVersion}
+	fi
+	if [[ ${choices[10]} ]]; then
+		start leanft-chrome ${LFTChromeVersion}
+	fi
+	if [[ ${choices[11]} ]]; then
+		start mfconnect ${MFConnectVersion}
+	fi
+	if [[ ${choices[12]} ]]; then
+		start ppm ${PPMVersion}
+	fi
+	if [[ ${choices[13]} ]]; then
+		start rpa ${RPAVersion}
+	fi
+	if [[ ${choices[14]} ]]; then
+		start sonarqube ${SonarqubeVersion}
+	fi
+	if [[ ${choices[15]} ]]; then
+		start sv ${SVVersion}
+	fi
+	if [[ ${choices[16]} ]]; then
+		start uft-mobile ${UFTMVersion}
+	fi
+	if [[ ${choices[17]} ]]; then
+		start autopass ${AutopassVersion}
+		start alm ${ALMVersion}
+		start octane ${ALMOctaneVersion}
+		start aos ${AOSVersion}
+		start aos-qa ${AOSQAVersion}
+		start da ${DAVersion}
+		start devops ${DevOpsVersion}
+		start sca ${SCAVersion}
+		start ssc ${SSCVersion}
+		start intellij ${IntelliJVersion}
+		start jira ${JIRAVersion}
+		start leanft-chrome ${LFTChromeVersion}
+		start mfconnect ${MFConnectVersion}
+		start ppm ${PPMVersion}
+		start rpa ${RPAVersion}
+		start sonarqube ${SonarqubeVersion}
+		start sv ${SVVersion}
+		start uft-mobile ${UFTMVersion}
+	fi
 }
 
 #Variables
@@ -121,26 +121,26 @@ ERROR=" "
 #Menu function
 function MENU {
 
-	 for NUM in "${!options[@]}"; do
-	 	 echo "[""${choices[NUM]:- }""]" $(( NUM+1 ))") ${options[NUM]}"
-	 done
-	 echo "$ERROR"
+	for NUM in "${!options[@]}"; do
+		echo "[""${choices[NUM]:- }""]" $(( NUM+1 ))") ${options[NUM]}"
+	done
+	echo "$ERROR"
 }
 
 #Menu loop
 while MENU && read -e -r -p "Select the desired container using its number (enter the same number to uncheck). Press enter after items 1-9, and press enter when all containers have been selected to start them: " -n2 SELECTION && [[ -n "$SELECTION" ]]; do
-	 clear
-	 if [[ "$SELECTION" == *[[:digit:]]* && $SELECTION -ge 1 && $SELECTION -le ${#options[@]} ]]; then
-	 	 (( SELECTION-- ))
-	 	 if [[ "${choices[SELECTION]}" == "+" ]]; then
-	 	 	 choices[SELECTION]=""
-	 	 else
-	 	 	 choices[SELECTION]="+"
-	 	 fi
-	 	 	 ERROR=" "
-	 else
-	 	 ERROR="Invalid option: $SELECTION"
-	 fi
+	clear
+	if [[ "$SELECTION" == *[[:digit:]]* && $SELECTION -ge 1 && $SELECTION -le ${#options[@]} ]]; then
+		(( SELECTION-- ))
+		if [[ "${choices[SELECTION]}" == "+" ]]; then
+			choices[SELECTION]=""
+		else
+			choices[SELECTION]="+"
+		fi
+			ERROR=" "
+	else
+		ERROR="Invalid option: $SELECTION"
+	fi
 done
 
 ACTIONS

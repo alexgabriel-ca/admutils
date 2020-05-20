@@ -27,9 +27,9 @@ UFTMVersion="3.4"
 function pull(){
 	PRODUCT=$1
 	VERSION=$2
-	
+
 	echo "Pulling ${PRODUCT}:${VERSION}"
-	if docker image ls -a | grep -Eq '(^|\s)"${PRODUCT}"($|\s)'; then
+	if docker image ls -a | grep -wq "${PRODUCT}"; then
 		echo "	  ${PRODUCT}:${VERSION} already exists"
 		read -rp "	  Would you like to pull it again? [yn] " repull
 		if [ "$repull" == y ]; then
@@ -45,7 +45,7 @@ function restart(){
 	PRODUCT=$1
 	VERSION=$2
 	echo "Restarting ${PRODUCT}:${VERSION}"
-	if docker ps | grep -Eq '(^|\s)"${PRODUCT}"($|\s)'; then
+	if docker ps | grep -wq "${PRODUCT}"; then
 		nimbusapp "${PRODUCT}":"${VERSION}" restart
 		echo "	  ${PRODUCT}:${VERSION} restarted."
 	else
@@ -58,10 +58,10 @@ function start(){
 	PRODUCT=$1
 	VERSION=$2
 	echo "Starting ${PRODUCT}:${VERSION}"
-	if docker ps | grep -Eq '(^|\s)"${PRODUCT}"($|\s)'; then
+	if docker ps | grep -wq "${PRODUCT}"; then
 		echo "	  ${PRODUCT}:${VERSION} already running"
 		return
-	elif ! docker container ls -a | grep -Eq '(^|\s)"${PRODUCT}"($|\s)'; then
+	elif ! docker container ls -a | grep -wq "${PRODUCT}"; then
 		nimbusapp "${PRODUCT}":"${VERSION}" up
 		echo "	  ${PRODUCT}:${VERSION} started"
 	else
@@ -74,7 +74,7 @@ function stop(){
 	PRODUCT=$1
 	VERSION=$2
 	echo "Stopping ${PRODUCT}:${VERSION}"
-	if ! docker ps | grep -Eq '(^|\s)"${PRODUCT}"($|\s)'; then
+	if ! docker ps | grep -wq "${PRODUCT}"; then
 		echo "	  ${PRODUCT}:${VERSION} already stopped"
 		return
 	else

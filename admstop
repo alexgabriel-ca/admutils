@@ -54,7 +54,7 @@ function ACTIONS {
 	 	 stop aos-qa ${AOSQAVersion}
 	 fi
 	 if [[ ${choices[5]} ]]; then
-	 	 stop da ${DAVersion}
+	 	 stop da-server ${DAVersion}
 	 fi
 	 if [[ ${choices[6]} ]]; then
 	 	 stop devops ${DevOpsVersion}

@@ -98,7 +98,7 @@ function ACTIONS {
 	 	 pull octane ${ALMOctaneVersion}
 	 	 pull aos ${AOSVersion}
 	 	 pull aos-qa ${AOSQAVersion}
-	 	 pull da ${DAVersion}
+	 	 pull da-server ${DAVersion}
 	 	 pull devops ${DevOpsVersion}
 	 	 pull sca ${SCAVersion}
 	 	 pull ssc ${SSCVersion}

@@ -54,7 +54,7 @@ function ACTIONS {
 	 	 start aos-qa ${AOSQAVersion}
 	 fi
 	 if [[ ${choices[5]} ]]; then
-	 	 start da-server ${DAVersion}
+	 	 start da ${DAVersion}
 	 fi
 	 if [[ ${choices[6]} ]]; then
 	 	 start devops ${DevOpsVersion}
@@ -96,7 +96,7 @@ function ACTIONS {
 	 	 start octane ${ALMOctaneVersion}
 	 	 start aos ${AOSVersion}
 	 	 start aos-qa ${AOSQAVersion}
-	 	 start da-server ${DAVersion}
+	 	 start da ${DAVersion}
 	 	 start devops ${DevOpsVersion}
 	 	 start sca ${SCAVersion}
 	 	 start ssc ${SSCVersion}

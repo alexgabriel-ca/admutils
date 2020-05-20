@@ -27,12 +27,7 @@ UFTMVersion="3.4"
 function pull(){
 	PRODUCT=$1
 	VERSION=$2
-	echo "${PRODUCT}:${VERSION}"
-	if( "${PRODUCT}" == "da-server"); then
-
-		 ${PRODUCT} == 'da'
-		 echo "changed value due to bug"
-		fi
+	
 	echo "Pulling ${PRODUCT}:${VERSION}"
 	if docker image ls -a | grep -Eq '(^|\s)"${PRODUCT}"($|\s)'; then
 		echo "	  ${PRODUCT}:${VERSION} already exists"

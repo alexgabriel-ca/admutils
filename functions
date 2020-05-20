@@ -27,7 +27,8 @@ UFTMVersion="3.4"
 function pull(){
 	PRODUCT=$1
 	VERSION=$2
-	if( ${PRODUCT} == 'da-server'); then
+	if( ${PRODUCT} == da-server); then
+		echo "${PRODUCT}:${VERSION}"
 		 ${PRODUCT} == 'da'
 		 echo "changed value due to bug"
 		fi

@@ -96,7 +96,7 @@ function ACTIONS {
 	 	 stop octane ${ALMOctaneVersion}
 	 	 stop aos ${AOSVersion}
 	 	 stop aos-qa ${AOSQAVersion}
-	 	 stop da ${DAVersion}
+	 	 stop da-server ${DAVersion}
 	 	 stop devops ${DevOpsVersion}
 	 	 stop sca ${SCAVersion}
 	 	 stop ssc ${SSCVersion}

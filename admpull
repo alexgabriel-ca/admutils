@@ -56,7 +56,7 @@ function ACTIONS {
 	 	 pull aos-qa ${AOSQAVersion}
 	 fi
 	 if [[ ${choices[5]} ]]; then
-	 	 pull da ${DAVersion}
+	 	 pull da-server ${DAVersion}
 	 fi
 	 if [[ ${choices[6]} ]]; then
 	 	 pull devops ${DevOpsVersion}

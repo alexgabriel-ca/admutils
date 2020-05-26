@@ -1,0 +1,146 @@
+#!/usr/bin/env bash
+#Author: Alex Gabriel <alex.gabriel@microfocus.com>
+#Created: 04-Feb-2020
+#Modified: 17-May-2020
+#Description: Short shell script that allows users to stop the most common ADM solutions when preparing for a demo.
+#License: GPL 3.0
+
+echo ""
+echo "This is a short shell script that lets you remove the most common ADM containers. If you have suggestions for improvement, please contact me by emailing alex.gabriel@microfocus.com"
+echo ""
+
+if docker login; then
+	sleep 1
+	else
+		docker login
+	fi
+
+source functions
+
+options[0]="Autopass"
+options[1]="ALM"
+options[2]="ALM Octane"
+options[3]="AOS"
+options[4]="AOS-QA"
+options[5]="DA"
+options[6]="DevOps"
+options[7]="Fortify"
+options[8]="IntelliJ"
+options[9]="JIRA"
+options[10]="LeanFT Chrome"
+options[11]="MF Connect"
+options[12]="PPM"
+options[13]="RPA"
+options[14]="Sonarqube"
+options[15]="SV"
+options[16]="UFT Mobile"
+options[17]="All"
+
+#Actions to take based on selection
+function ACTIONS {
+	if [[ ${choices[0]} ]]; then
+		remove autopass ${AutopassVersion}
+	fi
+	if [[ ${choices[1]} ]]; then
+		remove alm ${ALMVersion}
+	fi
+	if [[ ${choices[2]} ]]; then
+		remove octane ${ALMOctaneVersion}
+	fi
+	if [[ ${choices[3]} ]]; then
+		remove aos ${AOSVersion}
+	fi
+	if [[ ${choices[4]} ]]; then
+		remove aos-qa ${AOSQAVersion}
+	fi
+	if [[ ${choices[5]} ]]; then
+		remove da ${DAVersion}
+	fi
+	if [[ ${choices[6]} ]]; then
+		remove devops ${DevOpsVersion}
+	fi
+	if [[ ${choices[7]} ]]; then
+		remove sca ${SCAVersion}
+		remove ssc ${SSCVersion}
+	fi
+	if [[ ${choices[8]} ]]; then
+		remove intellij ${IntelliJVersion}
+	fi
+	if [[ ${choices[9]} ]]; then
+		remove jira ${JIRAVersion}
+	fi
+	if [[ ${choices[10]} ]]; then
+		remove leanft-chrome ${LFTChromeVersion}
+	fi
+	if [[ ${choices[11]} ]]; then
+		remove mfconnect ${MFConnectVersion}
+	fi
+	if [[ ${choices[12]} ]]; then
+		remove ppm ${PPMVersion}
+	fi
+	if [[ ${choices[13]} ]]; then
+		remove rpa ${RPAVersion}
+	fi
+	if [[ ${choices[14]} ]]; then
+		remove sonarqube ${SonarqubeVersion}
+	fi
+	if [[ ${choices[15]} ]]; then
+		remove sv ${SVVersion}
+	fi
+	if [[ ${choices[16]} ]]; then
+		remove uft-mobile ${UFTMVersion}
+	fi
+	if [[ ${choices[17]} ]]; then
+		remove uft-mobile ${UFTMVersion}
+		remove sv ${SVVersion}
+		remove ssc ${SSCVersion}
+		remove sonarqube ${SonarqubeVersion}
+		remove sca ${SCAVersion}
+		remove rpa ${RPAVersion}
+		remove ppm ${PPMVersion}
+		remove octane ${ALMOctaneVersion}
+		remove mfconnect ${MFConnectVersion}
+		remove leanft-chrome ${LFTChromeVersion}
+		remove jira ${JIRAVersion}
+		remove intellij ${IntelliJVersion}
+		remove devops ${DevOpsVersion}
+		remove da ${DAVersion}
+		remove aos-qa ${AOSQAVersion}
+		remove aos ${AOSVersion}
+		remove alm ${ALMVersion}
+		remove autopass ${AutopassVersion}
+	fi
+}
+
+#Variables
+ERROR=" "
+
+#Clear screen for menu
+#clear
+
+#Menu function
+function MENU {
+
+	for NUM in "${!options[@]}"; do
+		echo "[""${choices[NUM]:- }""]" $(( NUM+1 ))") ${options[NUM]}"
+	done
+	echo "$ERROR"
+}
+
+#Menu loop
+while MENU && read -e -r -p "Select the desired container using its number (enter the same number to uncheck). Press enter after items 1-9, and press enter when all containers have been selected to remove them: " -n2 SELECTION && [[ -n "$SELECTION" ]]; do
+	clear
+	if [[ "$SELECTION" == *[[:digit:]]* && $SELECTION -ge 1 && $SELECTION -le ${#options[@]} ]]; then
+		(( SELECTION-- ))
+		if [[ "${choices[SELECTION]}" == "+" ]]; then
+			choices[SELECTION]=""
+		else
+			choices[SELECTION]="+"
+		fi
+			ERROR=" "
+	else
+		ERROR="Invalid option: $SELECTION"
+	fi
+done
+
+ACTIONS

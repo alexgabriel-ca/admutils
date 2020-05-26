@@ -94,7 +94,7 @@ function remove(){
 			if docker container ls -a | grep -wq "${PRODUCT}"; then
 				echo "Removing ${PRODUCT}:${VERSION}"
 				docker container rm "${PRODUCT}"
-				docker rmi $(docker images | grep -w "${PRODUCT}")
+				docker rmi $(docker images | grep -wq "${PRODUCT}")
 			fi
 			if docker image ls -a | grep -wq "${PRODUCT}"; then
 				docker "rmi $(docker images | grep -w "${PRODUCT}")"

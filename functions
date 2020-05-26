@@ -88,13 +88,13 @@ function remove(){
 	VERSION=$2
 	read -rp "	Are you sure you wish to remove the selected container(s)? [yn] " blowitaway
 	if [ "$blowitaway" == y ]; then
-		echo "Removing ${PRODUCT}:${VERSION}"
 		if docker ps | grep -wq "${PRODUCT}"; then
 			nimbusapp "${PRODUCT}":"${VERSION}" stop
 			else
 			if docker container ls -a | grep -wq "${PRODUCT}"; then
+				echo "Removing ${PRODUCT}:${VERSION}"
 				docker container rm "${PRODUCT}"
-				docker "rmi $(docker images | grep -w "${PRODUCT}")"
+				docker rmi $(docker images | grep -w "${PRODUCT}")
 			fi
 			if docker image ls -a | grep -wq "${PRODUCT}"; then
 				docker "rmi $(docker images | grep -w "${PRODUCT}")"

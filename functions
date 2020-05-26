@@ -95,7 +95,7 @@ function remove(){
 			nimbusapp "${PRODUCT}":"${VERSION}" stop
 		fi
 		docker container rm "${PRODUCT}"
-		docker rmi $(docker images | grep -w '"${PRODUCT}"')
+		docker rmi $(docker images | grep -w "${PRODUCT}")
 		echo "	${PRODUCT}:${VERSION} removed"
 	fi
 }

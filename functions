@@ -92,7 +92,7 @@ function remove(){
 		if docker ps | grep -wq "${PRODUCT}"; then
 			nimbusapp "${PRODUCT}":"${VERSION}" stop
 			else
-			if docker container | grep -wq "${PRODUCT}"; then
+			if docker container ls -a | grep -wq "${PRODUCT}"; then
 				docker container rm "${PRODUCT}"
 				docker "rmi $(docker images | grep -w "${PRODUCT}")"
 			fi

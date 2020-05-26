@@ -18,6 +18,9 @@ This starts the selected container.  In the event that the admpull command has n
 ### ADM Stop
 This stops the selected container.
 
+### ADM Remove
+This removes the selected container.
+
 ### ADM Restart
 This restarts the selected container.
 

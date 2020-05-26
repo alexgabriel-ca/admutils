@@ -34,7 +34,7 @@ options[13]="RPA"
 options[14]="Sonarqube"
 options[15]="SV"
 options[16]="UFT Mobile"
-options[17]="All (Resource intensive)"
+options[17]="All"
 
 #Actions to take based on selection
 function ACTIONS {
@@ -91,24 +91,24 @@ function ACTIONS {
 		stop uft-mobile ${UFTMVersion}
 	fi
 	if [[ ${choices[17]} ]]; then
-		stop autopass ${AutopassVersion}
-		stop alm ${ALMVersion}
-		stop octane ${ALMOctaneVersion}
-		stop aos ${AOSVersion}
-		stop aos-qa ${AOSQAVersion}
-		stop da ${DAVersion}
-		stop devops ${DevOpsVersion}
-		stop sca ${SCAVersion}
-		stop ssc ${SSCVersion}
-		stop intellij ${IntelliJVersion}
-		stop jira ${JIRAVersion}
-		stop leanft-chrome ${LFTChromeVersion}
-		stop mfconnect ${MFConnectVersion}
-		stop ppm ${PPMVersion}
-		stop rpa ${RPAVersion}
-		stop sonarqube ${SonarqubeVersion}
-		stop sv ${SVVersion}
 		stop uft-mobile ${UFTMVersion}
+		stop sv ${SVVersion}
+		stop ssc ${SSCVersion}
+		stop sonarqube ${SonarqubeVersion}
+		stop sca ${SCAVersion}
+		stop rpa ${RPAVersion}
+		stop ppm ${PPMVersion}
+		stop octane ${ALMOctaneVersion}
+		stop mfconnect ${MFConnectVersion}
+		stop leanft-chrome ${LFTChromeVersion}
+		stop jira ${JIRAVersion}
+		stop intellij ${IntelliJVersion}
+		stop devops ${DevOpsVersion}
+		stop da ${DAVersion}
+		stop aos-qa ${AOSQAVersion}
+		stop aos ${AOSVersion}
+		stop alm ${ALMVersion}
+		stop autopass ${AutopassVersion}
 	fi
 }
 

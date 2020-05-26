@@ -86,16 +86,20 @@ function stop(){
 function remove(){
 	PRODUCT=$1
 	VERSION=$2
-	echo "Removing ${PRODUCT}:${VERSION}"
-	if ! docker ps | grep -wq "${PRODUCT}"; then
-		echo "	${PRODUCT}:${VERSION} already removed"
-		return
-	else
-		if docker ps | grep -wq "${PRODUCT}"; then
-			nimbusapp "${PRODUCT}":"${VERSION}" stop
+	read -rp "	Would you like to pull it again? [yn] " blowitaway
+		if [ "blowitaway" == y ]; then
+			#nimbusapp "${PRODUCT}":"${VERSION}" pull
+			echo "Removing ${PRODUCT}:${VERSION}"
+			if ! docker ps | grep -wq "${PRODUCT}"; then
+				echo "	${PRODUCT}:${VERSION} already removed"
+				return
+			else
+			if docker ps | grep -wq "${PRODUCT}"; then
+				nimbusapp "${PRODUCT}":"${VERSION}" stop
+			fi
+			docker container rm "${PRODUCT}"
+			docker rmi $(docker images | grep -w "${PRODUCT}")
+			echo "	${PRODUCT}:${VERSION} removed"
 		fi
-		docker container rm "${PRODUCT}"
-		docker rmi $(docker images | grep -w "${PRODUCT}")
-		echo "	${PRODUCT}:${VERSION} removed"
 	fi
 }

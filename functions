@@ -86,9 +86,9 @@ function stop(){
 function remove(){
 	PRODUCT=$1
 	VERSION=$2
+			echo "Removing ${PRODUCT}:${VERSION}"
 	read -rp "	Are you sure you wish to remove the container? [yn] " blowitaway
 		if [ "$blowitaway" == y ]; then
-			echo "Removing ${PRODUCT}:${VERSION}"
 			if docker ps | grep -wq "${PRODUCT}"; then
 				nimbusapp "${PRODUCT}":"${VERSION}" stop
 			fi

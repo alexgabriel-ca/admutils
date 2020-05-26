@@ -9,12 +9,6 @@ echo ""
 echo "This is a short shell script that lets you remove the most common ADM containers. If you have suggestions for improvement, please contact me by emailing alex.gabriel@microfocus.com"
 echo ""
 
-if docker login; then
-	sleep 1
-	else
-		docker login
-	fi
-
 source functions
 
 options[0]="Autopass"

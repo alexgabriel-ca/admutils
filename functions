@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #Author: Alex Gabriel <alex.gabriel@microfocus.com>
 #Created: 04-Feb-2020
-#Modified: 17-May-2020
-#Description: Short shell script that allows users to start the most common ADM solutions when preparing for a demo.
+#Modified: 26-May-2020
+#Description: Functions for all commands related to ADM Utilities.
 #License: GPL 3.0
 
 ALMOctaneVersion="15.0.60.90"
@@ -28,7 +28,6 @@ function pull(){
 	PRODUCT=$1
 	VERSION=$2
 
-	echo "Pulling ${PRODUCT}:${VERSION}"
 	if docker image ls -a | grep -wq "${PRODUCT}"; then
 		echo "	${PRODUCT}:${VERSION} already exists"
 		read -rp "	Would you like to pull it again? [yn] " repull
@@ -37,67 +36,65 @@ function pull(){
 		fi
 	else
 		nimbusapp "${PRODUCT}":"${VERSION}" pull
-		echo "	${PRODUCT}:${VERSION} pulled"
 	fi
 }
 
 function restart(){
 	PRODUCT=$1
 	VERSION=$2
-	echo "Restarting ${PRODUCT}:${VERSION}"
 	if docker ps | grep -wq "${PRODUCT}"; then
 		nimbusapp "${PRODUCT}":"${VERSION}" restart
-		echo "	${PRODUCT}:${VERSION} restarted."
 	else
-		echo "	${PRODUCT}:${VERSION} not running, no need to restart"
-		return
+		echo "	${PRODUCT}:${VERSION} is not running, no need to restart"
 	fi
 }
 
 function start(){
 	PRODUCT=$1
 	VERSION=$2
-	echo "Starting ${PRODUCT}:${VERSION}"
 	if docker ps | grep -wq "${PRODUCT}"; then
-		echo "	${PRODUCT}:${VERSION} already running"
-		return
+		echo "	${PRODUCT}:${VERSION} is already running."
 	elif ! docker container ls -a | grep -wq "${PRODUCT}"; then
 		nimbusapp "${PRODUCT}":"${VERSION}" up
-		echo "	${PRODUCT}:${VERSION} started"
 	else
 		nimbusapp "${PRODUCT}":"${VERSION}" start
-		echo "	${PRODUCT}:${VERSION} started"
 	fi
 }
 
 function stop(){
 	PRODUCT=$1
 	VERSION=$2
-	echo "Stopping ${PRODUCT}:${VERSION}"
 	if ! docker ps | grep -wq "${PRODUCT}"; then
-		echo "	${PRODUCT}:${VERSION} already stopped"
-		return
+		echo "	${PRODUCT}:${VERSION} has already been stopped."
 	else
 		nimbusapp "${PRODUCT}":"${VERSION}" stop
-		echo "	${PRODUCT}:${VERSION} stopped"
 	fi
 }
 
 function remove(){
 	PRODUCT=$1
 	VERSION=$2
-	read -rp "	Are you sure you wish to remove the "${PRODUCT}" container? [yn] " blowitaway
-	if [[ "$blowitaway" == y ]]; then
-		if docker ps | grep -wq "${PRODUCT}"; then
-			nimbusapp "${PRODUCT}":"${VERSION}" stop
-			else
-			if docker container ls -a | grep -wq "${PRODUCT}"; then
-				echo "Removing ${PRODUCT}:${VERSION}"
-				docker container rm "${PRODUCT}"
-				docker rmi $(docker images | grep -wq "${PRODUCT}")
+	if ! (docker container ls -a | grep -q "${PRODUCT}" && docker image ls -a | grep -q "${PRODUCT}"); then
+		echo "	Container ${PRODUCT}:${VERSION} does not exist or has already been removed."
+		else
+			read -rp "	Are you sure you wish to remove the ${PRODUCT} container? [yn] " blowitaway
+			if [[ "$blowitaway" == y ]]; then
+
+			if docker ps | grep -q "${PRODUCT}"; then
+				echo "${PRODUCT} is running, will stop it before removal."
+				nimbusapp "${PRODUCT}":"${VERSION}" stop
 			fi
-			if docker image ls -a | grep -wq "${PRODUCT}"; then
-				docker rmi $(docker images | grep -wq "${PRODUCT}")
+
+			if docker container ls -a | grep -q "${PRODUCT}"; then
+				echo "	Removing ${PRODUCT}:${VERSION} container."
+				nimbusapp ${PRODUCT}:${VERSION} -f down
+				echo "	Container ${PRODUCT}:${VERSION} has been removed."
+			fi
+
+			if docker image ls -a | grep -q "${PRODUCT}"; then
+				echo "	Removing ${PRODUCT}:${VERSION} image."
+				docker rmi --force $(docker images --format '{{.Repository}}:{{.Tag}}' | grep "${PRODUCT}") 1>/dev/null 2>/dev/null
+				echo "	Image ${PRODUCT}:${VERSION} has been removed."
 			fi
 		fi
 	fi

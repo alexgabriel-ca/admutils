@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #Author: Alex Gabriel <alex.gabriel@microfocus.com>
 #Created: 25-May-2020
-#Modified: 25-May-2020
-#Description: Short shell script that allows users to remove the most common ADM solutions when preparing for a demo.
+#Modified: 26-May-2020
+#Description: Short shell script that allows users to remove the most common ADM solutions when preparing to rebuild their demo environment.
 #License: GPL 3.0
 
 echo ""

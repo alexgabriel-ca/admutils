@@ -22,9 +22,10 @@ This stops the selected container.
 This restarts the selected container.
 
 ## Installation
-Install this using the following command inside your local Nimbus Server.
-
-`wget -nv https://github.com/alexgabriel-ca/admutils/releases/download/latest/admutils.tar.gz -O- | sudo tar -xz -C /usr/local/bin`  
+1. Start Nimbus Server.
+2. Open a terminal window.
+3. Enter the command `wget -nv https://github.com/admpresales/nimbusapp/releases/latest/download/nimbusapp.tar.gz -O- | sudo tar -xz -C /usr/local/bin` to install the latest version of nimbusapp.
+3. Enter the command `wget -nv https://github.com/alexgabriel-ca/admutils/releases/download/latest/admutils.tar.gz -O- | sudo tar -xz -C /usr/local/bin` to install the latest version of admutilities.
 
 The latest version of [nimbusapp](https://github.com/admpresales/nimbusapp/) is recommended.  
 
@@ -35,6 +36,7 @@ Since each script runs as an executable file, you can issue the desired command 
 `admstart`  
 `admstop`  
 `admrestart`  
+`admremove`
 
 Each command displays a numbered menu of items to choose.  The following containers are currently supported:
 * Advantage Online Shopping

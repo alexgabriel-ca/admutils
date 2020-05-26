@@ -94,12 +94,11 @@ function remove(){
 			if docker container ls -a | grep -wq "${PRODUCT}"; then
 				echo "Removing ${PRODUCT}:${VERSION}"
 				docker container rm "${PRODUCT}"
-				echo "Checking for image in container check"
 				docker rmi $(docker images | grep -wq "${PRODUCT}")
 			fi
 			if docker image ls -a | grep -wq "${PRODUCT}"; then
 				echo "Checking for image in image check"
-				docker "rmi $(docker images | grep -w "${PRODUCT}")"
+				docker rmi $(docker images | grep -w "${PRODUCT}")
 			fi
 			echo "	${PRODUCT}:${VERSION} removed"
 		fi

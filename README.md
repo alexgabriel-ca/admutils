@@ -42,23 +42,24 @@ Since each script runs as an executable file, you can issue the desired command 
 `admremove`
 
 Each command displays a numbered menu of items to choose.  The following containers are currently supported:
-* Advantage Online Shopping
-* Advantage Online Shopping QA
-* ALM
-* ALM Octane
-* Autopass
-* Deployment Automation
-* DevOps (Jenkins)
-* Fortify
-* IntelliJ
-* JIRA
-* LeanFT-Chrome
-* Micro Focus Connect
-* Project and Portfolio Management
-* Robotic Process Automation
-* Service Virtualization
-* Sonarqube
-* UFT Mobile
+* Advantage Online Shopping 2.3
+* Advantage Online Shopping QA 2.3
+* ALM 15.0.1
+* ALM Octane 15.0.60.90
+* Autopass 10.9.2
+* Deployment Automation 6.3.1
+* DevOps (Jenkins) 2.3.1
+* IntelliJ 2.3.1
+* JIRA 8.0.2
+* LeanFT-Chrome 15.0
+* Micro Focus Connect 4.3.0
+* Project and Portfolio Management 9.55
+* Robotic Process Automation 2019.11
+* Service Virtualization 5.3
+* Software Security Centre 19.2.0
+* Source Code Analysis 19.2.3
+* Sonarqube 7.7
+* UFT Mobile 3.4
 
 More containers will be added to the list as time permits.
 

@@ -5,7 +5,7 @@
 #Description: Functions for all commands related to ADM Utilities.
 #License: GPL 3.0
 
-ALMOctaneVersion="15.0.60.90"
+ALMOctaneVersion="15.0.60.116"
 ALMVersion="15.0.1"
 AOSQAVersion="2.3"
 AOSVersion="2.3"
@@ -15,7 +15,7 @@ DevOpsVersion="2.3.1"
 IntelliJVersion="2.3.1"
 JIRAVersion="8.0.2"
 LFTChromeVersion="15.0"
-MFConnectVersion="4.3.0"
+MFConnectVersion="4.3.1-HF1"
 PGVersion="12.2"
 PPMVersion="9.55"
 RPAVersion="2019.11"

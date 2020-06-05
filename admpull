@@ -98,25 +98,25 @@ function ACTIONS {
 		pull uft-mobile ${UFTMVersion}
 	fi
 	if [[ ${choices[18]} ]]; then
-		pull uft-mobile ${UFTMVersion}
-		pull sv ${SVVersion}
-		pull ssc ${SSCVersion}
-		pull sonarqube ${SonarqubeVersion}
-		pull sca ${SCAVersion}
-		pull rpa ${RPAVersion}
-		pull ppm ${PPMVersion}
-		pull octane ${ALMOctaneVersion}
-		pull mfconnect ${MFConnectVersion}
-		pull mailserver ${MailVersion}
-		pull leanft-chrome ${LFTChromeVersion}
-		pull jira ${JIRAVersion}
-		pull intellij ${IntelliJVersion}
-		pull devops ${DevOpsVersion}
-		pull da ${DAVersion}
-		pull aos-qa ${AOSQAVersion}
-		pull aos ${AOSVersion}
-		pull alm ${ALMVersion}
 		pull autopass ${AutopassVersion}
+		pull alm ${ALMVersion}
+		pull aos ${AOSVersion}
+		pull aos-qa ${AOSQAVersion}
+		pull da ${DAVersion}
+		pull devops ${DevOpsVersion}
+		pull intellij ${IntelliJVersion}
+		pull jira ${JIRAVersion}
+		pull leanft-chrome ${LFTChromeVersion}
+		pull mailserver ${MailVersion}
+		pull mfconnect ${MFConnectVersion}
+		pull octane ${ALMOctaneVersion}
+		pull ppm ${PPMVersion}
+		pull rpa ${RPAVersion}
+		pull sca ${SCAVersion}
+		pull sonarqube ${SonarqubeVersion}
+		pull ssc ${SSCVersion}
+		pull sv ${SVVersion}
+		pull uft-mobile ${UFTMVersion}
 	fi
 }
 

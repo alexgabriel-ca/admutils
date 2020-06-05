@@ -89,7 +89,7 @@ function ACTIONS {
 	if [[ ${choices[17]} ]]; then
 		stop uft-mobile ${UFTMVersion}
 	fi
-	if [[ ${choices[17]} ]]; then
+	if [[ ${choices[18]} ]]; then
 		stop uft-mobile ${UFTMVersion}
 		stop sv ${SVVersion}
 		stop ssc ${SSCVersion}

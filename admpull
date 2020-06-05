@@ -97,7 +97,7 @@ function ACTIONS {
 	if [[ ${choices[17]} ]]; then
 		pull uft-mobile ${UFTMVersion}
 	fi
-	if [[ ${choices[17]} ]]; then
+	if [[ ${choices[18]} ]]; then
 		pull uft-mobile ${UFTMVersion}
 		pull sv ${SVVersion}
 		pull ssc ${SSCVersion}

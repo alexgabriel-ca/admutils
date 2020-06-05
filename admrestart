@@ -44,7 +44,6 @@ function ACTIONS {
 	fi
 	if [[ ${choices[3]} ]]; then
 		restart aos ${AOSVersion}
-		restart postgresql ${PGVersion}
 	fi
 	if [[ ${choices[4]} ]]; then
 		restart aos-qa ${AOSQAVersion}

@@ -44,7 +44,6 @@ function ACTIONS {
 	fi
 	if [[ ${choices[3]} ]]; then
 		remove aos ${AOSVersion}
-		remove postgresql ${PGVersion}
 	fi
 	if [[ ${choices[4]} ]]; then
 		remove aos-qa ${AOSQAVersion}

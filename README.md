@@ -52,13 +52,14 @@ Each command displays a numbered menu of items to choose.  The following contain
 * IntelliJ 2.3.1
 * JIRA 8.0.2
 * LeanFT-Chrome 15.0
+* Mail Server 1.5.10
 * Micro Focus Connect 4.3.0
 * Project and Portfolio Management 9.55
 * Robotic Process Automation 2019.11
 * Service Virtualization 5.3
 * Software Security Centre 19.2.0
-* Source Code Analysis 19.2.3
 * Sonarqube 7.7
+* Source Code Analysis 19.2.3
 * UFT Mobile 3.4
 
 More containers will be added to the list as time permits.

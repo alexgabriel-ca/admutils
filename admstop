@@ -22,13 +22,14 @@ options[7]="Fortify"
 options[8]="IntelliJ"
 options[9]="JIRA"
 options[10]="LeanFT Chrome"
-options[11]="MF Connect"
-options[12]="PPM"
-options[13]="RPA"
-options[14]="Sonarqube"
-options[15]="SV"
-options[16]="UFT Mobile"
-options[17]="All"
+options[11]="Mail Server"
+options[12]="MF Connect"
+options[13]="PPM"
+options[14]="RPA"
+options[15]="Sonarqube"
+options[16]="SV"
+options[17]="UFT Mobile"
+options[18]="All"
 
 #Actions to take based on selection
 function ACTIONS {
@@ -43,6 +44,7 @@ function ACTIONS {
 	fi
 	if [[ ${choices[3]} ]]; then
 		stop aos ${AOSVersion}
+		stop postgresql ${PGVersion}
 	fi
 	if [[ ${choices[4]} ]]; then
 		stop aos-qa ${AOSQAVersion}
@@ -67,21 +69,24 @@ function ACTIONS {
 		stop leanft-chrome ${LFTChromeVersion}
 	fi
 	if [[ ${choices[11]} ]]; then
-		stop mfconnect ${MFConnectVersion}
+		stop mailserver ${MailVersion}
 	fi
 	if [[ ${choices[12]} ]]; then
-		stop ppm ${PPMVersion}
+		stop mfconnect ${MFConnectVersion}
 	fi
 	if [[ ${choices[13]} ]]; then
-		stop rpa ${RPAVersion}
+		stop ppm ${PPMVersion}
 	fi
 	if [[ ${choices[14]} ]]; then
-		stop sonarqube ${SonarqubeVersion}
+		stop rpa ${RPAVersion}
 	fi
 	if [[ ${choices[15]} ]]; then
-		stop sv ${SVVersion}
+		stop sonarqube ${SonarqubeVersion}
 	fi
 	if [[ ${choices[16]} ]]; then
+		stop sv ${SVVersion}
+	fi
+	if [[ ${choices[17]} ]]; then
 		stop uft-mobile ${UFTMVersion}
 	fi
 	if [[ ${choices[17]} ]]; then
@@ -94,6 +99,7 @@ function ACTIONS {
 		stop ppm ${PPMVersion}
 		stop octane ${ALMOctaneVersion}
 		stop mfconnect ${MFConnectVersion}
+		stop mailserver ${MailVersion}
 		stop leanft-chrome ${LFTChromeVersion}
 		stop jira ${JIRAVersion}
 		stop intellij ${IntelliJVersion}

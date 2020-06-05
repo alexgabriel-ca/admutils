@@ -30,13 +30,14 @@ options[7]="Fortify"
 options[8]="IntelliJ"
 options[9]="JIRA"
 options[10]="LeanFT Chrome"
-options[11]="MF Connect"
-options[12]="PPM"
-options[13]="RPA"
-options[14]="Sonarqube"
-options[15]="SV"
-options[16]="UFT Mobile"
-options[17]="All (Resource intensive)"
+options[11]="Mail Server"
+options[12]="MF Connect"
+options[13]="PPM"
+options[14]="RPA"
+options[15]="Sonarqube"
+options[16]="SV"
+options[17]="UFT Mobile"
+options[18]="All (Resource intensive)"
 
 #Actions to take based on selection
 function ACTIONS {
@@ -51,6 +52,7 @@ function ACTIONS {
 	fi
 	if [[ ${choices[3]} ]]; then
 		pull aos ${AOSVersion}
+		pull postgresql ${PGVersion}
 	fi
 	if [[ ${choices[4]} ]]; then
 		pull aos-qa ${AOSQAVersion}
@@ -75,42 +77,46 @@ function ACTIONS {
 		pull leanft-chrome ${LFTChromeVersion}
 	fi
 	if [[ ${choices[11]} ]]; then
-		pull mfconnect ${MFConnectVersion}
+		pull mailserver ${MailVersion}
 	fi
 	if [[ ${choices[12]} ]]; then
-		pull ppm ${PPMVersion}
+		pull mfconnect ${MFConnectVersion}
 	fi
 	if [[ ${choices[13]} ]]; then
-		pull rpa ${RPAVersion}
+		pull ppm ${PPMVersion}
 	fi
 	if [[ ${choices[14]} ]]; then
-		pull sonarqube ${SonarqubeVersion}
+		pull rpa ${RPAVersion}
 	fi
 	if [[ ${choices[15]} ]]; then
-		pull sv ${SVVersion}
+		pull sonarqube ${SonarqubeVersion}
 	fi
 	if [[ ${choices[16]} ]]; then
+		pull sv ${SVVersion}
+	fi
+	if [[ ${choices[17]} ]]; then
 		pull uft-mobile ${UFTMVersion}
 	fi
 	if [[ ${choices[17]} ]]; then
-		pull autopass ${AutopassVersion}
-		pull alm ${ALMVersion}
-		pull octane ${ALMOctaneVersion}
-		pull aos ${AOSVersion}
-		pull aos-qa ${AOSQAVersion}
-		pull da ${DAVersion}
-		pull devops ${DevOpsVersion}
-		pull sca ${SCAVersion}
-		pull ssc ${SSCVersion}
-		pull intellij ${IntelliJVersion}
-		pull jira ${JIRAVersion}
-		pull leanft-chrome ${LFTChromeVersion}
-		pull mfconnect ${MFConnectVersion}
-		pull ppm ${PPMVersion}
-		pull rpa ${RPAVersion}
-		pull sonarqube ${SonarqubeVersion}
-		pull sv ${SVVersion}
 		pull uft-mobile ${UFTMVersion}
+		pull sv ${SVVersion}
+		pull ssc ${SSCVersion}
+		pull sonarqube ${SonarqubeVersion}
+		pull sca ${SCAVersion}
+		pull rpa ${RPAVersion}
+		pull ppm ${PPMVersion}
+		pull octane ${ALMOctaneVersion}
+		pull mfconnect ${MFConnectVersion}
+		pull mailserver ${MailVersion}
+		pull leanft-chrome ${LFTChromeVersion}
+		pull jira ${JIRAVersion}
+		pull intellij ${IntelliJVersion}
+		pull devops ${DevOpsVersion}
+		pull da ${DAVersion}
+		pull aos-qa ${AOSQAVersion}
+		pull aos ${AOSVersion}
+		pull alm ${ALMVersion}
+		pull autopass ${AutopassVersion}
 	fi
 }
 

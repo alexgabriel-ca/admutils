@@ -28,13 +28,14 @@ options[7]="Fortify"
 options[8]="IntelliJ"
 options[9]="JIRA"
 options[10]="LeanFT Chrome"
-options[11]="MF Connect"
-options[12]="PPM"
-options[13]="RPA"
-options[14]="Sonarqube"
-options[15]="SV"
-options[16]="UFT Mobile"
-options[17]="All (Resource intensive)"
+options[11]="Mail Server"
+options[12]="MF Connect"
+options[13]="PPM"
+options[14]="RPA"
+options[15]="Sonarqube"
+options[16]="SV"
+options[17]="UFT Mobile"
+options[18]="All (Resource intensive)"
 
 #Actions to take based on selection
 function ACTIONS {
@@ -49,6 +50,7 @@ function ACTIONS {
 	fi
 	if [[ ${choices[3]} ]]; then
 		start aos ${AOSVersion}
+		start postgresql ${PGVersion}
 	fi
 	if [[ ${choices[4]} ]]; then
 		start aos-qa ${AOSQAVersion}
@@ -73,40 +75,44 @@ function ACTIONS {
 		start leanft-chrome ${LFTChromeVersion}
 	fi
 	if [[ ${choices[11]} ]]; then
-		start mfconnect ${MFConnectVersion}
+		start mailserver ${MailVersion}
 	fi
 	if [[ ${choices[12]} ]]; then
-		start ppm ${PPMVersion}
+		start mfconnect ${MFConnectVersion}
 	fi
 	if [[ ${choices[13]} ]]; then
-		start rpa ${RPAVersion}
+		start ppm ${PPMVersion}
 	fi
 	if [[ ${choices[14]} ]]; then
-		start sonarqube ${SonarqubeVersion}
+		start rpa ${RPAVersion}
 	fi
 	if [[ ${choices[15]} ]]; then
-		start sv ${SVVersion}
+		start sonarqube ${SonarqubeVersion}
 	fi
 	if [[ ${choices[16]} ]]; then
-		start uft-mobile ${UFTMVersion}
+		start sv ${SVVersion}
 	fi
 	if [[ ${choices[17]} ]]; then
+		start uft-mobile ${UFTMVersion}
+	fi
+	if [[ ${choices[18]} ]]; then
 		start autopass ${AutopassVersion}
 		start alm ${ALMVersion}
-		start octane ${ALMOctaneVersion}
 		start aos ${AOSVersion}
 		start aos-qa ${AOSQAVersion}
 		start da ${DAVersion}
 		start devops ${DevOpsVersion}
-		start sca ${SCAVersion}
-		start ssc ${SSCVersion}
 		start intellij ${IntelliJVersion}
 		start jira ${JIRAVersion}
 		start leanft-chrome ${LFTChromeVersion}
+		start mailserver ${MailVersion}
 		start mfconnect ${MFConnectVersion}
+		start octane ${ALMOctaneVersion}
 		start ppm ${PPMVersion}
 		start rpa ${RPAVersion}
+		start sca ${SCAVersion}
 		start sonarqube ${SonarqubeVersion}
+		start ssc ${SSCVersion}
 		start sv ${SVVersion}
 		start uft-mobile ${UFTMVersion}
 	fi

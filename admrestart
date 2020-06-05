@@ -22,13 +22,14 @@ options[7]="Fortify"
 options[8]="IntelliJ"
 options[9]="JIRA"
 options[10]="LeanFT Chrome"
-options[11]="MF Connect"
-options[12]="PPM"
-options[13]="RPA"
-options[14]="Sonarqube"
-options[15]="SV"
-options[16]="UFT Mobile"
-options[17]="All (Resource intensive)"
+options[11]="Mail Server"
+options[12]="MF Connect"
+options[13]="PPM"
+options[14]="RPA"
+options[15]="Sonarqube"
+options[16]="SV"
+options[17]="UFT Mobile"
+options[18]="All (Resource intensive)"
 
 #Actions to take based on selection
 function ACTIONS {
@@ -43,6 +44,7 @@ function ACTIONS {
 	fi
 	if [[ ${choices[3]} ]]; then
 		restart aos ${AOSVersion}
+		restart postgresql ${PGVersion}
 	fi
 	if [[ ${choices[4]} ]]; then
 		restart aos-qa ${AOSQAVersion}
@@ -67,40 +69,44 @@ function ACTIONS {
 		restart leanft-chrome ${LFTChromeVersion}
 	fi
 	if [[ ${choices[11]} ]]; then
-		restart mfconnect ${MFConnectVersion}
+		restart mailserver ${MailVersion}
 	fi
 	if [[ ${choices[12]} ]]; then
-		restart ppm ${PPMVersion}
+		restart mfconnect ${MFConnectVersion}
 	fi
 	if [[ ${choices[13]} ]]; then
-		restart rpa ${RPAVersion}
+		restart ppm ${PPMVersion}
 	fi
 	if [[ ${choices[14]} ]]; then
-		restart sonarqube ${SonarqubeVersion}
+		restart rpa ${RPAVersion}
 	fi
 	if [[ ${choices[15]} ]]; then
-		restart sv ${SVVersion}
+		restart sonarqube ${SonarqubeVersion}
 	fi
 	if [[ ${choices[16]} ]]; then
-		restart uft-mobile ${UFTMVersion}
+		restart sv ${SVVersion}
 	fi
 	if [[ ${choices[17]} ]]; then
+		restart uft-mobile ${UFTMVersion}
+	fi
+	if [[ ${choices[18]} ]]; then
 		restart autopass ${AutopassVersion}
 		restart alm ${ALMVersion}
-		restart octane ${ALMOctaneVersion}
 		restart aos ${AOSVersion}
 		restart aos-qa ${AOSQAVersion}
 		restart da ${DAVersion}
 		restart devops ${DevOpsVersion}
-		restart sca ${SCAVersion}
-		restart ssc ${SSCVersion}
 		restart intellij ${IntelliJVersion}
 		restart jira ${JIRAVersion}
 		restart leanft-chrome ${LFTChromeVersion}
+		restart mailserver ${MailVersion}
 		restart mfconnect ${MFConnectVersion}
+		restart octane ${ALMOctaneVersion}
 		restart ppm ${PPMVersion}
 		restart rpa ${RPAVersion}
+		restart sca ${SCAVersion}
 		restart sonarqube ${SonarqubeVersion}
+		restart ssc ${SSCVersion}
 		restart sv ${SVVersion}
 		restart uft-mobile ${UFTMVersion}
 	fi
